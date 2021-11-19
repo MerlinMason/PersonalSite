@@ -4,12 +4,12 @@ import Image from "next/image";
 const Home: React.FC = () => (
     <div className="min-h-screen flex items-center justify-center">
         <div className="max-w-[600px]">
-            <h1 className="font-bold text-5xl mb-12 text-white/90">
+            <h1 className="font-bold text-5xl p-6 sm:p-0 mb-12 text-white/90">
                 Hi 👋 <br />
                 I&apos;m Merlin (he/him).
             </h1>
 
-            <div className="space-y-5 text-white/70 font-light leading-relaxed mb-6 p-6 bg-white/5 shadow-2xl rounded">
+            <div className="space-y-5 text-white/70 font-light leading-relaxed mx-6 sm:mx-0 mb-6 p-6 bg-white/5 shadow-2xl rounded">
                 <h2 className="font-semibold text-2xl mb-6 text-white/80">
                     I&apos;m a software engineer passionate about building the teams, processes and
                     software that create amazing digital products.
@@ -36,7 +36,7 @@ const Home: React.FC = () => (
                     industry incumbents (Yammer, Reward Gateway, Perkbox etc) in sales processes.
                 </p>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center mb-6">
                 <a
                     href="https://github.com/MerlinMason"
                     target="_blank"
