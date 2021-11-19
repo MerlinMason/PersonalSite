@@ -4,6 +4,6 @@ describe("Home", () => {
     });
 
     it("Should display my name", () => {
-        cy.findByText("I'm Merlin (he/him)").should("exist");
+        cy.findAllByText("Merlin").should("exist");
     });
 });
