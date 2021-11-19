@@ -1,0 +1,78 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest/globals": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "processor": "disable/disable",
+    "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "airbnb",
+        "plugin:@next/next/recommended",
+        "plugin:react/jsx-runtime",
+        "plugin:react-hooks/recommended",
+        "plugin:jest/recommended",
+        "plugin:jest/style",
+        "plugin:cypress/recommended",
+        "prettier"
+    ],
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "import",
+        "jsx-a11y",
+        "jest",
+        "cypress",
+        "disable",
+        "prettier"
+    ],
+    "rules": {
+        "import/extensions": 0,
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+        "react/function-component-definition": [2, { "namedComponents": "arrow-function" }],
+        "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".tsx"] }],
+        "react/jsx-props-no-spreading": 0
+    },
+    "settings": {
+        "import/parsers": {
+            "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
+        "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+            }
+        }
+    },
+    "overrides": [
+        {
+            // we need to make sure we're not linting js files twice
+            "files": ["**/*.js", "**/*.jsx"],
+            "settings": {
+                "disable/plugins": "@typescript-eslint"
+            }
+        },
+        {
+            // cypress shouldn't lint jest tests
+            "files": "**/__tests__/*-test.js",
+            "settings": {
+                "disable/plugins": "cypress"
+            }
+        },
+        {
+            // jest shouldn't lint cypress tests
+            "files": "**/cypress/**/*.spec.js",
+            "settings": {
+                "disable/plugins": "jest"
+            }
+        }
+    ]
+}
