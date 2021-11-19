@@ -43,7 +43,7 @@ const Home: React.FC = () => (
                     rel="noreferrer"
                     className="opacity-80 hover:opacity-100 transition-opacity duration-150"
                 >
-                    <Image src="/github.png" width={32} height={32} />
+                    <Image src="/github.png" width={32} height={32} alt="GitHub OctoCat logo" />
                 </a>
             </div>
         </div>
