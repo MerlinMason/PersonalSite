@@ -12,6 +12,10 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
+    "globals": {
+        "React": true,
+        "JSX": true
+    },
     "processor": "disable/disable",
     "extends": [
         "plugin:@typescript-eslint/recommended",
