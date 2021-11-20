@@ -11,7 +11,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => (
             <title>Merlin Mason</title>
             <link rel="icon" href="/favicon.ico" />
             <meta name="viewport" content="width=device-width,initial-scale=1" />
-            <meta name="theme-color" content="#060636" />
+            <meta name="theme-color" content="#030322" />
         </Head>
 
         <Layout>
