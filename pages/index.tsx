@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 const Home: React.FC = () => (
-    <div className="container mx-auto px-4 sm:px-6">
+    <>
         <h1 className="font-bold text-hero mb-12 text-white/90">
             Hi 👋 <br />
             I&apos;m Merlin (he/him).
@@ -35,6 +35,7 @@ const Home: React.FC = () => (
                 incumbents (Yammer, Reward Gateway, Perkbox etc) in sales processes.
             </p>
         </div>
+
         <div className="flex justify-center mb-6">
             <a
                 href="https://github.com/MerlinMason"
@@ -45,7 +46,7 @@ const Home: React.FC = () => (
                 <Image src="/github.png" width={32} height={32} alt="GitHub OctoCat logo" />
             </a>
         </div>
-    </div>
+    </>
 );
 
 export default Home;
