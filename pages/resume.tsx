@@ -10,7 +10,7 @@ const Resume: React.FC = () => {
             contract: false,
             company: "Healios",
             link: "https://healios.org.uk",
-            from: new Date("nov 2021"),
+            from: new Date("11/01/2021"),
             to: new Date(),
         },
         {
@@ -18,48 +18,48 @@ const Resume: React.FC = () => {
             contract: false,
             company: "Mo",
             link: "https://mo.work",
-            from: new Date("dec 2014"),
-            to: new Date("nov 2021"),
+            from: new Date("12/01/2014"),
+            to: new Date("11/01/2021"),
         },
         {
             title: "Senior JavaScript Engineer",
             contract: true,
             company: "ATP",
             link: "https://atp.io",
-            from: new Date("jun 2014"),
-            to: new Date("jul 2015"),
+            from: new Date("06/01/2014"),
+            to: new Date("07/01/2015"),
         },
         {
             title: "JavaScript Engineer",
             contract: false,
             company: "UK2 Group",
             link: "https://www.thghosting.com",
-            from: new Date("apr 2013"),
-            to: new Date("jun 2014"),
+            from: new Date("04/01/2013"),
+            to: new Date("06/01/2014"),
         },
         {
             title: "UI Engineer",
             contract: true,
             company: "Brilliant Basics",
             link: "http://www.wongdoody.com",
-            from: new Date("jun 2012"),
-            to: new Date("may 2013"),
+            from: new Date("06/01/2012"),
+            to: new Date("05/01/2013"),
         },
         {
             title: "Web Developer",
             contract: true,
             company: "Andrews&Co",
             link: null,
-            from: new Date("oct 2010"),
-            to: new Date("jun 2012"),
+            from: new Date("10/01/2010"),
+            to: new Date("06/01/2012"),
         },
         {
             title: "Web & UX Designer",
             contract: true,
             company: "MakeWav.es",
             link: null,
-            from: new Date("dec 2008"),
-            to: new Date("sep 2010"),
+            from: new Date("12/01/2008"),
+            to: new Date("09/01/2010"),
         },
     ];
 
@@ -78,12 +78,9 @@ const Resume: React.FC = () => {
                         <li key={company} className="py-4 first:pt-0 last:pb-0">
                             <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3">
                                 {link ? (
-                                    <ExternalLink
-                                        href={link}
-                                        className="flex gap-2 hover:text-purple-500"
-                                    >
-                                        <span>{company}</span>
-                                        <ExternalLinkIcon className="w-4" />
+                                    <ExternalLink href={link} className="hover:text-purple-500">
+                                        <span className="mr-2">{company}</span>
+                                        <ExternalLinkIcon className="w-4 inline-block" />
                                     </ExternalLink>
                                 ) : (
                                     <>{company}</>
