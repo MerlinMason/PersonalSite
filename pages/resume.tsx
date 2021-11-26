@@ -83,7 +83,7 @@ const Resume: React.FC = () => {
                                         className="flex gap-2 hover:text-purple-500"
                                     >
                                         {company}
-                                        <ExternalLinkIcon className="w-4" />
+                                        <ExternalLinkIcon className="w-4 inline-block" />
                                     </ExternalLink>
                                 ) : (
                                     <>{company}</>
