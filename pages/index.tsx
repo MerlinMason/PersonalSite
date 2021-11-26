@@ -1,12 +1,13 @@
 import React from "react";
 
-import ExternalLink from "../components/ExternalLink";
+import Button from "../components/Button";
 
 const Home: React.FC = () => (
     <>
         <h1 className="font-bold text-hero mb-12 text-white/90">
             Hi 👋 I&apos;m Merlin,
-            <br /> a software engineer living & working in London, UK.
+            <br /> a <span className="text-purple-600">software engineer</span> living & working in
+            London, UK.
         </h1>
 
         <div className="space-y-5 text-white/70 font-light leading-relaxed mb-6 p-4 sm:p-6 bg-white/5 shadow-2xl rounded">
@@ -22,17 +23,15 @@ const Home: React.FC = () => (
             </p>
 
             <p>
-                Most recently (2014 - 2021), I co-founded and led engineering at{" "}
-                <ExternalLink
-                    href="https://mo.work"
-                    className="text-purple-400 hover:text-purple-300"
-                >
-                    Mo
-                </ExternalLink>
-                , building a 12 strong engineering team and a product used by 100,000 users from
-                scratch. With a small team we created a product that would often win over industry
-                incumbents (Yammer, Reward Gateway, Perkbox etc) in sales processes.
+                Most recently (2014 - 2021), I co-founded and led engineering at Mo, building a 12
+                strong engineering team and a product used by 100,000 users from scratch. With a
+                small team we created a product that would often win over industry incumbents
+                (Yammer, Reward Gateway, Perkbox etc) in sales processes.
             </p>
+
+            <Button as="link" href="/resume">
+                See full résumé
+            </Button>
         </div>
     </>
 );
