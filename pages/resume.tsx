@@ -75,20 +75,11 @@ const Resume: React.FC = () => {
                 <ol className="divide-y divide-white/10">
                     {roles.map(({ title, company, contract, link, from, to }) => (
                         <li key={company} className="py-4 first:pt-0 last:pb-0">
-                            <h2 className="flex items-center gap-4">
-                                <span className="font-bold text-2xl">{title} </span>
-                                {contract ? (
-                                    <span className="inline-block text-sm uppercase font-bold px-2 rounded-full bg-white text-purple-900">
-                                        Contract
-                                    </span>
-                                ) : null}
-                            </h2>
-
-                            <div className="text-lg font-semibold mb-2">
+                            <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3">
                                 {link ? (
                                     <ExternalLink
                                         href={link}
-                                        className="flex gap-2 text-purple-400 hover:text-purple-300"
+                                        className="flex gap-2 hover:text-purple-300"
                                     >
                                         {company}
                                         <ExternalLinkIcon className="w-4" />
@@ -96,9 +87,21 @@ const Resume: React.FC = () => {
                                 ) : (
                                     <>{company}</>
                                 )}
-                            </div>
+                            </h2>
 
-                            <div className="flex items-center gap-2 text-sm">
+                            <h3 className="mb-2 sm:mb-0">
+                                <span
+                                    className={`inline-block text-xs uppercase font-bold px-2 mr-2 rounded-full text-purple-900 ${
+                                        contract ? "bg-blue-300" : "bg-pink-300"
+                                    }`}
+                                >
+                                    {contract ? "Contract" : "Perm"}
+                                </span>
+
+                                <div className="font-bold sm:inline">{title}</div>
+                            </h3>
+
+                            <div className="flex items-center gap-2 text-xs sm:text-sm">
                                 <CalendarIcon className="w-4" />
                                 {formatDate(from)}
                                 {" — "}
