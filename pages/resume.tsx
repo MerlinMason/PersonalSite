@@ -1,4 +1,5 @@
 import { ExternalLinkIcon, CalendarIcon } from "@heroicons/react/outline";
+import Card from "../components/Card";
 
 import ExternalLink from "../components/ExternalLink";
 
@@ -71,7 +72,7 @@ const Resume: React.FC = () => {
     return (
         <>
             <h1 className="font-bold text-hero mb-12 text-white/90">Résumé</h1>
-            <div className="text-white/70 font-light leading-relaxed mb-6 p-4 sm:p-6 bg-white/5 shadow-2xl rounded">
+            <Card>
                 <ol className="divide-y divide-white/10">
                     {roles.map(({ title, company, contract, link, from, to }) => (
                         <li key={company} className="py-4 first:pt-0 last:pb-0">
@@ -110,7 +111,7 @@ const Resume: React.FC = () => {
                         </li>
                     ))}
                 </ol>
-            </div>
+            </Card>
         </>
     );
 };

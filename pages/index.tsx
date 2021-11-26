@@ -1,16 +1,17 @@
 import React from "react";
 
 import Button from "../components/Button";
+import Card from "../components/Card";
 
 const Home: React.FC = () => (
     <>
         <h1 className="font-bold text-hero mb-12 text-white/90">
             Hi 👋 I&apos;m Merlin,
-            <br /> a <span className="text-purple-600">software engineer</span> living & working in
+            <br /> a <span className="text-purple-500">software engineer</span> living & working in
             London, UK.
         </h1>
 
-        <div className="space-y-5 text-white/70 font-light leading-relaxed mb-6 p-4 sm:p-6 bg-white/5 shadow-2xl rounded">
+        <Card className="space-y-5">
             <h2 className="font-semibold text-2xl mb-6 text-white/80">
                 I&apos;m passionate about building the teams, processes and software that create
                 amazing digital products.
@@ -32,7 +33,7 @@ const Home: React.FC = () => (
             <Button as="link" href="/resume">
                 See full résumé
             </Button>
-        </div>
+        </Card>
     </>
 );
 
