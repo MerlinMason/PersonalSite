@@ -82,8 +82,8 @@ const Resume: React.FC = () => {
                                         href={link}
                                         className="flex gap-2 hover:text-purple-500"
                                     >
-                                        {company}
-                                        <ExternalLinkIcon className="w-4 inline-block" />
+                                        <span>{company}</span>
+                                        <ExternalLinkIcon className="w-4" />
                                     </ExternalLink>
                                 ) : (
                                     <>{company}</>
