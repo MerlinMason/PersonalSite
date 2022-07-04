@@ -36,7 +36,7 @@
     "cypress": "^9.0.0",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-disable": "^2.0.3",
