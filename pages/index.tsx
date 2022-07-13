@@ -24,17 +24,17 @@ const Home: React.FC = () => (
             </p>
 
             <p>
-                Recently (2014 - 2021), I co-founded and led engineering at Mo, building a 12
-                strong engineering team and a product used by 100,000 users from scratch. With a
-                small team we created a product that would often win over industry incumbents
-                (Yammer, Reward Gateway, Perkbox etc) in sales processes.
+                Recently (2014 - 2021), I co-founded and led engineering at Mo, building a 12 strong
+                engineering team and a product used by 100,000 users from scratch. With a small team
+                we created a product that would often win over industry incumbents (Yammer, Reward
+                Gateway, Perkbox etc) in sales processes.
             </p>
-            
+
             <p>
-                Currently I'm Staff Engineer at Healios, joining at a pivotal time as the company
-                transitions from healthcare to health-tech. I'm currently focused on improving 
-                the technical maturity of the business and building the foundations for future 
-                success.
+                Currently I&apos;m Staff Engineer at Healios, joining at a pivotal time as the
+                company transitions from healthcare to health-tech. I&apos;m currently focused on
+                improving the technical maturity of the business and building the foundations for
+                future success.
             </p>
 
             <Button as="link" href="/resume">
