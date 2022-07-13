@@ -6,7 +6,7 @@ import ExternalLink from "../components/ExternalLink";
 const Resume: React.FC = () => {
     const roles = [
         {
-            title: "Lead Frontend Engineer",
+            title: "Staff Frontend Engineer",
             contract: false,
             company: "Healios",
             link: "https://healios.org.uk",
