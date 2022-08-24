@@ -32,6 +32,9 @@ const Layout: React.FC = ({ children }) => {
                     <Link href="/" className="flex-grow" ariaLabel="Home">
                         Merlin Mason
                     </Link>
+                    <Link href="/blog" className="hover:text-white">
+                        Blog
+                    </Link>
                     <Link href="/resume" className="hover:text-white">
                         Résumé
                     </Link>

@@ -1,4 +1,4 @@
-import { render } from "../../testUtils.jsx";
+import { render } from "../../../testUtils.jsx";
 import Features from "../Features";
 
 describe("<Features />", () => {
