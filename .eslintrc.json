@@ -62,6 +62,14 @@
     },
     "overrides": [
         {
+            "files": ["**/*.mdx"],
+            "extends": ["plugin:mdx/recommended"],
+            "settings": {
+                "mdx/code-blocks": true,
+                "mdx/language-mapper": {}
+            }
+        },
+        {
             // we need to make sure we're not linting js files twice
             "files": ["**/*.js", "**/*.jsx"],
             "settings": {
