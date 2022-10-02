@@ -9,7 +9,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint '*/**/*.{js,ts,tsx,mdx}'",
-    "lint:fix": "eslint '*/**/*.{js,ts,tsx,mdx}' --fix"
+    "lint:fix": "eslint '*/**/*.{js,ts,tsx,mdx}' --fix",
+    "lint:types": "tsc",
+    "lint:all": "yarn lint && yarn lint:types"
   },
   "devDependencies": {
     "@astrojs/mdx": "^0.10.2",

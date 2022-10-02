@@ -1,7 +1,5 @@
 name: CI
 on:
-    push:
-        branches: [main]
     pull_request:
         branches: [main]
 jobs:
@@ -12,13 +10,9 @@ jobs:
             - name: Install modules
               run: yarn
             - name: Eslint
-              run: yarn lint
-            - name: Run Jest tests
-              run: yarn test:jest
-            - name: Run Cypress tests
-              uses: cypress-io/github-action@v2
-              with:
-                  start: yarn dev
+              run: yarn lint:all
+            # - name: Run Jest tests
+            #   run: yarn test:jest
     auto-merge:
         name: Auto-Merge PRs by Dependabot
         needs:
