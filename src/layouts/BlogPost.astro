@@ -1,0 +1,41 @@
+---
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import Page from "./Page.astro";
+import Card from "../components/Card.astro";
+import BlogPostMeta from "../components/BlogPostMeta.astro";
+
+export interface Props {
+    content: Post["frontmatter"];
+}
+
+const {
+    content: { title, pubDate, heroImage, tags, timeToRead },
+} = Astro.props;
+---
+
+<Page title="Blog" description={title}>
+    <article>
+        <a href="/blog" class="flex items-center gap-2 mb-6 hover:text-black text-xl">
+            <ArrowLeftIcon className="w-6" />
+            All posts
+        </a>
+
+        <Card>
+            <header class="mb-16">
+                {
+                    heroImage && (
+                        <img class="max-w-full h-auto mb-6 mx-auto" src={heroImage} alt={title} />
+                    )
+                }
+
+                <h1 class="font-bold text-4xl mb-6">{title}</h1>
+
+                <BlogPostMeta timeToRead={timeToRead} pubDate={pubDate} tags={tags} />
+            </header>
+
+            <div class="prose lg:prose-xl prose-slate prose-pre:!leading-normal">
+                <slot />
+            </div>
+        </Card>
+    </article>
+</Page>

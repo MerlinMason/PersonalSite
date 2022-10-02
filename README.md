@@ -1,39 +1,64 @@
-# NextProject
+# Astro Starter Kit: Blog
 
-An mildly opinionated starting point for Next.js projects.
+```
+npm init astro -- --template blog
+```
 
-Because setting stuff up is boring and building stuff is fun.
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
 
-Out of the box support for:
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
--   Typescript
--   Tailwind (with JIT)
--   Heroicons
--   Eslint (with Airbnb, jsx-a11y etc)
--   Prettier
--   Jest (with Testing Library)
--   Cypress (with Testing Library)
--   Dependabot config
--   GitHub Actions CI config
 
-# Development
+![blog](https://user-images.githubusercontent.com/4677417/186189140-4ef17aac-c3c9-4918-a8c2-ce86ba1bb394.png)
 
-Install dependencies with `yarn`
+Features:
 
-Run dev server with `yarn dev`
+- ✅ Minimal styling (make it your own!)
+- ✅ 100/100 Lighthouse performance
+- ✅ SEO-friendly with canonical URLs and OpenGraph data
+- ✅ Sitemap support
+- ✅ RSS Feed support
+- ✅ Markdown & MDX support
 
-Create prod build with `yarn build`
+## 🚀 Project Structure
 
-Interactively update dependencies with `yarn bump`
+Inside of your Astro project, you'll see the following folders and files:
 
-Run Jest tests with `yarn test:jest`
+```
+├── public/
+├── src/
+│   ├── components/
+│   ├── layouts/
+│   └── pages/
+├── astro.config.mjs
+├── README.md
+├── package.json
+└── tsconfig.json
+```
 
-Run Cypress tests for dev with `yarn test:cypress:dev`
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-Run Cypress tests on CLI with `yarn test:cypress`
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-# Deploy
+Any static assets, like images, can be placed in the `public/` directory.
 
-Deploy it to the cloud with Vercel.
+## 🧞 Commands
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMerlinMason%2FNextProject&project-name=my-next-project&repo-name=my-next-project)
+All commands are run from the root of the project, from a terminal:
+
+| Command                | Action                                           |
+| :--------------------- | :----------------------------------------------- |
+| `npm install`          | Installs dependencies                            |
+| `npm run dev`          | Starts local dev server at `localhost:3000`      |
+| `npm run build`        | Build your production site to `./dist/`          |
+| `npm run preview`      | Preview your build locally, before deploying     |
+| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## Credit
+
+This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).

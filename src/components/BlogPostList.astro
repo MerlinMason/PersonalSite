@@ -1,0 +1,49 @@
+---
+import PageLayout from "../layouts/Page.astro";
+import TagFilters from "./TagFilters.astro";
+import Card from "./Card.astro";
+import Button from "./Button.astro";
+import BlogPostMeta from "./BlogPostMeta.astro";
+
+interface Props {
+    posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+<PageLayout
+    title="Blog"
+    description="Merlin Masons blog about frontend engineering, TypeScript and React"
+>
+    <TagFilters />
+
+    <ul class="space-y-24 w-full block">
+        {
+            posts.map((post) => (
+                <li>
+                    <Card>
+                        <a href={post.url}>
+                            {post.frontmatter.heroImage && (
+                                <img
+                                    class="max-w-full h-auto mb-6 mx-auto"
+                                    src={post.frontmatter.heroImage}
+                                    alt={post.frontmatter.title}
+                                />
+                            )}
+
+                            <h1 class="font-bold text-3xl mb-6 hover:text-slate-700">
+                                {post.frontmatter.title}
+                            </h1>
+                        </a>
+                        <BlogPostMeta
+                            timeToRead={post.frontmatter.timeToRead}
+                            tags={post.frontmatter.tags}
+                            pubDate={post.frontmatter.pubDate}
+                        />
+                    </Card>
+                </li>
+            ))
+        }
+    </ul>
+</PageLayout>

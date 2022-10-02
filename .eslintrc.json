@@ -20,31 +20,21 @@
     "extends": [
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
+        "plugin:astro/recommended",
         "airbnb",
-        "plugin:@next/next/recommended",
         "plugin:react/jsx-runtime",
         "plugin:react-hooks/recommended",
         "plugin:jest/recommended",
         "plugin:jest/style",
-        "plugin:cypress/recommended",
         "prettier"
     ],
-    "plugins": [
-        "react",
-        "@typescript-eslint",
-        "import",
-        "jsx-a11y",
-        "jest",
-        "cypress",
-        "disable",
-        "prettier"
-    ],
+    "plugins": ["react", "@typescript-eslint", "import", "jsx-a11y", "jest", "disable", "prettier"],
     "rules": {
         "import/extensions": 0,
         "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
         "react/require-default-props": 0,
         "react/function-component-definition": [2, { "namedComponents": "arrow-function" }],
-        "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".tsx"] }],
+        "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".tsx", ".mdx"] }],
         "react/jsx-props-no-spreading": 0
     },
     "settings": {
@@ -77,17 +67,11 @@
             }
         },
         {
-            // cypress shouldn't lint jest tests
-            "files": "**/__tests__/*-test.js",
-            "settings": {
-                "disable/plugins": "cypress"
-            }
-        },
-        {
-            // jest shouldn't lint cypress tests
-            "files": "**/cypress/**/*.spec.js",
-            "settings": {
-                "disable/plugins": "jest"
+            "files": ["*.astro"],
+            "parser": "astro-eslint-parser",
+            "parserOptions": {
+                "parser": "@typescript-eslint/parser",
+                "extraFileExtensions": [".astro"]
             }
         }
     ]

@@ -1,0 +1,44 @@
+---
+const today = new Date();
+
+const socialLinks = [
+    {
+        link: "https://github.com/MerlinMason",
+        title: "GitHub",
+        icon: "/github.png",
+    },
+    {
+        link: "https://www.linkedin.com/in/merlin-mason",
+        title: "LinkedIn",
+        icon: "/linkedin.png",
+    },
+    {
+        link: "https://twitter.com/MerlinMason",
+        title: "Twitter",
+        icon: "/twitter.svg",
+    },
+];
+---
+
+<footer class="flex gap-4 pt-36 mb-12">
+    <p class="flex-grow text-slate-500 text-sm">
+        &copy; {today.getFullYear()} Merlin Mason, All rights reserved &middot; <a href="/rss.xml"
+            >RSS</a
+        >
+    </p>
+
+    <ul class="flex justify-center items-center gap-4">
+        {
+            socialLinks.map(({ link, title, icon }) => (
+                <li>
+                    <a
+                        href={link}
+                        class="opacity-80 hover:opacity-100 transition-opacity duration-150"
+                    >
+                        <img src={icon} width={32} height={32} alt={`${title} logo`} />
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</footer>

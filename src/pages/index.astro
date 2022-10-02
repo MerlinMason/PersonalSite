@@ -1,0 +1,39 @@
+---
+import { SITE_DESCRIPTION } from "../config";
+import Button from "../components/Button.astro";
+import Avatar from "../components/Avatar.astro";
+import Page from "../layouts/Page.astro";
+---
+
+<Page description={SITE_DESCRIPTION} hasHeader={false} hasFooter={false}>
+    <main class="flex flex-col justify-center sm:flex-row items-center min-h-screen">
+        <a href="/about">
+            <Avatar
+                className="w-[200px] sm:w-[225px] md:w-[275px] lg:w-[350px] xl:w-[421px] -mt-20"
+            />
+        </a>
+
+        <div>
+            <h1 class="font-bold text-hero mb-8 text-center sm:text-left">
+                <span class="whitespace-nowrap"
+                    >Hi <span class="inline-block hover:animate-wiggle cursor-wave">👋🏻</span> I'm Merlin,</span
+                >
+                <span class="whitespace-nowrap">
+                    a <span
+                        class="text-transparent bg-clip-text bg-gradient-to-tr from-teal-400 to-sky-400"
+                        >software engineer</span
+                    >
+                </span>
+                <span class="whitespace-nowrap">living & working</span>
+                <span class="whitespace-nowrap">in London, UK.</span>
+            </h1>
+
+            <div class="flex items-center justify-center sm:justify-start gap-6">
+                <Button href="/about">Find out more</Button>
+                <p class="text-lg text-slate-500 whitespace-nowrap">
+                    ~ or read my <a href="/blog" class="underline text-sky-600">blog</a>.
+                </p>
+            </div>
+        </div>
+    </main>
+</Page>

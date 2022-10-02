@@ -1,0 +1,58 @@
+---
+import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
+import PageLayout from "../layouts/Page.astro";
+
+const currentYear = new Date().getFullYear();
+---
+
+<PageLayout title="About me" description="About Merlin Mason">
+    <Card class="space-y-5">
+        <div class="prose lg:prose-xl prose-slate mb-12">
+            <p>
+                Born in sunny Norwich, I'm the son of an artist and a mathematician. I studied
+                Visual Communication at Leeds College of Art (2006 — 2009), where I taught myself to
+                code. While there is undoubtedly gaps, I believe art school creates a good
+                foundation for software engineering. It's taught me design fundamentals (hierarchy,
+                typography, composition, colour theory), the value of research, how to communicate
+                to an audience and most importantly how to think about problems.
+            </p>
+
+            <p>
+                I have been working as a software engineer for the past {currentYear - 2009} years, primarily
+                in startups and scale-ups across a variety of sectors. I've developed a T-shaped skill
+                set with a deep understanding of the frontend stack and a broad understanding of product
+                design and UX, backend engineering, devops and infrastructure, business operations, security
+                and compliance. I'm passionate about building the teams, processes and software that
+                create amazing digital products.
+            </p>
+
+            <p>
+                <strong>Currently</strong> (2021 — {currentYear}) I'm Staff Frontend Engineer at <a
+                    href="https://healios.org.uk"
+                    target="_blank">Healios</a
+                >, joining at a pivotal time as the company transitions from healthcare to
+                health-tech. I'm currently focused on improving the technical maturity of the
+                business and building the foundations for future success.
+            </p>
+
+            <p>
+                <strong>Recently</strong> (2014 — 2021), I co-founded and led engineering at <a
+                    href="https://mo.work"
+                    target="_blank">Mo</a
+                >, building a 12 strong engineering team and a product used by 100,000 users from
+                scratch. With a small team we created a product that would often win over industry
+                incumbents (Yammer, Reward Gateway, Perkbox etc) in sales processes. Investor due
+                diligence found our engineering team to be "excellent" and "an enabler for the
+                business".
+            </p>
+        </div>
+
+        <div class="flex items-center justify-center sm:justify-start gap-6">
+            <Button href="/cv">See full CV</Button>
+            <p class="text-lg text-slate-500">
+                ~ or read my <a href="/blog" class="underline text-sky-600">blog</a>.
+            </p>
+        </div>
+    </Card>
+</PageLayout>

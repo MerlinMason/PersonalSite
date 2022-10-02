@@ -1,0 +1,19 @@
+---
+import { CalendarIcon } from "@heroicons/react/24/outline";
+
+interface Props {
+    date: PostDate;
+}
+const { date } = Astro.props;
+---
+
+<time datetime={date} class="flex gap-2">
+    <CalendarIcon className="w-6" />
+    {
+        new Date(date).toLocaleDateString("en-us", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+        })
+    }
+</time>

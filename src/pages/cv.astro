@@ -1,0 +1,129 @@
+---
+import {
+    CalendarIcon,
+    ArrowTopRightOnSquareIcon,
+    MapPinIcon,
+    IdentificationIcon,
+} from "@heroicons/react/24/outline";
+import Page from "../layouts/Page.astro";
+import Card from "../components/Card.astro";
+import Pill from "../components/Pill.astro";
+
+const roles = [
+    {
+        title: "Staff Frontend Engineer",
+        contract: false,
+        company: "Healios",
+        location: "London, UK",
+        link: "https://healios.org.uk",
+        from: new Date("11/01/2021"),
+        to: new Date(),
+    },
+    {
+        title: "Cofounder & CTO",
+        contract: false,
+        company: "Mo",
+        location: "London, UK",
+        link: "https://mo.work",
+        from: new Date("12/01/2014"),
+        to: new Date("11/01/2021"),
+    },
+    {
+        title: "Senior JavaScript Engineer",
+        contract: true,
+        company: "ATP",
+        location: "London, UK",
+        link: "https://atp.io",
+        from: new Date("06/01/2014"),
+        to: new Date("07/01/2015"),
+    },
+    {
+        title: "JavaScript Engineer",
+        contract: false,
+        company: "UK2 Group",
+        location: "London, UK",
+        link: "https://www.thghosting.com",
+        from: new Date("04/01/2013"),
+        to: new Date("06/01/2014"),
+    },
+    {
+        title: "UI Engineer",
+        contract: true,
+        company: "Brilliant Basics",
+        location: "London, UK",
+        link: "http://www.wongdoody.com",
+        from: new Date("06/01/2012"),
+        to: new Date("05/01/2013"),
+    },
+    {
+        title: "Web Developer",
+        contract: true,
+        company: "Andrews&Co",
+        location: "Melbourne, AUS",
+        link: null,
+        from: new Date("10/01/2010"),
+        to: new Date("06/01/2012"),
+    },
+    {
+        title: "Web & UX Designer",
+        contract: true,
+        company: "MakeWav.es",
+        location: "Leeds, UK",
+        link: null,
+        from: new Date("12/01/2008"),
+        to: new Date("09/01/2010"),
+    },
+];
+
+const formatDate = (date: Date) =>
+    date.toLocaleDateString("en-GB", {
+        month: "short",
+        year: "numeric",
+    });
+---
+
+<Page title="CV" description="CV for Merlin Mason">
+    <Card>
+        <ol class="divide-y divide-black/10">
+            {
+                roles.map(({ title, company, location, contract, link, from, to }) => (
+                    <li class="py-6 first:pt-0 last:pb-0">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-1">
+                            {link ? (
+                                <a href={link} class="hover:text-black flex items-center">
+                                    <span class="mr-2">{company}</span>
+                                    <ArrowTopRightOnSquareIcon className="w-4 inline-block" />
+                                </a>
+                            ) : (
+                                <>{company}</>
+                            )}
+                        </h2>
+
+                        <h3 class="mb-6 text-lg font-semibold">{title}</h3>
+
+                        <div class="grid gap-2 grid-col-1 sm:grid-cols-3 text-slate-700">
+                            <div class="flex items-center gap-2">
+                                <CalendarIcon className="w-6" />
+                                {formatDate(from)}
+                                {" — "}
+                                {formatDate(to)}
+                            </div>
+
+                            <div class="flex items-center gap-2">
+                                <MapPinIcon className="w-6" />
+                                {location}
+                            </div>
+
+                            <div class="flex items-center gap-2">
+                                <IdentificationIcon className="w-6" />
+                                <Pill id={contract ? "Contract" : "Perm"}>
+                                    {contract ? "Contract" : "Perm"}
+                                </Pill>
+                            </div>
+                        </div>
+                    </li>
+                ))
+            }
+        </ol>
+    </Card>
+</Page>

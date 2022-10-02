@@ -1,0 +1,33 @@
+---
+import { TagIcon, ClockIcon } from "@heroicons/react/24/outline";
+
+import Date from "./Date.astro";
+import PillList from "./PillList.astro";
+import Pill from "./Pill.astro";
+import slugify from "../utils/slugify";
+
+type Props = Pick<Post["frontmatter"], "timeToRead" | "pubDate" | "tags">;
+const { timeToRead, pubDate, tags } = Astro.props;
+---
+
+<div class="grid gap-2 grid-col-1 sm:grid-cols-3 items-center text-slate-700">
+    <Date date={pubDate} />
+
+    <div class="flex items-center gap-2">
+        <ClockIcon className="w-6" />
+        <span>{timeToRead}</span>
+    </div>
+
+    <div class="flex items-center gap-2">
+        <TagIcon className="w-6" />
+        <PillList>
+            {
+                tags?.map((tag: string) => (
+                    <Pill id={tag} href={`/blog/tag/${slugify(tag)}`}>
+                        {tag}
+                    </Pill>
+                ))
+            }
+        </PillList>
+    </div>
+</div>

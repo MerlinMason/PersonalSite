@@ -2,5 +2,13 @@
     "tabWidth": 4,
     "printWidth": 100,
     "arrowParens": "always",
-    "proseWrap": "always"
+    "proseWrap": "always",
+    "overrides": [
+        {
+            "files": "*.mdx",
+            "options": {
+                "printWidth": 80
+            }
+        }
+    ]
 }

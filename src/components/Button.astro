@@ -1,0 +1,19 @@
+---
+const { href } = Astro.props;
+---
+
+<a
+    href={href}
+    class={`
+    overflow-hidden inline-block relative px-8 py-4 rounded-full scale-100
+    transition:all duration-100
+    text-black/70 font-bold text-lg whitespace-nowrap
+    before:transition-transform before:duration-100 before:ease-in-out 
+    before:bg-gradient-to-r before:from-teal-400 before:to-sky-400 before:absolute before:inset-0 before:-z-[1]
+    after:bg-slate-50 after:absolute after:inset-1 after:rounded-full after:-z-[1]
+    hover:after:bg-slate-50/70
+    active:scale-95
+`}
+>
+    <slot />
+</a>

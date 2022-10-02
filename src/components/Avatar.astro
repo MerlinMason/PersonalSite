@@ -1,0 +1,15 @@
+---
+export interface Props {
+    className?: string;
+}
+const { className } = Astro.props;
+---
+
+<div class={`relative group ${className}`}>
+    <img src="/smile.png" alt="Memoji of Merlin smiling" class="group-hover:opacity-0" />
+    <img
+        src="/wink.png"
+        alt="Memoji of Merlin winking"
+        class="absolute top-0 left-0 opacity-0 group-hover:opacity-100"
+    />
+</div>
