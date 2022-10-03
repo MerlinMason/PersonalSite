@@ -1,0 +1,42 @@
+---
+import { TagIcon } from "@heroicons/react/24/outline";
+import slugify from "../utils/slugify";
+import Pill from "./Pill.astro";
+import PillList from "./PillList.astro";
+
+const posts = await Astro.glob("../pages/blog/**/*.{md,mdx}");
+const tags = [
+    ...new Set(
+        posts
+            .filter((post) => !post.frontmatter.draft)
+            .map((post) => post.frontmatter.tags)
+            .flat()
+    ),
+];
+
+const filters = [
+    {
+        url: "/blog",
+        label: "All",
+        selected: "/blog" === Astro.url.pathname,
+    },
+    ...tags.map((tag) => ({
+        url: `/blog/tag/${slugify(tag)}`,
+        label: tag,
+        selected: `/blog/tag/${slugify(tag)}` === Astro.url.pathname,
+    })),
+];
+---
+
+<menu class="flex items-center gap-3 mb-6">
+    <TagIcon className="w-6" />
+    <PillList>
+        {
+            filters.map(({ url, label, selected }) => (
+                <Pill id={label} selected={selected} href={url}>
+                    {label}
+                </Pill>
+            ))
+        }
+    </PillList>
+</menu>

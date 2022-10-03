@@ -1,0 +1,28 @@
+---
+import BlogPostList from "../../../components/BlogPostList.astro";
+import slugify from "../../../utils/slugify";
+
+const tag = Astro.params.tag as string;
+
+const posts = (await Astro.glob("../**/*.{md,mdx}"))
+    .sort(
+        (a, b) =>
+            new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+    )
+    .filter((post) => post.frontmatter.tags.some((_tag: string) => slugify(_tag) === slugify(tag)))
+    .filter((post) => !post.frontmatter.draft) as Post[];
+
+export async function getStaticPaths() {
+    const posts = await Astro.glob("../**/*.{md,mdx}");
+    const tags = [...new Set(posts.map((post) => post.frontmatter.tags).flat())];
+
+    return tags.map((tag) => {
+        return {
+            params: { tag: slugify(tag) },
+            props: { posts },
+        };
+    });
+}
+---
+
+<BlogPostList posts={posts} />

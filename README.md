@@ -1,39 +1,22 @@
-# NextProject
+# Personal website
 
-An mildly opinionated starting point for Next.js projects.
+My personal website, [merlinmason.co.uk](https://merlinmason.co.uk).
 
-Because setting stuff up is boring and building stuff is fun.
+## Development
 
-Out of the box support for:
+| Command             | Action                                           |
+| :------------------ | :----------------------------------------------- |
+| `yarn`              | Installs dependencies                            |
+| `yarn dev`          | Starts local dev server at `localhost:3000`      |
+| `yarn build`        | Build your production site to `./dist/`          |
+| `yarn preview`      | Preview your build locally, before deploying     |
+| `yarn astro ...`    | Run CLI commands like `astro add`, `astro check` |
+| `yarn astro --help` | Get help using the Astro CLI                     |
 
--   Typescript
--   Tailwind (with JIT)
--   Heroicons
--   Eslint (with Airbnb, jsx-a11y etc)
--   Prettier
--   Jest (with Testing Library)
--   Cypress (with Testing Library)
--   Dependabot config
--   GitHub Actions CI config
+## Credit
 
-# Development
-
-Install dependencies with `yarn`
-
-Run dev server with `yarn dev`
-
-Create prod build with `yarn build`
-
-Interactively update dependencies with `yarn bump`
-
-Run Jest tests with `yarn test:jest`
-
-Run Cypress tests for dev with `yarn test:cypress:dev`
-
-Run Cypress tests on CLI with `yarn test:cypress`
-
-# Deploy
-
-Deploy it to the cloud with Vercel.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMerlinMason%2FNextProject&project-name=my-next-project&repo-name=my-next-project)
+-   Built on top of the amazing [Astro](https://astro.build) framework
+-   Blog images from [Blush](https://blush.design)
+-   Styled with [Tailwind](https://tailwindcss.com)
+-   Hosted by [Vercel](https://vercel.com)
+-   Memojis from [Apple](https://apple.com)
