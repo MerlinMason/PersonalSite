@@ -56,10 +56,14 @@
     "dictionaries": [],
     "words": [
       "astro",
+      "astrojs",
       "color",
       "frontmatter",
+      "heroicons",
+      "mdast",
       "Sandpack",
-      "shiki"
+      "shiki",
+      "tailwindcss"
     ],
     "ignoreWords": [],
     "import": []
