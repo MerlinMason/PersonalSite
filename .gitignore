@@ -1,6 +1,5 @@
 # build output
 dist/
-public/ogimages/
 
 # dependencies
 node_modules/
