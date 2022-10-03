@@ -13,9 +13,7 @@ const getScreenshot = async () => {
 
     // Create the screenshot using 11ty's screenshot service
     const response = await fetch(
-        `https://v1.screenshot.11ty.dev/${encodeURIComponent(
-            "https://merlinmason.co.uk"
-        )}/opengraph`
+        `https://v1.screenshot.11ty.dev/${encodeURIComponent(process.env.VERCEL_URL)}/opengraph`
     );
 
     // Convert the response to a buffer
