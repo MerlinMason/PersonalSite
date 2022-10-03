@@ -59,6 +59,7 @@
       "astro",
       "astrojs",
       "color",
+      "datetime",
       "frontmatter",
       "heroicons",
       "mdast",
