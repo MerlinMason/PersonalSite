@@ -5,7 +5,7 @@ type Post = {
     frontmatter: {
         title: string;
         pubDate: PostDate;
-        heroImage?: string;
+        heroImage: string;
         tags: string[];
         timeToRead: string;
     };

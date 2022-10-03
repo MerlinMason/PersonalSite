@@ -8,14 +8,15 @@ export interface Props {
     description: string;
     hasHeader?: boolean;
     hasFooter?: boolean;
+    image: string;
 }
 
-const { title, description, hasHeader = true, hasFooter = true } = Astro.props;
+const { title, description, hasHeader = true, hasFooter = true, image } = Astro.props;
 ---
 
 <html>
     <head>
-        <BaseHead title={title} description={description} />
+        <BaseHead title={title} description={description} image={image} />
     </head>
 
     <body class="bg-slate-50 text-slate-800 overflow-y-scroll">
