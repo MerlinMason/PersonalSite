@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const getScreenshot = async () => {
     // Where we'll store images
-    const dir = "./dist/ogimages";
+    const dir = "./public/ogimages";
 
     // Make sure the directory exists, if not create it
     if (!fs.existsSync(dir)) {
