@@ -1,7 +1,8 @@
 {
-  "name": "@example/blog",
+  "name": "@merlinmason/blog",
   "version": "0.0.1",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
