@@ -8,13 +8,17 @@ const POSTS_PATH = "./src/pages/blog"; // where your blog posts are
 const POSTS_FILE_EXTENSION = ".mdx"; // file type used for posts
 const OPEN_GRAPH_ROOT_URL = "http://localhost:3000/opengraph"; // where are we rendering the OGImages?
 
-// Creates a screenshot from a given URL
-const takeScreenshot = async (url) => {
-    // Make sure the directory exists, if not create it
+// Creates the output directory if it doesn't exist, ensures it's empty
+const prepareOutputDirectory = () => {
     if (!fs.existsSync(OUTPUT_PATH)) {
         fs.mkdirSync(OUTPUT_PATH, { recursive: true });
     }
 
+    fs.rm(OUTPUT_PATH, () => null);
+};
+
+// Creates a screenshot from a given URL
+const takeScreenshot = async (url) => {
     const browser = await puppeteer.launch({
         product: "chrome",
         args: [],
@@ -47,6 +51,7 @@ const getOpenGraphUrls = (filesNames) =>
 
 // Main function
 (async () => {
+    prepareOutputDirectory();
     const urls = getOpenGraphUrls(await getBlogPostFileNames());
 
     urls.forEach(async (url) => {
