@@ -6,14 +6,16 @@ import BlogPostMeta from "../components/BlogPostMeta.astro";
 
 export interface Props {
     content: Post["frontmatter"];
+    url: string;
 }
 
 const {
     content: { title, pubDate, heroImage, tags, timeToRead },
+    url,
 } = Astro.props;
 ---
 
-<Page title="Blog" description={title} image={heroImage}>
+<Page title="Blog" description={title} image={`${url.replace("blog", "ogimages")}.png`}>
     <article>
         <a href="/blog" class="flex items-center gap-2 mb-6 hover:text-black text-xl">
             <ArrowLeftIcon className="w-6" />
