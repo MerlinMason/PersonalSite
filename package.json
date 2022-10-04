@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "yarn ogimgs && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint '*/**/*.{js,ts,tsx,mdx}'",
