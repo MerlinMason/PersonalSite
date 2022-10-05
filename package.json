@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@astrojs/mdx": "^0.11.4",
-    "@astrojs/react": "^1.1.0",
+    "@astrojs/react": "^1.1.4",
     "@astrojs/rss": "^1.0.2",
     "@astrojs/tailwind": "^1.0.1",
     "@tailwindcss/typography": "^0.5.7",
@@ -38,7 +38,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "jest": "^29.0.1",
+    "jest": "^29.1.2",
     "puppeteer-core": "^18.0.5",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
