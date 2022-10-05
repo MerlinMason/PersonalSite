@@ -15,8 +15,8 @@ TypeScript level.
 
 It's fairly common for designs to have something that looks like a button be
 used for both button behaviours (any operation that updates frontend or backend
-state) and for link behaviours (pure navigation that doesn't update any state)
-between pages. For
+state) and for link behaviours (pure navigation that doesn't update any state).
+For
 [accessibility reasons](https://www.digitala11y.com/links-vs-buttons-a-perennial-problem)
 we should use the correct HTML element. It makes sense that we might want to
 keep everything that looks like a button all within a single component.
@@ -36,7 +36,7 @@ type Props = {
 };
 
 const Button = ({ children, as, type, onClick, href }: Props): JSX.Element => {
-    const styles = "py-2 px-6 bg-blue-600 text-white rounded";
+    const styles = "inline-block py-2 px-6 bg-blue-600 text-white rounded";
 
     if (as === "button") {
         if (onClick === undefined) {
@@ -90,7 +90,10 @@ type Props = {
 );
 
 const Button = ({ children, as: El, ...restProps }: Props): JSX.Element => (
-    <El className="py-2 px-6 bg-blue-600 text-white rounded" {...restProps}>
+    <El
+        className="inline-block py-2 px-6 bg-blue-600 text-white rounded"
+        {...restProps}
+    >
         {children}
     </El>
 );
