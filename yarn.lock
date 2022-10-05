@@ -10,7 +10,12 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@astrojs/compiler@0.18.0 - 0.23.0 || ^0.23.0", "@astrojs/compiler@^0.23.3", "@astrojs/compiler@^0.23.4":
+"@astrojs/compiler@0.18 - 0.25 || ^0.25.0":
+  version "0.25.2"
+  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.25.2.tgz#ecd59e60bc997c6b80cdf934ad302403a0ee387f"
+  integrity sha512-GE7uLvH7rSHuTHdMun+867TWsgYNYsaGuhvXsywcaabl4W4n/3b1kzgzrIsrXYBo51J0k6qD33mVdsHdvwv5rw==
+
+"@astrojs/compiler@^0.23.3", "@astrojs/compiler@^0.23.4":
   version "0.23.4"
   resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.23.4.tgz#e22d1436876d0477e62be38063263d2851c57403"
   integrity sha512-vNZIa5Tf5nOqBEGJvM6xyYBnGcz4MAp+bBPnyVI0UYRjsIWlP7RgMdCpRV0OOh5kgh00BoAypGv27kcoJCMVfA==
@@ -104,10 +109,10 @@
   dependencies:
     prismjs "^1.28.0"
 
-"@astrojs/react@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/react/-/react-1.1.0.tgz#af6f4cdcfba39c6de89cfe6b6ba24abfd1669cd5"
-  integrity sha512-T9/mEE/9yO36X3QeqzQjGMFXRH0f3vcBC9Jhxb3oGm5NlKm2m9Sg9GR52fcCtLRVR3ihc8qAElgEmQAAUTZ3KQ==
+"@astrojs/react@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@astrojs/react/-/react-1.1.4.tgz#1a82a0e07be74ca13c64de9817a5d64729d7de02"
+  integrity sha512-eTIXRjvyrDRkMewL5KrbhkF+zl+KSkCgL7k8/BBMXPTUrtOZZY5N5oZbjFtvjxBSQ/dhMWp9g+SwloDldN5ZDg==
   dependencies:
     "@babel/core" ">=7.0.0-0 <8.0.0"
     "@babel/plugin-transform-react-jsx" "^7.17.12"
@@ -119,10 +124,10 @@
   dependencies:
     fast-xml-parser "^4.0.8"
 
-"@astrojs/tailwind@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/tailwind/-/tailwind-1.0.0.tgz#05f75c46611d70963c5978126d0924ff781b77e1"
-  integrity sha512-hEpvKBJKCStaxRZt3ENDacQlzUTOvW1D7dfIUyTf7jMUK4O+y8Q7gdTjERf1HBEi/YXrYNX1zhAElwp6lvW5oQ==
+"@astrojs/tailwind@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/tailwind/-/tailwind-1.0.1.tgz#06d19b158451e01365e5998b0daca38a50ca1b1a"
+  integrity sha512-ZVytcmam/krEkg3xfW+2ItMz/XKWCg86Zj9lZsUOybEi3mcQZt++CRGyX1zqUAHrjXY9p/hhMeSWtwVX3GnIyA==
   dependencies:
     "@proload/core" "^0.3.2"
     autoprefixer "^10.4.7"
@@ -1193,15 +1198,10 @@
   resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-5.35.1.tgz#af355fe52a0cc88301e889bc4ada72f279b63d61"
   integrity sha512-FDaujtsH07VHzG0gQ6NDkVVhi1+rhq0qEvzHdJAQjysN+LHDCKDKCBRlZFFE0ec0jKxiv0hN63SNfExy0KrbQQ==
 
-"@typescript-eslint/types@5.39.0":
+"@typescript-eslint/types@5.39.0", "@typescript-eslint/types@^5.25.0":
   version "5.39.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-5.39.0.tgz#f4e9f207ebb4579fd854b25c0bf64433bb5ed78d"
   integrity sha512-gQMZrnfEBFXK38hYqt8Lkwt8f4U6yq+2H5VDSgP/qiTzC8Nw8JO3OuSUOQ2qW37S/dlwdkHDntkZM6SQhKyPhw==
-
-"@typescript-eslint/types@^5.25.0":
-  version "5.36.1"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-5.36.1.tgz#1cf0e28aed1cb3ee676917966eb23c2f8334ce2c"
-  integrity sha512-jd93ShpsIk1KgBTx9E+hCSEuLCUFwi9V/urhjOWnOaksGZFbTOxAT47OH2d4NLJnLhkVD+wDbB48BuaycZPLBg==
 
 "@typescript-eslint/typescript-estree@5.35.1":
   version "5.35.1"
@@ -1454,17 +1454,17 @@ astring@^1.8.0:
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.8.3.tgz#1a0ae738c7cc558f8e5ddc8e3120636f5cebcb85"
   integrity sha512-sRpyiNrx2dEYIMmUXprS8nlpRg2Drs8m9ElX9vVEXaCB4XEAJhKfs7IcX0IwShjuOAjLR6wzIrgoptz1n19i1A==
 
-astro-eslint-parser@^0.5.0:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/astro-eslint-parser/-/astro-eslint-parser-0.5.1.tgz#04bf6258db621bc1cbb9531cff22f85ec34df9e3"
-  integrity sha512-es63TAA7vjgV8aI5pUOXqoxa9JHelqzFSk1qOVSCGkeoAMayrr7BdFt9waVWyXyIcOjTXJlQa1pM832bEaCS2Q==
+astro-eslint-parser@^0.6.0:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/astro-eslint-parser/-/astro-eslint-parser-0.6.2.tgz#e5a2fe44aa092c3585a01ffd3dca1e90c288ba70"
+  integrity sha512-ckbxDuAh+XqwR3ZXXdPeVGMn03xAV/Bj43FL49ro9fJ+07pBxEi0Cs/H/lC2EYe3f7g3FH5VyxaVetqbdUmp4w==
   dependencies:
-    "@astrojs/compiler" "0.18.0 - 0.23.0 || ^0.23.0"
+    "@astrojs/compiler" "0.18 - 0.25 || ^0.25.0"
     "@typescript-eslint/types" "^5.25.0"
+    astrojs-compiler-sync "^0.2.0"
     debug "^4.3.4"
     eslint-visitor-keys "^3.0.0"
     espree "^9.0.0"
-    synckit "^0.8.0"
 
 astro@^1.1.1:
   version "1.1.1"
@@ -1526,6 +1526,13 @@ astro@^1.1.1:
     vite "3.0.9"
     yargs-parser "^21.0.1"
     zod "^3.17.3"
+
+astrojs-compiler-sync@^0.2.0:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/astrojs-compiler-sync/-/astrojs-compiler-sync-0.2.3.tgz#2a760903e078b3af116cfd3dd48c2681c745eb55"
+  integrity sha512-9zh85DrHieEylj7ir0MBmalyClw420oBhxn/NYGRx7xXoepofNuUR6RjY7V4l1kiolhvJ/uWKfZNZcHm7VsY6g==
+  dependencies:
+    synckit "^0.8.0"
 
 autoprefixer@^10.4.7:
   version "10.4.8"
@@ -2464,13 +2471,13 @@ eslint-module-utils@^2.7.3:
   dependencies:
     debug "^3.2.7"
 
-eslint-plugin-astro@^0.17.1:
-  version "0.17.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-astro/-/eslint-plugin-astro-0.17.1.tgz#dca0af761c95cd81b3575fa02d6a3b63e6c2d835"
-  integrity sha512-G2S2zAaDokH2v7O+nzcd0iFskGJ1ohANhQpsFwaAqDPyn+GolFl4zSCnoQefLZ+ONEeZkZ8Jp7Imvbo3FI3LOA==
+eslint-plugin-astro@^0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-astro/-/eslint-plugin-astro-0.19.0.tgz#309577c9abae449d3ee834d7b719e627229638bb"
+  integrity sha512-XOvTgFlSThgUQwDMjbj9gTu75Sig5IWpseN1hsGputC9tiZ857CrMLK3UimWCwIS6n3hTYYPWIkpcucEU/o0Uw==
   dependencies:
     "@typescript-eslint/types" "^5.25.0"
-    astro-eslint-parser "^0.5.0"
+    astro-eslint-parser "^0.6.0"
     eslint-utils "^3.0.0"
     postcss "^8.4.14"
     postcss-selector-parser "^6.0.10"
