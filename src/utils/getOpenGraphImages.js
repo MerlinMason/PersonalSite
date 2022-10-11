@@ -52,7 +52,9 @@ const getOpenGraphUrls = (filesNames) =>
 // Main function
 (async () => {
     prepareOutputDirectory();
-    const urls = getOpenGraphUrls(await getBlogPostFileNames());
+    const blogPosts = await getBlogPostFileNames();
+    // get URLs for all blog posts and a generic one "page" image
+    const urls = getOpenGraphUrls([...blogPosts, "page"]);
 
     urls.forEach(async (url) => {
         await takeScreenshot(url);

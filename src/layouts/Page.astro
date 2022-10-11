@@ -8,10 +8,16 @@ export interface Props {
     description: string;
     hasHeader?: boolean;
     hasFooter?: boolean;
-    image: string;
+    image?: string;
 }
 
-const { title, description, hasHeader = true, hasFooter = true, image } = Astro.props;
+const {
+    title,
+    description,
+    hasHeader = true,
+    hasFooter = true,
+    image = "/ogimages/page.png",
+} = Astro.props;
 ---
 
 <html lang="en-GB">
