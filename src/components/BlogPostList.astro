@@ -7,9 +7,10 @@ import BlogPostMeta from "./BlogPostMeta.astro";
 
 interface Props {
     posts: Post[];
+    tag?: string;
 }
 
-const { posts } = Astro.props;
+const { posts, tag } = Astro.props;
 ---
 
 <PageLayout
