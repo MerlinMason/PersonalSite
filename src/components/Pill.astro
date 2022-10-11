@@ -1,32 +1,17 @@
 ---
-import pickArrayItemFromString from "../utils/pickArrayItemFromString";
-
 interface Props {
-    id: string;
     href?: string;
     selected?: boolean;
 }
 
-const { id, href, selected } = Astro.props;
-
-const bgColor = pickArrayItemFromString(id, [
-    "bg-teal-300",
-    "bt-cyan-300",
-    "bg-sky-300",
-    "bg-red-200",
-    "bg-emerald-200",
-    "bg-indigo-300",
-    "bg-pink-300",
-    "bg-rose-300",
-    "bg-purple-300",
-]);
+const { href, selected } = Astro.props;
 
 const style = `
     inline-block 
     text-sm uppercase font-bold whitespace-nowrap
     py-px px-3 rounded-full
-    ${bgColor} 
-    ${selected ? "text-slate-900" : "text-slate-700"}
+    border border-slate-300
+    ${selected ? "text-black" : "text-slate-500"}
     ${href ? "hover:text-slate-900/80" : ""}
 `;
 ---
@@ -34,9 +19,11 @@ const style = `
 {
     href ? (
         <a href={href} class={style}>
-            {id}
+            <slot />
         </a>
     ) : (
-        <span class={style}>{id}</span>
+        <span class={style}>
+            <slot />
+        </span>
     )
 }

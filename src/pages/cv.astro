@@ -119,9 +119,7 @@ const formatDate = (date: Date) =>
 
                             <div class="flex items-center gap-2">
                                 <IdentificationIcon className="w-6" />
-                                <Pill id={contract ? "Contract" : "Perm"}>
-                                    {contract ? "Contract" : "Perm"}
-                                </Pill>
+                                <Pill>{contract ? "Contract" : "Perm"}</Pill>
                             </div>
                         </div>
                     </li>

@@ -21,13 +21,7 @@ const { timeToRead, pubDate, tags } = Astro.props;
     <div class="flex items-center gap-2">
         <TagIcon className="w-6" />
         <PillList>
-            {
-                tags?.map((tag: string) => (
-                    <Pill id={tag} href={`/blog/tag/${slugify(tag)}`}>
-                        {tag}
-                    </Pill>
-                ))
-            }
+            {tags?.map((tag: string) => <Pill href={`/blog/tag/${slugify(tag)}`}>{tag}</Pill>)}
         </PillList>
     </div>
 </div>
