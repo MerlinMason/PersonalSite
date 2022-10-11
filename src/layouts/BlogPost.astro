@@ -10,12 +10,12 @@ export interface Props {
 }
 
 const {
-    content: { title, pubDate, heroImage, tags, timeToRead },
+    content: { title, pubDate, heroImage, tags, timeToRead, description },
     url,
 } = Astro.props;
 ---
 
-<Page title="Blog" description={title} image={`${url.replace("blog", "ogimages")}.png`}>
+<Page title="Blog" description={description} image={`${url.replace("blog", "ogimages")}.png`}>
     <article>
         <a href="/blog" class="flex items-center gap-2 mb-6 hover:text-black text-xl">
             <ArrowLeftIcon className="w-6" />
