@@ -8,6 +8,7 @@ import {
 import Page from "../layouts/Page.astro";
 import Card from "../components/Card.astro";
 import Pill from "../components/Pill.astro";
+import JazzyText from "../components/JazzyText.astro";
 
 const roles = [
     {
@@ -83,6 +84,8 @@ const formatDate = (date: Date) =>
 ---
 
 <Page title="CV" description="CV for Merlin Mason" image="/smile.png">
+    <h1 class="font-bold text-hero mb-8">Curriculum <JazzyText>vitae</JazzyText>.</h1>
+
     <Card>
         <ol class="divide-y divide-black/10">
             {

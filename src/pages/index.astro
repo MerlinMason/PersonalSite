@@ -3,6 +3,7 @@ import { SITE_DESCRIPTION } from "../config";
 import Button from "../components/Button.astro";
 import Avatar from "../components/Avatar.astro";
 import Page from "../layouts/Page.astro";
+import JazzyText from "../components/JazzyText.astro";
 ---
 
 <Page description={SITE_DESCRIPTION} hasHeader={false} hasFooter={false} image="/smile.png">
@@ -19,10 +20,7 @@ import Page from "../layouts/Page.astro";
                     >Hi <span class="inline-block hover:animate-wiggle cursor-wave">👋🏻</span> I'm Merlin,</span
                 >
                 <span class="whitespace-nowrap">
-                    a <span
-                        class="text-transparent bg-clip-text bg-gradient-to-tr from-teal-400 to-sky-400"
-                        >software engineer</span
-                    >
+                    a <JazzyText>software engineer</JazzyText>
                 </span>
                 <span class="whitespace-nowrap">living & working</span>
                 <span class="whitespace-nowrap">in London, UK.</span>

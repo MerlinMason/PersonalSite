@@ -1,6 +1,7 @@
 ---
 import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
+import JazzyText from "../components/JazzyText.astro";
 import PageLayout from "../layouts/Page.astro";
 
 const currentYear = new Date().getFullYear();
@@ -11,6 +12,8 @@ const currentYear = new Date().getFullYear();
     description="I'm Merlin, a software engineer living & working in London, UK."
     image="/smile.png"
 >
+    <h1 class="font-bold text-hero mb-8">All <JazzyText>about</JazzyText> me.</h1>
+
     <Card class="space-y-5">
         <div class="prose lg:prose-xl prose-slate mb-12">
             <p>

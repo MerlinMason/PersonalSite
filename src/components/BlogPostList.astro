@@ -2,7 +2,7 @@
 import PageLayout from "../layouts/Page.astro";
 import TagFilters from "./TagFilters.astro";
 import Card from "./Card.astro";
-import Button from "./Button.astro";
+import JazzyText from "../components/JazzyText.astro";
 import BlogPostMeta from "./BlogPostMeta.astro";
 
 interface Props {
@@ -17,6 +17,20 @@ const { posts } = Astro.props;
     description="Merlin Masons blog about frontend engineering, TypeScript and React"
     image="/smile.png"
 >
+    <h1 class="font-bold text-hero mb-8">
+        {
+            tag ? (
+                <>
+                    My blog: <JazzyText>{tag}</JazzyText>.
+                </>
+            ) : (
+                <>
+                    My <JazzyText>blog</JazzyText>.
+                </>
+            )
+        }
+    </h1>
+
     <TagFilters />
 
     <ul class="space-y-24 w-full block">
