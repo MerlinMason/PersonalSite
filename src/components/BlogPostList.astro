@@ -40,18 +40,17 @@ const { posts, tag } = Astro.props;
                 <li>
                     <Card>
                         <a href={post.url}>
-                            {post.frontmatter.heroImage && (
-                                <img
-                                    class="max-w-full h-auto mb-6 mx-auto"
-                                    src={post.frontmatter.heroImage}
-                                    alt={post.frontmatter.title}
-                                />
-                            )}
+                            <img
+                                class="max-w-full h-auto mb-6 mx-auto"
+                                src={post.frontmatter.heroImage}
+                                alt={post.frontmatter.title}
+                            />
 
                             <h1 class="font-bold text-4xl mb-6 hover:text-slate-700">
                                 {post.frontmatter.title}
                             </h1>
                         </a>
+
                         <BlogPostMeta
                             timeToRead={post.frontmatter.timeToRead}
                             tags={post.frontmatter.tags}
