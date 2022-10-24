@@ -17,7 +17,7 @@ export default defineConfig({
     ],
     markdown: {
         shikiConfig: {
-            theme: "dracula",
+            theme: "material-ocean",
             wrap: true, // Enable word wrap to prevent horizontal scrolling
         },
     },

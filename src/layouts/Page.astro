@@ -25,7 +25,9 @@ const {
         <BaseHead title={title} description={description} image={image} />
     </head>
 
-    <body class="bg-slate-50 text-slate-800 overflow-y-scroll">
+    <body
+        class="bg-slate-50 text-slate-800 overflow-y-scroll dark:bg-slate-900 dark:text-slate-100 transition-colors duration-200"
+    >
         <div class="px-6 mx-auto max-w-[920px] min-h-screen flex flex-col">
             {hasHeader && <Header />}
 

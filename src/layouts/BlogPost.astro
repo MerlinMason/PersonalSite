@@ -20,25 +20,26 @@ const {
     <article>
         <h1 class="font-bold text-hero mb-8">My <JazzyText>blog</JazzyText>.</h1>
 
-        <a href="/blog" class="flex items-center gap-2 mb-6 hover:text-black text-xl">
+        <a
+            href="/blog"
+            class="inline-flex items-center gap-2 mb-6 hover:text-black dark:hover:text-white text-xl"
+        >
             <ArrowLeftIcon className="w-6" />
             All posts
         </a>
 
         <Card>
             <header class="mb-16">
-                {
-                    heroImage && (
-                        <img class="max-w-full h-auto mb-6 mx-auto" src={heroImage} alt={title} />
-                    )
-                }
+                <figure class="bg-slate-100 rounded">
+                    <img class="max-w-full h-auto mb-6 mx-auto" src={heroImage} alt={title} />
+                </figure>
 
                 <h1 class="font-bold text-4xl mb-6">{title}</h1>
 
                 <BlogPostMeta timeToRead={timeToRead} pubDate={pubDate} tags={tags} />
             </header>
 
-            <div class="prose lg:prose-xl prose-slate prose-pre:!leading-normal">
+            <div class="prose lg:prose-xl prose-slate dark:prose-invert prose-pre:!leading-normal">
                 <slot />
             </div>
         </Card>

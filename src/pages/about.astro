@@ -1,6 +1,7 @@
 ---
 import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
+import DualCTA from "../components/DualCTA.astro";
 import JazzyText from "../components/JazzyText.astro";
 import PageLayout from "../layouts/Page.astro";
 
@@ -14,7 +15,7 @@ const currentYear = new Date().getFullYear();
     <h1 class="font-bold text-hero mb-8">All <JazzyText>about</JazzyText> me.</h1>
 
     <Card class="space-y-5">
-        <div class="prose lg:prose-xl prose-slate mb-12">
+        <div class="prose lg:prose-xl prose-slate dark:prose-invert mb-12">
             <p>
                 Hi, I'm Merlin. I was born in sunny Norwich, I'm the son of an artist and a
                 mathematician. I studied Visual Communication at Leeds College of Art (2006 — 2009),
@@ -55,11 +56,6 @@ const currentYear = new Date().getFullYear();
             </p>
         </div>
 
-        <div class="flex items-center justify-center sm:justify-start gap-6">
-            <Button href="/cv">See full CV</Button>
-            <p class="text-lg text-slate-500">
-                ~ or read my <a href="/blog" class="underline text-sky-700">blog</a>.
-            </p>
-        </div>
+        <DualCTA primaryHref="/cv" primaryText="See full CV" />
     </Card>
 </PageLayout>
