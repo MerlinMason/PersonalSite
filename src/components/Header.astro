@@ -14,5 +14,7 @@ import HeaderLink from "./HeaderLink.astro";
         <HeaderLink href="/cv">CV</HeaderLink>
         <HeaderLink href="/blog">Blog</HeaderLink>
     </nav>
-    <DarkModeToggle client:only="react" />
+    <div class="w-16">
+        <DarkModeToggle client:only="react" />
+    </div>
 </header>
