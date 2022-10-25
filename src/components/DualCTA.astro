@@ -1,0 +1,18 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+    primaryHref: string;
+    primaryText: string;
+}
+
+const { primaryHref, primaryText } = Astro.props;
+---
+
+<div class="flex items-center justify-center sm:justify-start gap-6">
+    <Button href={primaryHref}>{primaryText}</Button>
+
+    <p class="text-lg text-slate-500 dark:text-slate-400 whitespace-nowrap">
+        ~ or read my <a href={"/blog"} class="underline text-sky-700 dark:text-sky-500">blog</a>.
+    </p>
+</div>

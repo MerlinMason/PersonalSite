@@ -18,17 +18,7 @@ const { posts, tag } = Astro.props;
     description="Merlin Masons blog about frontend engineering, TypeScript and React"
 >
     <h1 class="font-bold text-hero mb-8">
-        {
-            tag ? (
-                <>
-                    My blog: <JazzyText>{tag}</JazzyText>.
-                </>
-            ) : (
-                <>
-                    My <JazzyText>blog</JazzyText>.
-                </>
-            )
-        }
+        My <JazzyText>blog</JazzyText>{tag && <>: {tag}</>}.
     </h1>
 
     <TagFilters />
@@ -39,13 +29,15 @@ const { posts, tag } = Astro.props;
                 <li>
                     <Card>
                         <a href={post.url}>
-                            <img
-                                class="max-w-full h-auto mb-6 mx-auto"
-                                src={post.frontmatter.heroImage}
-                                alt={post.frontmatter.title}
-                            />
+                            <figure class="bg-slate-100 rounded">
+                                <img
+                                    class="max-w-full h-auto mb-6 mx-auto"
+                                    src={post.frontmatter.heroImage}
+                                    alt={post.frontmatter.title}
+                                />
+                            </figure>
 
-                            <h1 class="font-bold text-4xl mb-6 hover:text-slate-700">
+                            <h1 class="font-bold text-4xl mb-6 hover:text-slate-700 dark:hover:text-white">
                                 {post.frontmatter.title}
                             </h1>
                         </a>

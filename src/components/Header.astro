@@ -1,16 +1,20 @@
 ---
 import Avatar from "./Avatar.astro";
+import DarkModeToggle from "./DarkModeToggle";
 import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header class="flex items-center mb-24">
-    <a href="/" class="flex-grow">
-        <Avatar className="w-32" />
-    </a>
+    <div class="flex-grow">
+        <a href="/"><Avatar className="w-32" /></a>
+    </div>
 
     <nav class="flex gap-6">
         <HeaderLink href="/about">About</HeaderLink>
         <HeaderLink href="/cv">CV</HeaderLink>
         <HeaderLink href="/blog">Blog</HeaderLink>
     </nav>
+    <div class="w-16">
+        <DarkModeToggle client:only="react" />
+    </div>
 </header>

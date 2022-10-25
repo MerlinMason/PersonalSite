@@ -4,6 +4,7 @@ import Button from "../components/Button.astro";
 import Avatar from "../components/Avatar.astro";
 import Page from "../layouts/Page.astro";
 import JazzyText from "../components/JazzyText.astro";
+import DualCTA from "../components/DualCTA.astro";
 ---
 
 <Page description={SITE_DESCRIPTION} hasHeader={false} hasFooter={false}>
@@ -26,12 +27,7 @@ import JazzyText from "../components/JazzyText.astro";
                 <span class="whitespace-nowrap">in London, UK.</span>
             </h1>
 
-            <div class="flex items-center justify-center sm:justify-start gap-6">
-                <Button href="/about">Find out more</Button>
-                <p class="text-lg text-slate-500 whitespace-nowrap">
-                    ~ or read my <a href="/blog" class="underline text-sky-700">blog</a>.
-                </p>
-            </div>
+            <DualCTA primaryHref="/about" primaryText="Find out more" />
         </div>
     </main>
 </Page>

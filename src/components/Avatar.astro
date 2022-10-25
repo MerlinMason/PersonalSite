@@ -5,7 +5,7 @@ export interface Props {
 const { className = "" } = Astro.props;
 ---
 
-<div class={`relative group ${className}`}>
+<div class={`inline-block relative group ${className}`}>
     <img src="/smile.png" alt="Memoji of Merlin smiling" class="group-hover:opacity-0" />
     <img
         src="/wink.png"

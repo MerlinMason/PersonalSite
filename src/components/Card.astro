@@ -5,6 +5,10 @@ const { href, class: className, ...props } = Astro.props;
 const isActive = href === Astro.url.pathname;
 ---
 
-<div class={`mb-6 sm:p-8 sm:bg-white sm:shadow-xl rounded-lg ${className ? className : ""}`}>
+<div
+    class={`mb-6 sm:p-8 sm:bg-white dark:sm:bg-slate-800 sm:shadow-xl rounded-lg ${
+        className ? className : ""
+    }`}
+>
     <slot />
 </div>
