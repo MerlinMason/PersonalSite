@@ -2612,10 +2612,10 @@ eslint-module-utils@^2.7.3:
   dependencies:
     debug "^3.2.7"
 
-eslint-plugin-astro@^0.20.0:
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-astro/-/eslint-plugin-astro-0.20.0.tgz#aa0ddd8651ce2a0eb3a65f71ade4e8e47e39e939"
-  integrity sha512-+g6Nn8HyQVkMPaLMd7qzh7j+8v/eescRbAM/tbdYeKdrP8S5Yc4SlQSGj3Wh9/RV9Sn8sHk+wnj+KjCArbReRw==
+eslint-plugin-astro@^0.20.1:
+  version "0.20.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-astro/-/eslint-plugin-astro-0.20.1.tgz#01e1418cd124726c5354e7b3059feeb23188baf8"
+  integrity sha512-wE6IPuVN7gpDhTeTBimwKL0UX45/KrNILf2s5OMXf5ASCDStuKoGCbPZ5eUQ0FOxDsyiINk+mIar2gVAuPqMug==
   dependencies:
     "@typescript-eslint/types" "^5.25.0"
     astro-eslint-parser "^0.7.0"
