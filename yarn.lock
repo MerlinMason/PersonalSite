@@ -15,10 +15,10 @@
   resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.23.4.tgz#e22d1436876d0477e62be38063263d2851c57403"
   integrity sha512-vNZIa5Tf5nOqBEGJvM6xyYBnGcz4MAp+bBPnyVI0UYRjsIWlP7RgMdCpRV0OOh5kgh00BoAypGv27kcoJCMVfA==
 
-"@astrojs/compiler@^0.27.0":
-  version "0.27.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.27.0.tgz#a1f8c2f4d8a17f38975edf254a7dc616fad11e96"
-  integrity sha512-iFZ7aHEMtZnUYnL/PWAaxMB6YMLfHlj+dRi86ALngDpuKRELEDQrxhpwGShAoOW//SZX0BYc5mZpAa92TuB7yg==
+"@astrojs/compiler@^0.27.0 || ^0.28.0 || ^0.29.0":
+  version "0.29.8"
+  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.29.8.tgz#48b85872a15752ac3a482047ef6e51cf0e2d76c2"
+  integrity sha512-D4qKnSQcOF32LgskeGnzq35N30yrITgrSaQrt/EIPU6ItcgcUr/K1BG07JCZdc+4mbfWF6RFQc7yPP9pS8Sg8w==
 
 "@astrojs/language-server@^0.23.0":
   version "0.23.0"
@@ -1447,15 +1447,16 @@ astro-compress@^1.1.1:
     svgo "3.0.0"
     terser "5.15.1"
 
-astro-eslint-parser@^0.7.0:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/astro-eslint-parser/-/astro-eslint-parser-0.7.2.tgz#1c0ce35930a5a87e2784678dde4c14190ad715e9"
-  integrity sha512-WgmUAjfmhlWoVQvaJsMCrX3QB7jIgBoBJO7bx3hxG2W+rKMmBP6MYR/Gl7tJciLdz3yld9Q1LqIRdRg9efBQSw==
+astro-eslint-parser@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/astro-eslint-parser/-/astro-eslint-parser-0.9.0.tgz#bc330d9618cca263e1912252025deb577e223c3d"
+  integrity sha512-IJCIVQ9ON9MWc9SbIHnX6ljqmlNBC6nimsga486duI+tLXPX1ZG4mOWnqwvvh77Xpg1CVkRACrPvYRiaTsOCtg==
   dependencies:
-    "@astrojs/compiler" "^0.27.0"
+    "@astrojs/compiler" "^0.27.0 || ^0.28.0 || ^0.29.0"
     "@typescript-eslint/types" "^5.25.0"
     astrojs-compiler-sync "^0.3.0"
     debug "^4.3.4"
+    eslint-scope "^7.1.1"
     eslint-visitor-keys "^3.0.0"
     espree "^9.0.0"
 
@@ -2612,13 +2613,13 @@ eslint-module-utils@^2.7.3:
   dependencies:
     debug "^3.2.7"
 
-eslint-plugin-astro@^0.20.1:
-  version "0.20.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-astro/-/eslint-plugin-astro-0.20.1.tgz#01e1418cd124726c5354e7b3059feeb23188baf8"
-  integrity sha512-wE6IPuVN7gpDhTeTBimwKL0UX45/KrNILf2s5OMXf5ASCDStuKoGCbPZ5eUQ0FOxDsyiINk+mIar2gVAuPqMug==
+eslint-plugin-astro@^0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-astro/-/eslint-plugin-astro-0.21.0.tgz#94dbd54e47cdf1afe008b2bf52888411ebcdda10"
+  integrity sha512-7pEhTfYT+tlOMOSmQV77TNgCeuFZgqSAqJPTHh6LYlwLqYyBQLURc5RRtlQqCJkufSh4Fan4nsV3LXCT/vjpCA==
   dependencies:
     "@typescript-eslint/types" "^5.25.0"
-    astro-eslint-parser "^0.7.0"
+    astro-eslint-parser "^0.9.0"
     eslint-utils "^3.0.0"
     postcss "^8.4.14"
     postcss-selector-parser "^6.0.10"
