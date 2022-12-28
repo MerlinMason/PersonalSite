@@ -16,7 +16,7 @@
     "ogimgs": "node ./src/utils/getOpenGraphImages.js"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^0.13.0",
+    "@astrojs/mdx": "^0.14.0",
     "@astrojs/react": "^1.2.2",
     "@astrojs/rss": "^1.2.1",
     "@astrojs/tailwind": "^1.0.1",
