@@ -1,0 +1,56 @@
+---
+import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
+import DualCTA from "../components/DualCTA.astro";
+import JazzyText from "../components/JazzyText.astro";
+import PageLayout from "../layouts/Page.astro";
+---
+
+<PageLayout title="About this site" description="How I built merlinmason.co.uk">
+    <h1 class="font-bold text-hero mb-8">About this <JazzyText>site</JazzyText>.</h1>
+
+    <Card class="space-y-5">
+        <div class="prose lg:prose-xl prose-slate dark:prose-invert mb-12">
+            <p>This is my personal website that I've built with help from the following things:</p>
+
+            <h3>Astro</h3>
+            <p>
+                <a href="https://astro.build/" target="_blank">Astro</a> is framework for building predominantly
+                static and content centric sites. By default it ships zero JavaScript to the browser
+                and implements an <a href="https://jasonformat.com/islands-architecture/"
+                    >Islands Architecture</a
+                > to ship areas of interactivity as and when needed. Blog posts are all written in MDX
+                and Astro handles transpiling these to HTML and generating the RSS feed.
+            </p>
+
+            <h3>Tailwind</h3>
+            <p>
+                <a href="https://tailwindcss.com/" target="_blank">Tailwind</a> is used for styling.
+                I find this the best way manage styles in application, it encourages systematic and consistent
+                styling, allows for rapid prototyping and eliminates any concerns over dead code, global
+                scope and specificity.
+            </p>
+
+            <h3>GitHub</h3>
+            <p>
+                <a href="https://github.com" target="_blank">GitHub</a> manages version control, automated
+                dependency management with Dependabot and running the continuous integration (CI) pipeline
+                (using ESLint, TSC, Jest) in GitHub actions.
+            </p>
+
+            <h3>Vercel</h3>
+            <p>
+                <a href="https://vercel.com" target="_blank">Vercel</a> handles hosting, preview deploys
+                and continuous deployment (CD).
+            </p>
+
+            <h3>Blush</h3>
+            <p>
+                <a href="https://blush.design" target="_blank">Blush</a> provides all the illustrations
+                used for my blog posts.
+            </p>
+        </div>
+
+        <DualCTA primaryHref="/about" primaryText="About Merlin" />
+    </Card>
+</PageLayout>

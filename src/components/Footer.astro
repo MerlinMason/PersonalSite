@@ -21,11 +21,13 @@ const socialLinks = [
 ---
 
 <footer class="flex gap-4 pt-36 mb-12">
-    <p class="flex-grow text-slate-500 dark:text-slate-400 text-sm">
-        &copy; {today.getFullYear()} Merlin Mason, All rights reserved &middot; <a href="/rss.xml"
-            >RSS</a
-        >
-    </p>
+    <ul
+        class="sm:[&>*:not(:first-child)]:before:content-['𐤟'] sm:[&>*]:before:mr-2 flex flex-col sm:flex-row gap-2 sm:items-center flex-grow text-slate-500 dark:text-slate-400 text-sm"
+    >
+        <li>&copy; {today.getFullYear()} Merlin Mason</li>
+        <li><a href="/rss.xml">RSS</a></li>
+        <li><a href="/about-this-site">About this site</a></li>
+    </ul>
 
     <ul class="flex justify-center items-center gap-4">
         {
