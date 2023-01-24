@@ -13,7 +13,8 @@
     "lint:fix": "eslint '*/**/*.{js,ts,tsx,mdx}' --fix",
     "lint:types": "tsc",
     "lint:all": "yarn lint && yarn lint:types",
-    "ogimgs": "node ./src/utils/getOpenGraphImages.js"
+    "ogimgs": "node ./src/utils/getOpenGraphImages.js",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@astrojs/mdx": "^0.13.0",
