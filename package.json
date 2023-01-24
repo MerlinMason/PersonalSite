@@ -13,7 +13,8 @@
     "lint:fix": "eslint '*/**/*.{js,ts,tsx,mdx}' --fix",
     "lint:types": "tsc",
     "lint:all": "yarn lint && yarn lint:types",
-    "ogimgs": "node ./src/utils/getOpenGraphImages.js"
+    "ogimgs": "node ./src/utils/getOpenGraphImages.js",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@astrojs/mdx": "^0.14.0",
@@ -39,6 +40,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.1",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
     "jest": "^29.3.1",
     "puppeteer-core": "^19.6.0",
     "react": "^18.0.0",

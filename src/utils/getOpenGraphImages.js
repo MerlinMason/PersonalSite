@@ -37,24 +37,24 @@ const takeScreenshot = async (url) => {
 };
 
 // Gets all .mdx files in the blog directory
-const getBlogPostFileNames = async () => {
+const getBlogPostSlugs = async () => {
     const filenames = await readdir(POSTS_PATH);
 
-    return filenames.filter((filename) => filename.endsWith(POSTS_FILE_EXTENSION));
+    // Astro uses file name routing, so the slug is identical to the file name, minus the file extension
+    return filenames
+        .filter((filename) => filename.endsWith(POSTS_FILE_EXTENSION))
+        .map((filename) => filename.replace(POSTS_FILE_EXTENSION, ""));
 };
 
 // Converts filenames into URLs for the screenshot
-const getOpenGraphUrls = (filesNames) =>
-    filesNames.map(
-        (fileName) => `${OPEN_GRAPH_ROOT_URL}/${fileName.replace(POSTS_FILE_EXTENSION, "")}`
-    );
+const getOpenGraphUrls = (slugs) => slugs.map((slug) => `${OPEN_GRAPH_ROOT_URL}/${slug}`);
 
 // Main function
 (async () => {
     prepareOutputDirectory();
-    const blogPosts = await getBlogPostFileNames();
-    // get URLs for all blog posts and a generic one "page" image
-    const urls = getOpenGraphUrls([...blogPosts, "page"]);
+    const blogPostSlugs = await getBlogPostSlugs();
+    // get URLs for all blog posts and a generic one used for any other page on the site
+    const urls = getOpenGraphUrls([...blogPostSlugs, "page"]);
 
     urls.forEach(async (url) => {
         await takeScreenshot(url);
