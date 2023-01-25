@@ -45,3 +45,28 @@ const {
         </Card>
     </article>
 </Page>
+
+<script client:load>
+    // create a simple lightbox for images
+    document.querySelectorAll(".prose img").forEach((img) => {
+        img.classList.add("cursor-pointer");
+        img.addEventListener("click", () => {
+            const lightbox = document.createElement("div");
+            lightbox.classList.add(
+                "fixed",
+                "z-10",
+                "inset-0",
+                "w-full",
+                "h-full",
+                "bg-black/70",
+                "cursor-pointer",
+                "flex",
+                "items-center",
+                "justify-center"
+            );
+            lightbox.innerHTML = `<img class="max-w-full max-h-full" src="${img.src}" alt="${img.alt}" />`;
+            lightbox.addEventListener("click", () => lightbox.remove());
+            document.body.appendChild(lightbox);
+        });
+    });
+</script>

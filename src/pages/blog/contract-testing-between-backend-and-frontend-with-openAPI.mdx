@@ -1,0 +1,85 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "Contract testing between frontend and API"
+description: "Contract testing between backend and frontend with OpenAPI"
+pubDate: "Jan 24 2023"
+heroImage: "/blog/contract-testing/hero.png"
+tags:
+    - Testing
+---
+
+When I joined Healios we started exploring how we might decompose a large Ruby
+on Rails monolith. We wanted to move the view layer entirely into a modern
+frontend tech stack using multiple [Next.js](https://nextjs.org/) applications.
+We also wanted to migrate the backend into a service orientated architecture,
+built partially with Rails API but also introducing Python as an additional
+language. These various services would run on AWS ECS / Fargate and be
+accessible via an API gateway.
+
+One of the main concerns we wanted to address is how we can be confident that
+changes we make to our API won't accidentally break our frontend(s).
+
+One option here is to spin everything up in CI and run end to end tests on your
+entire API and frontend apps. This gets increasingly more complex and time
+consuming to manage as the backend is decomposed into services. It also becomes
+increasing difficult to debug where issues are coming from, and bugs in backend
+services can block the frontend CI pipeline.
+
+Another option would be to implement a bells and whistles contract testing
+solution, [Pact](https://pact.io/) is the obvious choice here. However Pact
+involves writing a specific suite of contract tests (with a maintenance
+overhead). While we're splitting up our backend, we're not taking a
+microservices approach and the count of services would probably stay in the
+single digits for at least the next couple of years.
+
+Ultimately Pact felt over-engineered so we settled with a simplistic approach,
+designed to allow each repo be tested in (almost) isolation while still giving a
+significant level of confidence.
+
+## Using OpenAPI
+
+Our approach uses our API documentation as a source of truth. The docs are
+written in [OpenAPI](https://www.openapis.org/) specification, which gives
+access to a large suite of [OSS tools](https://openapi.tools/). One of these
+tools [Prism](https://stoplight.io/open-source/prism) allows us to create a mock
+API from our API docs. This is used to run all frontend tests against and can
+also be used for development too. You can point the mock server either to a
+locally running instance of the API docs, or to the hosted version on a staging
+or production environment.
+
+![Contract testing between repos diagram](/blog/contract-testing/repos.png)
+
+Changes to the API documentation are protected with
+[GitHub CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
+and need explicit approval from the `API Consumers` team.
+
+## Design first approach
+
+One of the big advantages of this workflow is it encourages and simplifies an
+[API Design First](https://medium.com/@chamaral/what-is-api-design-first-approach-draft-ee14ae1369c4)
+workflow. This allows frontend and backend engineers to collaborate on designing
+how an API should work, creating the documentation first as a contract. They can
+then make progress on the separate implementations without blocking
+dependencies. It also gives high likelihood that integrating backend and
+frontend will be a seamless experience.
+
+![API Design first workflow diagram](/blog/contract-testing/design-first.png)
+
+## Further safety in production
+
+We also setup [Zod](https://zod.dev/) in production to validate all our API
+responses are the shape and type that is expected. Any non-conformities are then
+reported in realtime to [Sentry](https://sentry.io). Zod also has fantastic
+TypeScript inference from the it's schemas, giving confidence that all our data
+is typed correctly.
+
+![Validating API responses in production with Zod](/blog/contract-testing/zod.png)
+
+## So far, so good
+
+We've been using this approach for the past 9 months and so far it's been very
+smooth with a really low maintenance cost. There's only been a single issue that
+made it as far as a Zod error and Sentry exception, this was a field that was a
+`string` but could be `null` under specific and rare circumstances... the
+observability here was really helpful and allowed for a quick and simple debug
+and fix.
