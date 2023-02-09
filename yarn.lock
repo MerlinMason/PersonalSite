@@ -1492,10 +1492,10 @@ astring@^1.8.0:
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.8.3.tgz#1a0ae738c7cc558f8e5ddc8e3120636f5cebcb85"
   integrity sha512-sRpyiNrx2dEYIMmUXprS8nlpRg2Drs8m9ElX9vVEXaCB4XEAJhKfs7IcX0IwShjuOAjLR6wzIrgoptz1n19i1A==
 
-astro-compress@^1.1.30:
-  version "1.1.30"
-  resolved "https://registry.yarnpkg.com/astro-compress/-/astro-compress-1.1.30.tgz#8739a41563529b251d0e158262332dd4c1ed4fae"
-  integrity sha512-9iG/GJqZLCxSIAWNUIHSDgY4WmMda8ODMuOGV2qcgKFBJUSAs/YdQPlI8hJa8+DLmyIkA1cBbvUO49HysKLQiA==
+astro-compress@^1.1.31:
+  version "1.1.31"
+  resolved "https://registry.yarnpkg.com/astro-compress/-/astro-compress-1.1.31.tgz#d60b92c9a518d461fd28f81e261f7556f5855d79"
+  integrity sha512-Kr87S0+N32S+56KPRZ9uMiYK1rhBv6YIkBIps2bC5nhj4f1ustUHYffxvG83AcRl4XtQrSlVg/Uz+jufabbBQg==
   dependencies:
     "@types/csso" "5.0.0"
     "@types/html-minifier-terser" "7.0.0"
