@@ -88,13 +88,13 @@
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
 
-"@astrojs/mdx@0.18.0":
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.18.0.tgz#3bb3207358f0bd3b13e53dcf0b04b9a004c4767e"
-  integrity sha512-mgICosefMpl67O7ER6Yi6ylT9Hk8ZAO6GhTlx4pYXIMOWFMQlP0NXQ9teZwPhOWzBcHWnsHEF+AzVZWbiC2EBg==
+"@astrojs/mdx@0.18.1":
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.18.1.tgz#e274b999061629f6e443e98b25c66578173e6cdc"
+  integrity sha512-C5pdzAMyigZxbOOtbsmC4RsDOTTTtIbSJkk4FLD5aTfQ9//d/rEep5S9cFFeIARrHkjPiDP374WYm0RZqtN9ig==
   dependencies:
     "@astrojs/markdown-remark" "^2.1.0"
-    "@astrojs/prism" "^2.1.0"
+    "@astrojs/prism" "^2.1.1"
     "@mdx-js/mdx" "^2.3.0"
     "@mdx-js/rollup" "^2.3.0"
     acorn "^8.8.0"
@@ -133,10 +133,10 @@
   dependencies:
     prismjs "^1.28.0"
 
-"@astrojs/prism@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/prism/-/prism-2.1.0.tgz#3c32e66e3cfdaec304e1446d0d13786bac8c3f9f"
-  integrity sha512-+II6nfIFGZ7iH0FunhRGcj/J1mCxjcHl85cZRuFePKLoIhFHJT3nC3myQnUw386hUaIn2W20McxxtAVf4leeRQ==
+"@astrojs/prism@^2.1.0", "@astrojs/prism@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/prism/-/prism-2.1.1.tgz#5f6ae1ab5b630889a8850ba2c991888ed92a3c7a"
+  integrity sha512-Gnwnlb1lGJzCQEg89r4/WqgfCGPNFC7Kuh2D/k289Cbdi/2PD7Lrdstz86y1itDvcb2ijiRqjqWnJ5rsfu/QOA==
   dependencies:
     prismjs "^1.28.0"
 
