@@ -4,19 +4,20 @@ import Page from "./Page.astro";
 import Card from "../components/Card.astro";
 import JazzyText from "../components/JazzyText.astro";
 import BlogPostMeta from "../components/BlogPostMeta.astro";
+import type { CollectionEntry } from "astro:content";
 
-export interface Props {
-    content: Post["frontmatter"];
-    url: string;
-}
+type Props = {
+    slug: string;
+    content: CollectionEntry<"blog">["data"];
+};
 
 const {
-    content: { title, pubDate, heroImage, tags, timeToRead, description },
-    url,
+    content: { title, pubDate, heroImage, tags, timeToReadMins, description },
+    slug,
 } = Astro.props;
 ---
 
-<Page title="Blog" description={description} image={`${url.replace("blog", "ogimages")}.png`}>
+<Page title={title} description={description} image={`${slug.replace("blog", "ogimages")}.png`}>
     <article>
         <h1 class="font-bold text-hero mb-8">My <JazzyText>blog</JazzyText>.</h1>
 
@@ -36,7 +37,7 @@ const {
 
                 <h1 class="font-bold text-4xl mb-6">{title}</h1>
 
-                <BlogPostMeta timeToRead={timeToRead} pubDate={pubDate} tags={tags} />
+                <BlogPostMeta timeToReadMins={timeToReadMins} pubDate={pubDate} tags={tags} />
             </header>
 
             <div class="prose lg:prose-xl prose-slate dark:prose-invert prose-pre:!leading-normal">
