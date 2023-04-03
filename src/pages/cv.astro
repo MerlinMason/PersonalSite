@@ -93,7 +93,10 @@ const formatDate = (date: Date) =>
                     <li class="py-6 first:pt-0 last:pb-0">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-1">
                             {link ? (
-                                <a href={link} class="hover:text-black flex items-center">
+                                <a
+                                    href={link}
+                                    class="hover:text-black dark:hover:text-teal-400 flex items-center"
+                                >
                                     <span class="mr-2">{company}</span>
                                     <ArrowTopRightOnSquareIcon className="w-4 inline-block" />
                                 </a>
