@@ -2,7 +2,7 @@
 import { CalendarIcon } from "@heroicons/react/24/outline/index.js";
 
 interface Props {
-    date: PostDate;
+    date: string;
 }
 const { date } = Astro.props;
 ---
@@ -10,7 +10,7 @@ const { date } = Astro.props;
 <time datetime={date} class="flex gap-2">
     <CalendarIcon className="w-6" />
     {
-        new Date(date).toLocaleDateString("en-us", {
+        new Date(date).toLocaleDateString("en-GB", {
             year: "numeric",
             month: "short",
             day: "numeric",

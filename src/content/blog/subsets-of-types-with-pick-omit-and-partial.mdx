@@ -1,8 +1,10 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: "Creating subsets of types with Omit, Pick & Partial"
-description: "Learn how to manage your TypeScript types better with Omit, Pick and Partial"
+description:
+    "Learn how to manage your TypeScript types better with Omit, Pick and
+    Partial"
 pubDate: "Sep 20 2022"
+timeToReadMins: 3
 heroImage: "/blog/pick.png"
 tags:
     - TypeScript
@@ -76,9 +78,9 @@ Here we can use the `Omit` utility to remove those but require the rest.
 type NewToDo = Omit<ToDo, "id" | "created_at">;
 
 const body: NewToDo = {
-    description: "Write a post about Pick and Omit";
-    tags: ["blogging"];
-    status: "in_progress";
+    description: "Write a post about Pick and Omit",
+    tags: ["blogging"],
+    status: "in_progress",
 };
 
 await fetch("https://my-api.com/todos", {
@@ -94,7 +96,7 @@ requests to our API we may only want to send the data that has changed rather
 than the full model. Technically this is a `PATCH` request, but sometimes APIs
 implement `PUT` requests as `PATCH`.
 
-Anyways, here we can combine `Pick` with the `Partial` utility. The `Partial`
+Anyway, here we can combine `Pick` with the `Partial` utility. The `Partial`
 utility restricts us to only including properties of `ToDo`, but makes them all
 optional.
 

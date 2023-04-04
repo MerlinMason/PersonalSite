@@ -1,3 +1,5 @@
 dist
 node_modules/
-src/pages/blog/**/*.mdx
+src/content/**/*.mdx
+.astro
+src/env.d.ts

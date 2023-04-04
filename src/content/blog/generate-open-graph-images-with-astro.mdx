@@ -1,12 +1,19 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: "Creating OpenGraph preview images with Astro"
 description: "Learn how to generate Open Graph preview images with Astro"
 pubDate: "Jan 6 2023"
+timeToReadMins: 5
 heroImage: "/blog/og-images.png"
 tags:
     - Astro
 ---
+
+import Callout from "../../components/Callout.astro";
+
+<Callout>
+    This blog post has been updated to work with the new content directory
+    introduced in Astro 2.0
+</Callout>
 
 In this blog post we're looking at generating Open Graph preview images and how
 this is handled on this site.
@@ -50,25 +57,22 @@ The approach we're going to take is pretty simple, let's break it down...
 ```astro
 ---
 // ./src/pages/opengraph/[slug].astro
+import type { InferGetStaticPropsType } from "astro";
 import BlogPostMeta from "../../components/BlogPostMeta.astro";
-
-const post: Post = Astro.props.post;
-const { title, timeToRead, pubDate, tags, heroImage } = post.frontmatter;
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-    const posts = await Astro.glob("../**/*.{md,mdx}");
+    const allBlogPosts = await getCollection("blog", ({ data }) => !data.draft);
 
-    return posts.map((post) => {
-        const slug = post.url.replace("/blog/", "");
-
-        return [
-            {
-                params: { slug },
-                props: { post },
-            },
-        ];
-    });
+    return allBlogPosts.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
 }
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { heroImage, title, timeToReadMins, pubDate, tags } =
+    Astro.props.entry.data;
 ---
 
 <div class="w-[1200px] h-[630px] bg-slate-50 p-12 flex flex-col relative">
@@ -84,15 +88,19 @@ export async function getStaticPaths() {
     </div>
 
     <div class="text-2xl">
-        <BlogPostMeta timeToRead={timeToRead} pubDate={pubDate} tags={tags} />
+        <BlogPostMeta
+            timeToReadMins={timeToReadMins}
+            pubDate={pubDate}
+            tags={tags}
+        />
     </div>
 </div>
 ```
 
 Here we have a simple Astro template that sits on a dynamic route. As my site is
-compiled completely statically, I also have to provide a `getStaticPaths()`
-function, which tells Astro all the different variants of this page that can
-exist.
+compiled completely statically, we can provide a `getStaticPaths()` using the
+new `getCollection()` helper function. This tells Astro all the different
+instances of this template that can exist.
 
 Once that is setup, it's a simple case of rendering out some markup for our
 design. Here you can see I'm using Tailwind arbitrary values to define a 1200px
@@ -112,7 +120,7 @@ const { readdir } = require("fs/promises");
 const OUTPUT_PATH = "./public/ogimages"; // where the created screenshots will go
 const CHROME_PATH =
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"; // Chrome on your local machine
-const POSTS_PATH = "./src/pages/blog"; // blog post directory
+const POSTS_PATH = "./src/content/blog"; // blog post content directory
 const POSTS_FILE_EXTENSION = ".mdx"; // file type used for posts
 const OPEN_GRAPH_ROOT_URL = "http://localhost:3000/opengraph"; // where are we rendering the OGImages?
 
@@ -151,7 +159,9 @@ const getBlogPostSlugs = async () => {
     // Astro uses file name routing, so the slug is identical to the file name, minus the file extension
     return filenames
         .filter((filename) => filename.endsWith(POSTS_FILE_EXTENSION))
-        .map((filename) => filename.replace(POSTS_FILE_EXTENSION, ""));
+        .map((filename) =>
+            filename.replace(POSTS_FILE_EXTENSION, "").toLowerCase()
+        );
 };
 
 // Converts filenames into URLs for the screenshot

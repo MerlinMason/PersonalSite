@@ -4,21 +4,22 @@ import TagFilters from "./TagFilters.astro";
 import Card from "./Card.astro";
 import JazzyText from "../components/JazzyText.astro";
 import BlogPostMeta from "./BlogPostMeta.astro";
+import type { CollectionEntry } from "astro:content";
 
-interface Props {
-    posts: Post[];
-    tag?: string;
-}
+type Props = {
+    posts: CollectionEntry<"blog">[];
+    tagLabel?: string; // human readable
+};
 
-const { posts, tag } = Astro.props;
+const { posts, tagLabel } = Astro.props;
 ---
 
 <PageLayout
-    title="Blog"
+    title={`Blog${tagLabel ? `: ${tagLabel}` : ""}`}
     description="Merlin Masons blog about frontend engineering, TypeScript and React"
 >
     <h1 class="font-bold text-hero mb-8">
-        My <JazzyText>blog</JazzyText>{tag && <>: {tag}</>}.
+        My <JazzyText>blog</JazzyText>{tagLabel && <>: {tagLabel}</>}.
     </h1>
 
     <TagFilters />
@@ -28,24 +29,24 @@ const { posts, tag } = Astro.props;
             posts.map((post) => (
                 <li>
                     <Card>
-                        <a href={post.url}>
+                        <a href={`/blog/${post.slug}`}>
                             <figure class="bg-slate-100 rounded">
                                 <img
                                     class="max-w-full h-auto mb-6 mx-auto"
-                                    src={post.frontmatter.heroImage}
-                                    alt={post.frontmatter.title}
+                                    src={post.data.heroImage}
+                                    alt={post.data.title}
                                 />
                             </figure>
 
                             <h1 class="font-bold text-4xl mb-6 hover:text-slate-700 dark:hover:text-white">
-                                {post.frontmatter.title}
+                                {post.data.title}
                             </h1>
                         </a>
 
                         <BlogPostMeta
-                            timeToRead={post.frontmatter.timeToRead}
-                            tags={post.frontmatter.tags}
-                            pubDate={post.frontmatter.pubDate}
+                            timeToReadMins={post.data.timeToReadMins}
+                            tags={post.data.tags}
+                            pubDate={post.data.pubDate}
                         />
                     </Card>
                 </li>
