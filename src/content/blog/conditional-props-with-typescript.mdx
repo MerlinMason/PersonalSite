@@ -153,21 +153,23 @@ our IDE explaining what we've done wrong.
 ## TypeScript types for all HTML elements
 
 We can also access a full list of available HTML elements using the types
-shipped in `@types/react-dom`.
+shipped in `@types/react-dom` via `JSX.IntrinsicElements`.
 
 ```ts
 import { type PropsWithChildren } from "react";
 
-type Props =
-    | (PropsWithChildren<{
-          className?: string;
-      }> & {
-          el?: "label";
-          htmlFor: string;
-      })
-    | {
-          el: keyof Omit<JSX.IntrinsicElements, "label">;
-      };
+type Props = PropsWithChildren<{
+    className?: string;
+}> &
+    (
+        | {
+              el?: "label";
+              htmlFor: string;
+          }
+        | {
+              el: keyof Omit<JSX.IntrinsicElements, "label">;
+          }
+    );
 
 const Label = ({ htmlFor, el: El = "label", className, children }: Props) => (
     <El
