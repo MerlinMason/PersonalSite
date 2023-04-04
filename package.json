@@ -22,9 +22,9 @@
     "@astrojs/rss": "^2.3.2",
     "@astrojs/tailwind": "^3.1.1",
     "@tailwindcss/typography": "^0.5.9",
-    "@types/react": "^18.0.32",
+    "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
-    "@typescript-eslint/parser": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.1",
     "astro": "^2.1.9",
     "astro-compress": "^1.1.35",
     "eslint": "^8.37.0",
@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.17",
-    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
     "mdast-util-to-string": "^3.1.1",
     "reading-time": "^1.5.0",
     "yarn": "^1.22.19"
