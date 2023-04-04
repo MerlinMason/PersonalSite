@@ -1,0 +1,17 @@
+---
+import { BoltIcon } from "@heroicons/react/24/outline/index.js";
+---
+
+<aside
+    class={`
+    flex items-center gap-4
+    p-4 rounded-lg relative bg-gradient-to-tr from-teal-400 to-sky-400
+    before:absolute before:inset-0.5 before:bg-slate-100 before:rounded-[6px]
+    dark:before:bg-slate-900 dark:text-white
+    `}
+>
+    <BoltIcon className="w-6 relative z-10" />
+    <div class="[&>*]:my-0 relative z-10 text-base">
+        <slot />
+    </div>
+</aside>
