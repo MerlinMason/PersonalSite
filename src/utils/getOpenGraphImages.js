@@ -4,7 +4,7 @@ const { readdir } = require("fs/promises");
 
 const OUTPUT_PATH = "./public/ogimages"; // where the created screenshots will go
 const CHROME_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"; // Chrome on your local machine
-const POSTS_PATH = "./src/pages/blog"; // where your blog posts are
+const POSTS_PATH = "./src/content/blog"; // where your blog posts are
 const POSTS_FILE_EXTENSION = ".mdx"; // file type used for posts
 const OPEN_GRAPH_ROOT_URL = "http://localhost:3000/opengraph"; // where are we rendering the OGImages?
 
@@ -43,7 +43,7 @@ const getBlogPostSlugs = async () => {
     // Astro uses file name routing, so the slug is identical to the file name, minus the file extension
     return filenames
         .filter((filename) => filename.endsWith(POSTS_FILE_EXTENSION))
-        .map((filename) => filename.replace(POSTS_FILE_EXTENSION, ""));
+        .map((filename) => filename.replace(POSTS_FILE_EXTENSION, "").toLowerCase());
 };
 
 // Converts filenames into URLs for the screenshot
