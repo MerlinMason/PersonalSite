@@ -28,15 +28,16 @@ of our component (other engineers or even ourselves) to use it incorrectly.
 ## 💩 Handling the conditions at runtime
 
 ```tsx
-type Props = {
-    children: React.ReactNode;
+import { type PropsWithChildren } from "react";
+
+type Props = PropsWithChildren<{
     as: "button" | "a";
     type?: "button" | "submit";
     onClick?: () => void;
     href?: string;
-};
+}>;
 
-const Button = ({ children, as, type, onClick, href }: Props): JSX.Element => {
+const Button = ({ children, as, type, onClick, href }: Props) => {
     const styles = "inline-block py-2 px-6 bg-blue-600 text-white rounded";
 
     if (as === "button") {
@@ -76,21 +77,22 @@ doing wrong. There must be a better way to do this?
 ## 😻 Handling the conditions at compile time
 
 ```tsx
-type Props = {
-    children: React.ReactNode;
-} & (
-    | {
-          as: "button";
-          type: "button" | "submit";
-          onClick: () => void;
-      }
-    | {
-          as: "a";
-          href: string;
-      }
-);
+import { type PropsWithChildren } from "react";
 
-const Button = ({ children, as: El, ...restProps }: Props): JSX.Element => (
+type Props = PropsWithChildren &
+    (
+        | {
+              as: "button";
+              type: "button" | "submit";
+              onClick: () => void;
+          }
+        | {
+              as: "a";
+              href: string;
+          }
+    );
+
+const Button = ({ children, as: El, ...restProps }: Props) => (
     <El
         className="inline-block py-2 px-6 bg-blue-600 text-white rounded"
         {...restProps}
@@ -148,9 +150,51 @@ our IDE explaining what we've done wrong.
 </Button>
 ```
 
-Generally speaking I think it's good wherever possible to push data validation
-like this to the TypeScript level rather than runtime level. Not only is
-TypeScript a really good tool for this, but it means you're runtime code is
-simpler and you ship less JavaScript to the browser. It's also a far more direct
-and efficient developer experience to get errors in your IDE than in the
-browser.
+## TypeScript types for all HTML elements
+
+We can also access a full list of available HTML elements using the types
+shipped in `@types/react-dom`.
+
+```ts
+import { type PropsWithChildren } from "react";
+
+type Props =
+    | (PropsWithChildren<{
+          className?: string;
+      }> & {
+          el?: "label";
+          htmlFor: string;
+      })
+    | {
+          el: keyof Omit<JSX.IntrinsicElements, "label">;
+      };
+
+const Label = ({ htmlFor, el: El = "label", className, children }: Props) => (
+    <El
+        className={`text-lg font-bold select-none ${className}`}
+        {...(htmlFor ? { htmlFor } : {})} // ensure this attribute is only rendered if it exists
+    >
+        {children}
+    </El>
+);
+```
+
+In this example we have a typographic label component that we may want to use
+with form components or elsewhere... be default it renders as a `<label>`
+element and we must provide an `htmlFor` attribute for accessibility reasons.
+However if we choose to render elsewhere, say as a `<legend>` or `<dt>` it is
+unable to accept the `htmlFor` prop. The
+`keyof Omit<JSX.IntrinsicElements, "label">` creates a union of every HTML
+element name, but omitting "label". This ensures that the value passed to `el`
+is actually a valid HTML element name.
+
+## Summary
+
+Given that you're operating entirely in a type safe environment, I think it's
+good wherever possible to push data validation like this to the TypeScript level
+rather than runtime level. TypeScript a really great tool for this, and if
+you're type checking in CI with `tsc` this will ensure any breaking changes to
+your types are picked up before you deploy. It also means you're runtime code is
+simpler and you ship less JavaScript to the browser. Finally, it's also a far
+more direct and efficient developer experience to get errors in your IDE than in
+the browser.
