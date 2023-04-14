@@ -17,7 +17,7 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@astrojs/mdx": "0.18.4",
+    "@astrojs/mdx": "0.19.0",
     "@astrojs/react": "^2.1.1",
     "@astrojs/rss": "^2.3.2",
     "@astrojs/tailwind": "^3.1.1",
