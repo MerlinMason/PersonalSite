@@ -1544,10 +1544,10 @@ astring@^1.8.0:
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.8.3.tgz#1a0ae738c7cc558f8e5ddc8e3120636f5cebcb85"
   integrity sha512-sRpyiNrx2dEYIMmUXprS8nlpRg2Drs8m9ElX9vVEXaCB4XEAJhKfs7IcX0IwShjuOAjLR6wzIrgoptz1n19i1A==
 
-astro-compress@^1.1.36:
-  version "1.1.36"
-  resolved "https://registry.yarnpkg.com/astro-compress/-/astro-compress-1.1.36.tgz#5844303c7d14d826f13a622cd1ab66cd0595d2e4"
-  integrity sha512-iAth3dQrSZg+bXia2DqsAa0NKt8oxxOJbZawPXxkPF+k2tdQflp2nfTrm3JozIbav6LF0ZhQhe306skh+5g/5Q==
+astro-compress@^1.1.39:
+  version "1.1.39"
+  resolved "https://registry.yarnpkg.com/astro-compress/-/astro-compress-1.1.39.tgz#db1ddfb888f1b9a8fe979ead19f8ae3f040263b4"
+  integrity sha512-ypMe3YoWl99KsxfUmOpguir1wpZbPKMTFTrfpD8Ny1eGTr/H8kDrFyIEw5QIk+WGQThUKopPnWQPAKmnti/BrA==
   dependencies:
     "@types/csso" "5.0.0"
     "@types/html-minifier-terser" "7.0.0"
@@ -1557,7 +1557,7 @@ astro-compress@^1.1.36:
     html-minifier-terser "7.2.0"
     sharp "0.32.0"
     svgo "3.0.2"
-    terser "5.16.9"
+    terser "5.17.1"
 
 astro-eslint-parser@^0.13.1:
   version "0.13.1"
@@ -6764,10 +6764,10 @@ tar-stream@^2.1.4:
     inherits "^2.0.3"
     readable-stream "^3.1.1"
 
-terser@5.16.9, terser@^5.15.1:
-  version "5.16.9"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-5.16.9.tgz#7a28cb178e330c484369886f2afd623d9847495f"
-  integrity sha512-HPa/FdTB9XGI2H1/keLFZHxl6WNvAI4YalHGtDQTlMnJcoqSab1UwL4l1hGEhs6/GmLHBZIg/YgB++jcbzoOEg==
+terser@5.17.1, terser@^5.15.1:
+  version "5.17.1"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-5.17.1.tgz#948f10830454761e2eeedc6debe45c532c83fd69"
+  integrity sha512-hVl35zClmpisy6oaoKALOpS0rDYLxRFLHhRuDlEGTKey9qHjS1w9GMORjuwIMt70Wan4lwsLYyWDVnWgF+KUEw==
   dependencies:
     "@jridgewell/source-map" "^0.3.2"
     acorn "^8.5.0"
