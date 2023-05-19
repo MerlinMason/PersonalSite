@@ -40,12 +40,12 @@
     vscode-languageserver-types "^3.17.1"
     vscode-uri "^3.0.3"
 
-"@astrojs/markdown-remark@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-2.2.0.tgz#46272265b137cd8cc76f36f02c7728d80dc6b14f"
-  integrity sha512-4M1+GzQwDqF0KfX9Ahug43b0avorcK+iTapEaVuNnaCUVS6sZKRkztT3g6hmXiFmGHSL8qYaS9IVEmKtP6hYmw==
+"@astrojs/markdown-remark@^2.2.0", "@astrojs/markdown-remark@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-2.2.1.tgz#ab063b8ae7ee526e1c3fe65b407b44fb4dee860c"
+  integrity sha512-VF0HRv4GpC1XEMLnsKf6jth7JSmlt9qpqP0josQgA2eSpCIAC/Et+y94mgdBIZVBYH/yFnMoIxgKVe93xfO2GA==
   dependencies:
-    "@astrojs/prism" "^2.1.0"
+    "@astrojs/prism" "^2.1.2"
     github-slugger "^1.4.0"
     import-meta-resolve "^2.1.0"
     rehype-raw "^6.1.1"
@@ -59,13 +59,13 @@
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
 
-"@astrojs/mdx@0.19.1":
-  version "0.19.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.19.1.tgz#83ebfbcd2f57986ee6fd30dd54a904a126e2261c"
-  integrity sha512-9GNNZbGT+lGvbRkQK/NaEJcnjj1T94/ne0KwPjJgNCBQrJuskX5IW1hKiE5bRSOFvkAOrBGneYKg0GXYArBOQQ==
+"@astrojs/mdx@0.19.2":
+  version "0.19.2"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.19.2.tgz#995632d9104e48d05bd5a3887ce05aeb457bb8cb"
+  integrity sha512-xWI2TK2QvCFXhyadjVtidcOj7qHda2Fv3tUilhacFXF28vye/COluMirqgxEESMlUsV+8LI39f8P6ERxXADSmg==
   dependencies:
-    "@astrojs/markdown-remark" "^2.2.0"
-    "@astrojs/prism" "^2.1.1"
+    "@astrojs/markdown-remark" "^2.2.1"
+    "@astrojs/prism" "^2.1.2"
     "@mdx-js/mdx" "^2.3.0"
     "@mdx-js/rollup" "^2.3.0"
     acorn "^8.8.0"
@@ -83,10 +83,10 @@
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
 
-"@astrojs/prism@^2.1.0", "@astrojs/prism@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/prism/-/prism-2.1.1.tgz#5f6ae1ab5b630889a8850ba2c991888ed92a3c7a"
-  integrity sha512-Gnwnlb1lGJzCQEg89r4/WqgfCGPNFC7Kuh2D/k289Cbdi/2PD7Lrdstz86y1itDvcb2ijiRqjqWnJ5rsfu/QOA==
+"@astrojs/prism@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@astrojs/prism/-/prism-2.1.2.tgz#7486cb886ba3354e38ef4e58cbbe72f31337689e"
+  integrity sha512-3antim1gb34689GHRQFJ88JEo93HuZKQBnmxDT5W/nxiNz1p/iRxnCTEhIbJhqMOTRbbo5h2ldm5qSxx+TMFQA==
   dependencies:
     prismjs "^1.28.0"
 
@@ -3248,15 +3248,7 @@ estree-util-to-js@^1.1.0:
     astring "^1.8.0"
     source-map "^0.7.0"
 
-estree-util-visit@^1.0.0, estree-util-visit@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/estree-util-visit/-/estree-util-visit-1.2.0.tgz#aa0311a9c2f2aa56e9ae5e8b9d87eac14e4ec8f8"
-  integrity sha512-wdsoqhWueuJKsh5hqLw3j8lwFqNStm92VcwtAOAny8g/KS/l5Y8RISjR4k5W6skCj3Nirag/WUCMS0Nfy3sgsg==
-  dependencies:
-    "@types/estree-jsx" "^1.0.0"
-    "@types/unist" "^2.0.0"
-
-estree-util-visit@^1.2.1:
+estree-util-visit@^1.0.0, estree-util-visit@^1.2.0, estree-util-visit@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/estree-util-visit/-/estree-util-visit-1.2.1.tgz#8bc2bc09f25b00827294703835aabee1cc9ec69d"
   integrity sha512-xbgqcrkIVbIG+lI/gzbvd9SGTJL4zqJKBFttUl5pP27KhAjtMKbX/mQXJ7qgyXpMgVy/zvpm0xoQQaGL8OloOw==
@@ -7528,16 +7520,7 @@ unist-util-visit-parents@^5.0.0, unist-util-visit-parents@^5.1.1:
     "@types/unist" "^2.0.0"
     unist-util-is "^5.0.0"
 
-unist-util-visit@^4.0.0, unist-util-visit@^4.1.0:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-4.1.1.tgz#1c4842d70bd3df6cc545276f5164f933390a9aad"
-  integrity sha512-n9KN3WV9k4h1DxYR1LoajgN93wpEi/7ZplVe02IoB4gH5ctI1AaF2670BLHQYbwj+pY83gFtyeySFiyMHJklrg==
-  dependencies:
-    "@types/unist" "^2.0.0"
-    unist-util-is "^5.0.0"
-    unist-util-visit-parents "^5.1.1"
-
-unist-util-visit@^4.1.2:
+unist-util-visit@^4.0.0, unist-util-visit@^4.1.0, unist-util-visit@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-4.1.2.tgz#125a42d1eb876283715a3cb5cceaa531828c72e2"
   integrity sha512-MSd8OUGISqHdVvfY9TPhyK2VdUrPgxkUtWSuMHF6XAAFuL4LokseigBnZtPnJMu+FbynTkFNnFlyjxpVKujMRg==
