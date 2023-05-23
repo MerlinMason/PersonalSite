@@ -59,10 +59,10 @@
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
 
-"@astrojs/mdx@0.19.2":
-  version "0.19.2"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.19.2.tgz#995632d9104e48d05bd5a3887ce05aeb457bb8cb"
-  integrity sha512-xWI2TK2QvCFXhyadjVtidcOj7qHda2Fv3tUilhacFXF28vye/COluMirqgxEESMlUsV+8LI39f8P6ERxXADSmg==
+"@astrojs/mdx@0.19.3":
+  version "0.19.3"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.19.3.tgz#f5edd5f0e2dbe89135002763f5264fcefb10dee4"
+  integrity sha512-XiIQRO1OlJ19jqaZuttt6TSvnEIIiOVkHiNXPCOOsHnRpbLFuv0y0FoFuhYYRTHHm4rfSV2BRP5INiD5Aq9ByA==
   dependencies:
     "@astrojs/markdown-remark" "^2.2.1"
     "@astrojs/prism" "^2.1.2"
