@@ -25,7 +25,7 @@
     "@types/react": "^18.2.11",
     "@types/react-dom": "^18.2.5",
     "@typescript-eslint/parser": "^5.59.11",
-    "astro": "^2.4.1",
+    "astro": "^2.6.3",
     "astro-compress": "^1.1.47",
     "eslint": "^8.42.0",
     "eslint-config-airbnb": "^19.0.4",
