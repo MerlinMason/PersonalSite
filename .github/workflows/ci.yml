@@ -13,8 +13,6 @@ jobs:
               run: yarn build
             - name: Eslint
               run: yarn lint:all
-            - name: Take screenshots
-              run: yarn dev && yarn ogimgs
             # - name: Run Jest tests
             #   run: yarn test:jest
     auto-merge:
