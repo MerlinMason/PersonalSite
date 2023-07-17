@@ -5,6 +5,7 @@ import Card from "../components/Card.astro";
 import JazzyText from "../components/JazzyText.astro";
 import BlogPostMeta from "../components/BlogPostMeta.astro";
 import type { CollectionEntry } from "astro:content";
+import LikeButton from "../components/LikeButton";
 
 type Props = {
     slug: string;
@@ -43,13 +44,15 @@ const {
             <div class="prose lg:prose-xl prose-slate dark:prose-invert prose-pre:!leading-normal">
                 <slot />
             </div>
+
+            <LikeButton slug={slug} client:only="react" />
         </Card>
     </article>
 </Page>
 
-<script client:load>
+<script>
     // create a simple lightbox for images
-    document.querySelectorAll(".prose img").forEach((img) => {
+    document.querySelectorAll<HTMLImageElement>(".prose img").forEach((img) => {
         img.classList.add("cursor-pointer");
         img.addEventListener("click", () => {
             const lightbox = document.createElement("div");
