@@ -16,7 +16,7 @@ const LikeButton = ({ slug }: Props) => {
     // Get device fingerprint on initial load
     useEffect(() => {
         const getFingerprint = async () => {
-            const fp = await fingerprint.load();
+            const fp = await fingerprint.load({ monitoring: false });
             const result = await fp.get();
             setVisitorId(result.visitorId);
         };
@@ -71,7 +71,7 @@ const LikeButton = ({ slug }: Props) => {
     };
 
     return (
-        <p className="text-xl mt-6">
+        <p className="text-xl mt-8 pt-8 border-t border-slate-200 dark:border-slate-600">
             {loading ? (
                 "Loading likes..."
             ) : (
