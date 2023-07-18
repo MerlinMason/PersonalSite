@@ -30,7 +30,7 @@ const LikeButton = ({ slug }: Props) => {
                 `https://merlin-GETLikes.express.val.run?postSlug=${slug}`,
                 {
                     headers: new Headers({
-                        Authorization: visitorId,
+                        Authorization: `Bearer ${visitorId}`,
                     }),
                 }
             );
@@ -57,7 +57,7 @@ const LikeButton = ({ slug }: Props) => {
         const response = await fetch("https://merlin-POSTLikes.express.val.run", {
             method: "POST",
             headers: new Headers({
-                Authorization: visitorId ?? "",
+                Authorization: `Bearer ${visitorId}`,
                 "Content-Type": "application/json",
             }),
             body: JSON.stringify({ postSlug: slug }),
