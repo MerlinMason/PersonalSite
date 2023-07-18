@@ -65,6 +65,7 @@
       "Callout",
       "CODEOWNERS",
       "color",
+      "composability",
       "datetime",
       "Fargate",
       "fingerprintjs",
@@ -77,7 +78,8 @@
       "ogimages",
       "Sandpack",
       "shiki",
-      "tailwindcss"
+      "tailwindcss",
+      "Vals"
     ],
     "ignoreWords": [],
     "import": []

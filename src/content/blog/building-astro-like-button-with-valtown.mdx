@@ -1,0 +1,272 @@
+---
+title: "Building an like button with Astro & Val.Town"
+description:
+    "Using Val.Town as a serverless platform to add interactivity to your Astro
+    site"
+pubDate: "Jul 18 2023"
+heroImage: "/blog/astro-valtown-likes.png"
+timeToReadMins: 6
+tags:
+    - Astro
+    - Val.Town
+---
+
+import IFrame from "../../components/IFrame.tsx";
+
+There's a lot of excitement currently around [Val.Town](https://val.town/) so I
+thought I'd check it out and see what it's all about. I thought it would be cool
+to add a like button to my [Astro](https://astro.build) blog posts as this is
+suitably low risk and effort but significant enough that it throws up some real
+world challenges.
+
+## What is Val.Town?
+
+Val.Town is a social platform that allows you to write and share snippets
+(either JSON or functions) of code with low friction. It's sort of similar to a
+GitHub Gist but with several significant improvements.
+
+1. You can run the code you write in the browser.
+2. When you save a Val (snippet) it is instantly deployed as a serverless
+   function that can be accessed via a URL.
+3. When you save a Val it is instantly published to an internal registry,
+   meaning other Vals can use it as a dependency. This makes composability and
+   sharing code in the community very easy.
+
+They have great introduction to what Vals are and how to use them in the
+[Val.Town docs](https://docs.val.town/vals).
+
+## What is Astro?
+
+Astro is the framework this blog is build on, it's a static site generator that
+implements the
+[Islands Architecture](https://jasonformat.com/islands-architecture/). It's
+entirely pre-generated at build time and has no backend.
+
+## What are we building?
+
+A like button! You've probably seen one before. Let's define some requirements:
+
+-   The like button should appear on the bottom of every blog post
+-   We want to display the count of likes per post
+-   We want to enable a reader to like a post without having to authenticate
+-   We want to prevent a reader from liking a post more than once
+-   We want to take reasonable steps to prevent from spam and abuse
+
+## API design
+
+From the requirements I think we're going to need two API endpoints.
+
+`GET /likes/:slug` to get the number of likes for a given blogpost slug. However
+there's a limitation of Val.Town that we can't use dynamic routes like this, so
+instead we'll use a query parameter like this: `GET /likes?postSlug=example`.
+This feels slightly less RESTful, but it's not a big deal.
+
+`POST /likes` to increment the number of likes for a given blogpost slug. This
+time we'll include the `postSlug` in the body of the request.
+
+## User identification
+
+We need to identify users so we can prevent them from liking a post more than
+once. Let's look at the options:
+
+1. **❌ User accounts** - We could create user accounts and require
+   authentication, this is the most robust solution but it's also the most
+   friction for the user and added implementation time for us.
+2. **❌ Cookies** - We could use a cookie to identify users, this is quick to
+   implement but less robust as users can clear their cookies or switch to
+   incognito mode. It also means writing a cookie policy and having an annoying
+   cookie banner, ain't nobody got time for that.
+3. **✅ Fingerprinting** - Use a
+   [device fingerprinting library](https://www.npmjs.com/package/%2540fingerprintjs/fingerprintjs),
+   this is quick to implement and is reasonably reliable to uniquely identify
+   devices. It works across incognito and normal browsing modes and clearing the
+   cache doesn't affect it. Additionally when using it for the purposes of
+   adapting a user interface
+   [it's exempt](https://www.iubenda.com/blog/device-fingerprinting-and-cookie-law/)
+   from requiring user consent or a privacy policy. This is the option we'll go
+   with. We can send the fingerprint as a header in the request to our API like
+   so `Authorization: Bearer <fingerprint>`.
+
+## Persisting likes
+
+Val.Town has several options for persisting data with third party services such
+as Upstash, Neon, Supabase, PlanetScale etc. All of these seem overkill for our
+requirements. They also offer a SQLite instance you can access via WASM which
+looks cool but really I think we can settle with the simplest option of
+persisting state in a Val itself as a simple Key/Value store. This currently has
+a limit of 100kb per Val which roughly gives me space for storing 3000 likes.
+This blog has very limited traffic so I think we'll be fine, and will be a nice
+problem to have in the future if we ever get to that point.
+
+```json
+{
+    "example-post-slug": ["fingerprint1", "fingerprint2"]
+}
+```
+
+## Preventing spam and abuse
+
+This is somewhat tricky in a world where we don't have user accounts. We want to
+take a defence in depth approach, layering protections to give us the best
+chance of preventing abuse. Let's look at the (albeit limited) options:
+
+1. **✅ Rate limiting** - We can limit the number of requests per IP address in
+   a given time frame. This is a good first line of defence but it's not
+   foolproof as attackers can use proxies to get around it.
+2. **✅ Restrict domains** - In theory we could use CORS to limit the domains
+   that can make requests to our API. Unfortunately while Val.Town uses
+   Express.js, you cannot use the CORS middleware. We can however check the
+   `Origin` header to ensure it matches this domain. It's worth noting that
+   while you cannot spoof the `Origin` header in a browser, you can spoof it
+   using `curl` or other HTTP clients, this limitation is also true of CORS.
+3. **✅ Input validation** - We can validate the input to our API to ensure it's
+   what we expect. We can validate the slug is in fact a valid slug from our
+   blog and that the fingerprint is a 32 character string. Fingerprints could
+   still be fabricated but it limits the damage of spam.
+4. **❌ Captcha** - We could use a captcha to ensure the request is coming from
+   a real user. Realistically this is overkill for a like button and would
+   create too much friction for the user.
+
+## Val.Town implementation
+
+#### POST /likes
+
+Ok, let's get started! First we'll create a new Val, Val.Town automatically
+infers the name of the Val from your function. Here's we're creating an async
+function that accepts an Express.js request and response object.
+
+<IFrame
+    src="https://www.val.town/embed/merlin.POSTLikes"
+    title="Post Like"
+    height={480}
+    client:only="react"
+/>
+
+You'll also notice the `@username.val` syntax in the code, this is how we can
+reference other Vals. The `@me` is a shorthand reference to the current user, in
+our case it's equivalent to `@merlin`.
+
+Here you can see we call a Val we created called `@me.auth` which checks the
+rate limiting, Origin header and that a device fingerprint is provided in the
+expected format.
+
+We also check that the provided slug actually exists in our blog and that the
+the req method is what we expect.
+
+Right, now all that's out of the way we can actually persist the data. We can
+just grab the state from our KV Val, modify it and re-save it. You can see we're
+using `new Set()` and spreading back to an array to ensure our fingerprints are
+unique. Finally we can return a 200 success response.
+
+#### GET /likes?postSlug=example
+
+<IFrame
+    src="https://www.val.town/embed/merlin.GETLikes"
+    title="Get Likes"
+    client:only="react"
+/>
+
+The `GET` endpoint is pretty simple, we just grab the state from our KV Val and
+return it as JSON.
+
+#### Auth
+
+<IFrame
+    src="https://www.val.town/embed/merlin.auth"
+    title="Auth"
+    height={435}
+    client:only="react"
+/>
+
+Here's a look at our `auth` Val. It also features a good example of how you can
+leverage other people in the communities Vals, in this case we're using
+`@stevekrouse.rateLimit` to rate limit requests.
+
+#### Validating a post slug is valid
+
+<IFrame
+    src="https://www.val.town/embed/merlin.validatePostExists"
+    title="validatePostExists"
+    height={265}
+    client:only="react"
+/>
+
+Validating a post slug is valid is a little more involved. My initial plan was
+to create a webhook in Val.Town and call this everytime the site is deployed
+with a list of valid slugs. This would decrease latency when validating but
+digging into CI deploy tasks seemed like a potential rabbit hole so I decided to
+just fetch the list of slugs from the blog itself. This means we have to make a
+request to the blog every time we validate a slug, but I think that's fine if we
+implement optimistic updates in the UI.
+
+On the Astro side of things, this was delightfully easy to setup, I just created
+a file in the pages directory that returns a JSON response of all the slugs.
+
+```ts
+// /src/pages/posts.json.ts
+import { getCollection } from "astro:content";
+
+const allBlogPosts = await getCollection("blog", ({ data }) => !data.draft);
+
+export async function get() {
+    return {
+        body: JSON.stringify(allBlogPosts.map(({ slug }) => slug)),
+    };
+}
+```
+
+## Client side implementation
+
+Finally we can implement the client side code. I won't go into too much detail
+here as it's pretty standard React code, but feel free to browse the
+[source code](https://github.com/MerlinMason/PersonalSite/blob/main/src/components/LikeButton.tsx)
+if you're interested.
+
+```tsx
+<LikeButton slug={slug} client:visible />
+```
+
+We can include the `LikeButton` component in our blog posts as a dynamic island.
+Using Astro's `client:visible` directive we ensure that the scripts for the
+island and the API requests are only made as the user scrolls to the island,
+reducing the initial page load time.
+
+## Conclusion
+
+So, how was it? I think generally I was impressed with Val.Town, in terms of the
+friction of deploying a series of serverless functions it really can't get much
+easier than this.
+
+You could achieve the same thing with a similarly low amount of effort with
+Vercel's KV store and NextJS, but if you're using an entirely static site like
+Astro then Val.Town is a great option.
+
+The editing experience in Val.Town is OK... They have syntax highlight and some
+level of autocomplete and linting but it's not as good as VSCode and obviously
+lacks something like CoPilot. I did find sometimes when working on multiple Vals
+at once the linting would get out of sync and you'd have to refresh the page.
+
+The debugging experience is also a little lacking, you can see the logs of your
+Vals but you have to go to a different page to see them. It would be nice if you
+could see the logs inline with the code.
+
+I also think a highly simplified testing solution would be really handy where
+you could provide a range of example inputs and expected outputs.
+
+While there is a [Explore](https://www.val.town/trending) page on their site
+it's somewhat limited and the search isn't great. I found I didn't have that
+much opportunity to leverage other peoples Vals. At the moment you can't really
+differentiate between Vals that are public so the community can reuse them and
+Vals that are public but are just for the author to use.
+
+All this being said, it's a new platform and I hear the team are on implementing
+all sorts of new features so I'm confident it will improve over time.
+
+There's a growing list of integrations with other platforms too, which may prove
+useful. I think the fact you can schedule Vals to run might make it a useful
+tool for quick and dirty data gathering and aggregating between platforms, a
+problem nearly every startup has.
+
+Amazing concept and I'm excited to see where it goes!
+
+ps, I still love Astro ❤️
