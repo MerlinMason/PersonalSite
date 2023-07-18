@@ -32,7 +32,7 @@ const { posts, tagLabel } = Astro.props;
                         <a href={`/blog/${post.slug}`}>
                             <figure class="bg-slate-100 rounded">
                                 <img
-                                    class="max-w-full h-auto mb-6 mx-auto"
+                                    class="max-w-full h-auto min-h-[400px] mb-6 mx-auto"
                                     src={post.data.heroImage}
                                     alt={post.data.title}
                                 />
