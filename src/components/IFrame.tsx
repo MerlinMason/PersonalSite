@@ -9,7 +9,7 @@ const IFrame = ({ src, title, height = 380 }: Props) => (
         src={src}
         height={height}
         title={title}
-        className="not-prose w-full rounded-lg"
+        className="not-prose w-full"
         seamless
         scrolling="no"
     />
