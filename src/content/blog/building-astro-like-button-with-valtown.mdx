@@ -17,13 +17,13 @@ There's a lot of excitement currently around [Val.Town](https://val.town/) so I
 thought I'd check it out and see what it's all about. I thought it would be cool
 to add a like button to my [Astro](https://astro.build) blog posts as this is
 suitably low risk and effort but significant enough that it throws up some real
-world challenges.
+world challenges and allows us to test the Val.Town platform.
 
 ## What is Val.Town?
 
 Val.Town is a social platform that allows you to write and share snippets
 (either JSON or functions) of code with low friction. It's sort of similar to a
-GitHub Gist but with several significant improvements.
+GitHub Gist but with several significant improvements:
 
 1. You can run the code you write in the browser.
 2. When you save a Val (snippet) it is instantly deployed as a serverless
@@ -37,7 +37,7 @@ They have great introduction to what Vals are and how to use them in the
 
 ## What is Astro?
 
-Astro is the framework this blog is build on, it's a static site generator that
+Astro is the framework this blog is built on, it's a static site generator that
 implements the
 [Islands Architecture](https://jasonformat.com/islands-architecture/). It's
 entirely pre-generated at build time and has no backend.
@@ -47,10 +47,10 @@ entirely pre-generated at build time and has no backend.
 A like button! You've probably seen one before. Let's define some requirements:
 
 -   The like button should appear on the bottom of every blog post
--   We want to display the count of likes per post
--   We want to enable a reader to like a post without having to authenticate
--   We want to prevent a reader from liking a post more than once
--   We want to take reasonable steps to prevent from spam and abuse
+-   It should display the count of likes per post
+-   It should enable a reader to like a post without having to authenticate
+-   It should prevent a reader from liking a post more than once
+-   We should take reasonable steps to prevent from spam and abuse
 
 ## API design
 
