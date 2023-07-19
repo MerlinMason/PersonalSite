@@ -16,9 +16,11 @@ const {
     content: { title, pubDate, heroImage, tags, timeToReadMins, description },
     slug,
 } = Astro.props;
+
+const image = `/ogimages/${slug.toLowerCase()}.png`;
 ---
 
-<Page title={title} description={description} image={`${slug.replace("blog", "ogimages")}.png`}>
+<Page title={title} description={description} image={image}>
     <article>
         <h1 class="font-bold text-hero mb-8">My <JazzyText>blog</JazzyText>.</h1>
 
