@@ -46,7 +46,7 @@
     "tailwindcss": "^3.3.3"
   },
   "dependencies": {
-    "@fingerprintjs/fingerprintjs": "^3.4.2",
+    "@fingerprintjs/fingerprintjs": "^4.0.0",
     "@heroicons/react": "^2.0.18",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "mdast-util-to-string": "^3.2.0",
