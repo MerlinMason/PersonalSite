@@ -1,7 +1,7 @@
 ---
 import { TagIcon, ClockIcon } from "@heroicons/react/24/outline/index.js";
 
-import Date from "./Date.astro";
+import FormattedDate from "./FormattedDate.astro";
 import PillList from "./PillList.astro";
 import Pill from "./Pill.astro";
 import slugify from "../utils/slugify";
@@ -12,7 +12,7 @@ const { timeToReadMins, pubDate, tags } = Astro.props;
 ---
 
 <div class="grid gap-2 grid-col-1 sm:grid-cols-3 items-center text-slate-700 dark:text-slate-300">
-    <Date date={pubDate} />
+    <FormattedDate date={pubDate} />
 
     <div class="flex items-center gap-2">
         <ClockIcon className="w-6" />
