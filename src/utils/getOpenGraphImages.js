@@ -6,7 +6,7 @@ const OUTPUT_PATH = "./public/ogimages"; // where the created screenshots will g
 const CHROME_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"; // Chrome on your local machine
 const POSTS_PATH = "./src/content/blog"; // where your blog posts are
 const POSTS_FILE_EXTENSION = ".mdx"; // file type used for posts
-const OPEN_GRAPH_ROOT_URL = "http://localhost:3000/opengraph"; // where are we rendering the OGImages?
+const OPEN_GRAPH_ROOT_URL = "http://localhost:4321/opengraph"; // where are we rendering the OGImages?
 
 // Creates the output directory if it doesn't exist, ensures it's empty
 const prepareOutputDirectory = () => {

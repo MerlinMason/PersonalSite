@@ -4,16 +4,18 @@ import { CalendarIcon } from "@heroicons/react/24/outline/index.js";
 interface Props {
     date: string;
 }
+
 const { date } = Astro.props;
+
+
+const formattedDate = new Date(date).toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+})
 ---
 
 <time datetime={date} class="flex gap-2">
     <CalendarIcon className="w-6" />
-    {
-        new Date(date).toLocaleDateString("en-GB", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-        })
-    }
+    {formattedDate}
 </time>

@@ -26,7 +26,7 @@ const image = `/ogimages/${slug.toLowerCase()}.png`;
 
         <a
             href="/blog"
-            class="inline-flex items-center gap-2 mb-6 hover:text-black dark:hover:text-white text-xl"
+            class="inline-flex items-center gap-2 mb-5 hover:text-black dark:hover:text-white text-xl"
         >
             <ArrowLeftIcon className="w-6" />
             All posts
@@ -34,7 +34,7 @@ const image = `/ogimages/${slug.toLowerCase()}.png`;
 
         <Card>
             <header class="mb-16">
-                <figure class="bg-slate-100 rounded">
+                <figure class="bg-slate-100 rounded" transition:name={`blog-hero-${slug}`}>
                     <img
                         class="max-w-full h-auto min-h-[400px] mb-6 mx-auto"
                         src={heroImage}

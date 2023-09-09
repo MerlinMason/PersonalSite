@@ -30,7 +30,7 @@ const { posts, tagLabel } = Astro.props;
                 <li>
                     <Card>
                         <a href={`/blog/${post.slug}`}>
-                            <figure class="bg-slate-100 rounded">
+                            <figure class="bg-slate-100 rounded" transition:name={`blog-hero-${post.slug}`}>
                                 <img
                                     class="max-w-full h-auto min-h-[400px] mb-6 mx-auto"
                                     src={post.data.heroImage}

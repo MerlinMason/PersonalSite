@@ -2,5 +2,6 @@
     "files.associations": {
         "*.mdx": "markdown"
     },
-    "cSpell.enableFiletypes": ["astro"]
+    "cSpell.enableFiletypes": ["astro"],
+    "typescript.tsdk": "node_modules/typescript/lib"
 }

@@ -6,15 +6,18 @@ jobs:
     build-test-lint:
         runs-on: ubuntu-latest
         steps:
+            - uses: pnpm/action-setup@v2
+              with:
+                version: 8
             - uses: actions/checkout@v2
             - name: Install modules
-              run: yarn
+              run: pnpm install
             - name: Build
-              run: yarn build
+              run: pnpm run build
             - name: Eslint
-              run: yarn lint:all
+              run: pnpm run lint:all
             # - name: Run Jest tests
-            #   run: yarn test:jest
+            #   run: pnpm run test:jest
     auto-merge:
         name: Auto-Merge PRs by Dependabot
         needs:
