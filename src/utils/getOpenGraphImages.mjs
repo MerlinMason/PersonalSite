@@ -1,6 +1,6 @@
-const fs = require("fs");
-const puppeteer = require("puppeteer-core");
-const { readdir } = require("fs/promises");
+import fs from "fs";
+import puppeteer from "puppeteer-core";
+import { readdir } from "fs/promises";
 
 const OUTPUT_PATH = "./public/ogimages"; // where the created screenshots will go
 const CHROME_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"; // Chrome on your local machine
