@@ -98,8 +98,8 @@ devDependencies:
     specifier: ^29.7.0
     version: 29.7.0
   puppeteer-core:
-    specifier: 21.3.5
-    version: 21.3.5
+    specifier: 21.3.6
+    version: 21.3.6
   react:
     specifier: ^18.0.0
     version: 18.2.0
@@ -6861,8 +6861,8 @@ packages:
     resolution: {integrity: sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==}
     engines: {node: '>=6'}
 
-  /puppeteer-core@21.3.5:
-    resolution: {integrity: sha512-C/yVgvob/HbUVTedhnURDruFkJYHEqJWlb6YltJGj/T7yzWdG4ouQ0JER8aX5g2RS4DMQ0xMNuhUVYMqC2QfnQ==}
+  /puppeteer-core@21.3.6:
+    resolution: {integrity: sha512-ZH6tjTdRXwW2fx5W3jBbG+yUVQdDfZW1kjfwvWwMzsnKEli5ZwV70Zp97GOebHQHrK8zM3vX5VqI9sd48c9PnQ==}
     engines: {node: '>=16.3.0'}
     dependencies:
       '@puppeteer/browsers': 1.7.1
