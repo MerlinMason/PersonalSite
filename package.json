@@ -32,7 +32,7 @@
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-astro": "^0.29.1",
     "eslint-plugin-disable": "^2.0.3",
-    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jest": "^27.4.3",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-mdx": "^2.1.0",
