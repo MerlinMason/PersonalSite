@@ -30,7 +30,7 @@ dependencies:
 devDependencies:
   '@astrojs/mdx':
     specifier: 1.1.3
-    version: 1.1.3(astro@3.4.3)
+    version: 1.1.3(astro@3.4.4)
   '@astrojs/react':
     specifier: ^3.0.4
     version: 3.0.4(@types/react-dom@18.2.14)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)(vite@4.4.9)
@@ -39,7 +39,7 @@ devDependencies:
     version: 3.0.0
   '@astrojs/tailwind':
     specifier: ^5.0.2
-    version: 5.0.2(astro@3.4.3)(tailwindcss@3.3.5)
+    version: 5.0.2(astro@3.4.4)(tailwindcss@3.3.5)
   '@tailwindcss/typography':
     specifier: ^0.5.9
     version: 0.5.10(tailwindcss@3.3.5)
@@ -53,8 +53,8 @@ devDependencies:
     specifier: ^6.10.0
     version: 6.10.0(eslint@8.53.0)(typescript@5.2.2)
   astro:
-    specifier: ^3.4.3
-    version: 3.4.3(typescript@5.2.2)
+    specifier: ^3.4.4
+    version: 3.4.4(typescript@5.2.2)
   eslint:
     specifier: ^8.53.0
     version: 8.53.0
@@ -146,13 +146,8 @@ packages:
       - prettier-plugin-astro
     dev: false
 
-  /@astrojs/compiler@2.2.1:
-    resolution: {integrity: sha512-NJ1lWKzMkyEjE3W5NpPNAVot4/PLF5om/P6ekxNu3iLS05CaYFTcp7WpYMjdCC252b7wkNVAs45FNkVQ+RHW/g==}
-    dev: true
-
   /@astrojs/compiler@2.2.2:
     resolution: {integrity: sha512-nJaEgq0EP1mybaW1PvNnnp4RxVQnaLajUYnqrqxFbIdu1ELbH6OxNuAJWI+/q9TbMP6NG/eK6WRMhQsxX6qkUQ==}
-    dev: false
 
   /@astrojs/internal-helpers@0.2.1:
     resolution: {integrity: sha512-06DD2ZnItMwUnH81LBLco3tWjcZ1lGU9rLCCBaeUCGYe9cI0wKyY2W3kDyoW1I6GmcWgt1fu+D1CTvz+FIKf8A==}
@@ -193,13 +188,13 @@ packages:
       - typescript
     dev: false
 
-  /@astrojs/markdown-remark@3.3.0(astro@3.4.3):
+  /@astrojs/markdown-remark@3.3.0(astro@3.4.4):
     resolution: {integrity: sha512-ezFzEiZygc/ASe2Eul9v1yrTbNGqSbR348UGNXQ4Dtkx8MYRwfiBfmPm6VnEdfIGkW+bi5qIUReKfc7mPVUkIg==}
     peerDependencies:
       astro: ^3.3.0
     dependencies:
       '@astrojs/prism': 3.0.0
-      astro: 3.4.3(typescript@5.2.2)
+      astro: 3.4.4(typescript@5.2.2)
       github-slugger: 2.0.0
       import-meta-resolve: 3.0.0
       mdast-util-definitions: 6.0.0
@@ -217,16 +212,16 @@ packages:
       - supports-color
     dev: true
 
-  /@astrojs/mdx@1.1.3(astro@3.4.3):
+  /@astrojs/mdx@1.1.3(astro@3.4.4):
     resolution: {integrity: sha512-5U5l6bCmywF2IOO8T7oIeStrRB16cxlGCz02U2akpEkLw93dmn5QcHjr4Cwem0bSKROEjYqZ7DxN8t8YAAV2qA==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       astro: ^3.3.4
     dependencies:
-      '@astrojs/markdown-remark': 3.3.0(astro@3.4.3)
+      '@astrojs/markdown-remark': 3.3.0(astro@3.4.4)
       '@mdx-js/mdx': 2.3.0
       acorn: 8.10.0
-      astro: 3.4.3(typescript@5.2.2)
+      astro: 3.4.4(typescript@5.2.2)
       es-module-lexer: 1.3.0
       estree-util-visit: 1.2.1
       github-slugger: 2.0.0
@@ -277,13 +272,13 @@ packages:
       kleur: 4.1.5
     dev: true
 
-  /@astrojs/tailwind@5.0.2(astro@3.4.3)(tailwindcss@3.3.5):
+  /@astrojs/tailwind@5.0.2(astro@3.4.4)(tailwindcss@3.3.5):
     resolution: {integrity: sha512-oXqeqmBlkQmsltrsU9nEWeXOtrZIAHW8dcmX7BCdrjzPnU6dPwWzAwhddNQ9ihKiWwsLnlbwQZIo2CDigcZlIA==}
     peerDependencies:
       astro: ^3.2.4
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 3.4.3(typescript@5.2.2)
+      astro: 3.4.4(typescript@5.2.2)
       autoprefixer: 10.4.15(postcss@8.4.29)
       postcss: 8.4.29
       postcss-load-config: 4.0.1(postcss@8.4.29)
@@ -2248,10 +2243,10 @@ packages:
     resolution: {integrity: sha512-k9ASvY8pa6qttM+fvNJCILxxjftfNg/ou5cjd25SVHsc7moplezGGM9fgMUyf24SRYt8ShO603oHRDn2KqwxMg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     dependencies:
-      '@astrojs/compiler': 2.2.1
+      '@astrojs/compiler': 2.2.2
       '@typescript-eslint/scope-manager': 5.62.0
       '@typescript-eslint/types': 5.62.0
-      astrojs-compiler-sync: 0.3.3(@astrojs/compiler@2.2.1)
+      astrojs-compiler-sync: 0.3.3(@astrojs/compiler@2.2.2)
       debug: 4.3.4
       eslint-visitor-keys: 3.4.3
       espree: 9.6.1
@@ -2260,14 +2255,14 @@ packages:
       - supports-color
     dev: true
 
-  /astro@3.4.3(typescript@5.2.2):
-    resolution: {integrity: sha512-6zcONz2FjX6GaAy6Mysie4gT8rH5QCBXyPjkuYZKiPdV+sXmDpLm44J2MpQwA3mHb8YQ35L5O4nNg09d4luQ7g==}
+  /astro@3.4.4(typescript@5.2.2):
+    resolution: {integrity: sha512-Xyhif8RtKpNLo/TXN0Klxt0uq/2xNzbJ1tZ2udn/QguT9a6iGeO+N1iRSU5a4FrZNKb5jyg7koLpwfEVJjj7cw==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
-      '@astrojs/compiler': 2.2.1
+      '@astrojs/compiler': 2.2.2
       '@astrojs/internal-helpers': 0.2.1
-      '@astrojs/markdown-remark': 3.3.0(astro@3.4.3)
+      '@astrojs/markdown-remark': 3.3.0(astro@3.4.4)
       '@astrojs/telemetry': 3.0.4
       '@babel/core': 7.22.17
       '@babel/generator': 7.22.15
@@ -2337,13 +2332,13 @@ packages:
       - typescript
     dev: true
 
-  /astrojs-compiler-sync@0.3.3(@astrojs/compiler@2.2.1):
+  /astrojs-compiler-sync@0.3.3(@astrojs/compiler@2.2.2):
     resolution: {integrity: sha512-LbhchWgsvjvRBb5n5ez8/Q/f9ZKViuox27VxMDOdTUm8MRv9U7phzOiLue5KluqTmC0z1LId4gY2SekvoDrkuw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       '@astrojs/compiler': '>=0.27.0'
     dependencies:
-      '@astrojs/compiler': 2.2.1
+      '@astrojs/compiler': 2.2.2
       synckit: 0.8.5
     dev: true
 
