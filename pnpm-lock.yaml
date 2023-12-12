@@ -9,8 +9,8 @@ dependencies:
     specifier: ^0.3.1
     version: 0.3.1(prettier@3.0.3)(typescript@5.3.3)
   '@fingerprintjs/fingerprintjs':
-    specifier: ^4.0.1
-    version: 4.0.1
+    specifier: ^4.2.1
+    version: 4.2.1
   '@heroicons/react':
     specifier: ^2.0.18
     version: 2.0.18(react@18.2.0)
@@ -1257,8 +1257,8 @@ packages:
     resolution: {integrity: sha512-qQfo2mxH5yVom1kacMtZZJFVdW+E70mqHMJvVg6WTLo+VBuQJ4TojZlfWBjK0ve5BdEeNAVxOsl/nvNMpJOaJA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
-  /@fingerprintjs/fingerprintjs@4.0.1:
-    resolution: {integrity: sha512-utXfX0ntmU08MxQ1cfKRbri57xb+aqYNIt2UNYcPsT/fQgKhZsnIBGRIhEifMZ7NZDyGLAhctWaytDkC27fibA==}
+  /@fingerprintjs/fingerprintjs@4.2.1:
+    resolution: {integrity: sha512-uW+GVUNTgCXbVPEbgnbf5Aor22e1dyYR0JRwdUiZBaikfxr7KlhV9y0aahA1FB99fEeQVvhCEvTcPIFSYTy9Pw==}
     dependencies:
       tslib: 2.6.2
     dev: false
