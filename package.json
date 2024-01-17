@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@astrojs/mdx": "1.1.5",
-    "@astrojs/react": "^3.0.7",
+    "@astrojs/react": "^3.0.9",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/tailwind": "^5.1.0",
     "@tailwindcss/typography": "^0.5.9",
