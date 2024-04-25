@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.2",
-    "@fingerprintjs/fingerprintjs": "^4.0.1",
+    "@fingerprintjs/fingerprintjs": "^4.3.0",
     "@heroicons/react": "^2.1.1",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "mdast-util-to-string": "^4.0.0",
