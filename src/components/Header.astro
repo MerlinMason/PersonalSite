@@ -1,7 +1,7 @@
 ---
 import Avatar from "./Avatar.astro";
-import DarkModeToggle from "./DarkModeToggle";
 import HeaderLink from "./HeaderLink.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <header class="flex items-center mb-24">
@@ -13,8 +13,6 @@ import HeaderLink from "./HeaderLink.astro";
         <HeaderLink href="/about">About</HeaderLink>
         <HeaderLink href="/cv">CV</HeaderLink>
         <HeaderLink href="/blog">Blog</HeaderLink>
+        <ThemeToggle />
     </nav>
-    <div class="w-16">
-        <DarkModeToggle client:only="react" />
-    </div>
 </header>

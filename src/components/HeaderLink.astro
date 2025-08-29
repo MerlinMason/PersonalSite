@@ -8,7 +8,7 @@ const isActive = Astro.url.pathname.split("/")[1] === href?.toString().split("/"
 <a
     href={href}
     class={`
-        font-bold uppercase text-slate-700 dark:text-slate-300
+        pt-0.5 font-bold uppercase text-slate-700 dark:text-slate-300
         hover:text-slate-900 dark:hover:text-slate-100
         ${isActive ? "underline underline-offset-8 decoration-2" : ""}
     `}
