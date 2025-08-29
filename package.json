@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.5.1",
     "@fingerprintjs/fingerprintjs": "^4.0.1",
     "@heroicons/react": "^2.1.1",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
