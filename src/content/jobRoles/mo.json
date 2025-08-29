@@ -1,9 +1,11 @@
 {
-  "title": "Cofounder & CTO",
+  "title": "Co-founder & Engineering Lead",
   "company": "Mo",
   "location": "London, UK",
   "contract": false,
   "link": "https://mo.work",
   "dateStart": "2014-12-01",
-  "dateEnd": "2021-11-01"
+  "dateEnd": "2021-11-01",
+  "highlighted": true,
+  "description": "I co-founded and led engineering, building a 12 strong engineering team and a product used by 100,000 users from scratch. With a small team we created a product that would often win over industry incumbents (Yammer, Reward Gateway, Perkbox etc) in sales processes. Investor due diligence found our engineering team to be \"excellent\" and \"an enabler for the business\"."
 }

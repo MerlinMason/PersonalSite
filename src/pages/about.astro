@@ -1,5 +1,6 @@
 ---
 import { CalendarIcon } from "@heroicons/react/24/outline";
+import { getCollection } from "astro:content";
 import Card from "../components/Card.astro";
 import DualCTA from "../components/DualCTA.astro";
 import JazzyText from "../components/JazzyText.astro";
@@ -8,26 +9,23 @@ import PageLayout from "../layouts/Page.astro";
 
 const currentYear = new Date().getFullYear();
 
-const highlights = [
-    {
-        title: "Currently",
-        company: "Samaya AI",
-        companyUrl: "https://samaya.ai",
-        role: "Frontend Lead",
-        period: "Aug 2023 — now",
-        description:
-            "Working on next generation knowledge discovery for financial domain experts. As one of the first 10 hires, and the first product focused engineer I'm helping an exceptionally strong AI team (ex. Meta, Google, AWS) on their journey towards product market fit. Working directly with the founders I've helped our journey from $0 to 8-figure revenue and landing our $43M Series A led by NEA.",
-    },
-    {
-        title: "Recently",
-        company: "Mo",
-        companyUrl: "https://mo.work",
-        role: "Co-founder & Engineering Lead",
-        period: "2014 — 2021",
-        description:
-            'I co-founded and led engineering, building a 12 strong engineering team and a product used by 100,000 users from scratch. With a small team we created a product that would often win over industry incumbents (Yammer, Reward Gateway, Perkbox etc) in sales processes. Investor due diligence found our engineering team to be "excellent" and "an enabler for the business".',
-    },
-];
+const jobRolesCollection = await getCollection("jobRoles");
+const highlightedRoles = jobRolesCollection
+    .filter(({ data }) => data.highlighted)
+    .map(({ data }) => data)
+    .sort((a, b) => b.dateStart.getTime() - a.dateStart.getTime());
+
+const formatDate = (date: Date) =>
+    date.toLocaleDateString("en-GB", {
+        month: "short",
+        year: "numeric",
+    });
+
+const getTitleForRole = (index: number) => {
+    if (index === 0) return "Currently";
+    if (index === 1) return "Recently"; 
+    return null;
+};
 ---
 
 <PageLayout
@@ -54,32 +52,39 @@ const highlights = [
             </div>
 
             {
-                highlights.map((highlight) => (
-                    <article class="mb-10">
-                        <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">
-                            {highlight.title}
-                        </h2>
+                highlightedRoles.map((role, index) => {
+                    const sectionTitle = getTitleForRole(index);
+                    return (
+                        <article class="mb-10">
+                            {sectionTitle && (
+                                <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+                                    {sectionTitle}
+                                </h2>
+                            )}
 
-                        <h3 class="flex flex-wrap items-center gap-3 text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">
-                            <a
-                                href={highlight.companyUrl}
-                                target="_blank"
-                                class="hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-150"
-                            >
-                                {highlight.company}
-                            </a>
-                            <Pill>{highlight.role}</Pill>
-                            <div class="flex items-center gap-2 text-slate-400 dark:text-slate-500 text-sm">
-                                <CalendarIcon className="w-4 h-4" />
-                                {highlight.period}
-                            </div>
-                        </h3>
+                            <h3 class="flex flex-wrap items-center gap-3 text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">
+                                <a
+                                    href={role.link}
+                                    target="_blank"
+                                    class="hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-150"
+                                >
+                                    {role.company}
+                                </a>
+                                <Pill>{role.title}</Pill>
+                                <div class="flex items-center gap-2 text-slate-400 dark:text-slate-500 text-sm">
+                                    <CalendarIcon className="w-4 h-4" />
+                                    {formatDate(role.dateStart)} — {formatDate(role.dateEnd)}
+                                </div>
+                            </h3>
 
-                        <div class="prose lg:prose-lg prose-slate dark:prose-invert max-w-none">
-                            <p>{highlight.description}</p>
-                        </div>
-                    </article>
-                ))
+                            {role.description && (
+                                <div class="prose lg:prose-lg prose-slate dark:prose-invert max-w-none">
+                                    <p>{role.description}</p>
+                                </div>
+                            )}
+                        </article>
+                    );
+                })
             }
 
             <div class="pt-6 border-t border-slate-200/60 dark:border-slate-700/60">
