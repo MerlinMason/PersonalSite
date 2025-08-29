@@ -7,17 +7,18 @@ import Button from "./Button.astro";
 
 const allBlogPosts = await getCollection("blog", ({ data }) => !data.draft);
 const tags = [...new Set(allBlogPosts.map((post) => post.data.tags).flat())];
+const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
 
 const filters = [
     {
         url: "/blog",
         label: "All",
-        selected: "/blog" === Astro.url.pathname,
+        selected: "/blog" === currentPage,
     },
     ...tags.map((tag) => ({
         url: `/blog/tag/${slugify(tag)}`,
         label: tag,
-        selected: `/blog/tag/${slugify(tag)}` === Astro.url.pathname,
+        selected: `/blog/tag/${slugify(tag)}` === currentPage,
     })),
 ];
 ---
