@@ -13,7 +13,21 @@ const blogCollection = defineCollection({
     }),
 });
 
+const jobRolesCollection = defineCollection({
+    type: 'data',
+    schema: z.object({
+        title: z.string(),
+        company: z.string(),
+        location: z.string(),
+        contract: z.boolean(),
+        link: z.string().url().nullable(),
+        dateStart: z.string().transform((str) => new Date(str)),
+        dateEnd: z.string().transform((str) => str === "current" ? new Date() : new Date(str)),
+    }),
+});
+
 // eslint-disable-next-line import/prefer-default-export
 export const collections = {
     blog: blogCollection,
+    jobRoles: jobRolesCollection,
 };

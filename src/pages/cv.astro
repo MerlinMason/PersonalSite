@@ -5,85 +5,16 @@ import {
     MapPinIcon,
     IdentificationIcon,
 } from "@heroicons/react/24/outline/index.js";
+import { getCollection } from "astro:content";
 import Page from "../layouts/Page.astro";
 import Card from "../components/Card.astro";
 import Pill from "../components/Pill.astro";
 import JazzyText from "../components/JazzyText.astro";
 
-const roles = [
-    {
-        title: "Frontend Lead",
-        contract: false,
-        company: "Samaya AI",
-        location: "London, UK",
-        link: "https://samaya.ai",
-        from: new Date("08/01/2023"),
-        to: new Date(),
-    },
-    {
-        title: "Staff Frontend Engineer",
-        contract: false,
-        company: "Healios",
-        location: "London, UK",
-        link: "https://healios.org.uk",
-        from: new Date("11/01/2021"),
-        to: new Date("08/01/2023"),
-    },
-    {
-        title: "Cofounder & CTO",
-        contract: false,
-        company: "Mo",
-        location: "London, UK",
-        link: "https://mo.work",
-        from: new Date("12/01/2014"),
-        to: new Date("11/01/2021"),
-    },
-    {
-        title: "Senior JavaScript Engineer",
-        contract: true,
-        company: "ATP",
-        location: "London, UK",
-        link: "https://atp.io",
-        from: new Date("06/01/2014"),
-        to: new Date("07/01/2015"),
-    },
-    {
-        title: "JavaScript Engineer",
-        contract: false,
-        company: "UK2 Group",
-        location: "London, UK",
-        link: "https://www.thghosting.com",
-        from: new Date("04/01/2013"),
-        to: new Date("06/01/2014"),
-    },
-    {
-        title: "UI Engineer",
-        contract: true,
-        company: "Brilliant Basics",
-        location: "London, UK",
-        link: "http://www.wongdoody.com",
-        from: new Date("06/01/2012"),
-        to: new Date("05/01/2013"),
-    },
-    {
-        title: "Web Developer",
-        contract: true,
-        company: "Andrews&Co",
-        location: "Melbourne, AUS",
-        link: null,
-        from: new Date("10/01/2010"),
-        to: new Date("06/01/2012"),
-    },
-    {
-        title: "Web & UX Designer",
-        contract: true,
-        company: "MakeWav.es",
-        location: "Leeds, UK",
-        link: null,
-        from: new Date("12/01/2008"),
-        to: new Date("09/01/2010"),
-    },
-];
+const jobRolesCollection = await getCollection("jobRoles");
+const roles = jobRolesCollection
+    .map(({ data }) => data)
+    .sort((a, b) => b.dateStart.getTime() - a.dateStart.getTime());
 
 const formatDate = (date: Date) =>
     date.toLocaleDateString("en-GB", {
@@ -98,7 +29,7 @@ const formatDate = (date: Date) =>
     <Card>
         <ol class="divide-y divide-black/10 dark:divide-white/10">
             {
-                roles.map(({ title, company, location, contract, link, from, to }) => (
+                roles.map(({ title, company, location, contract, link, dateStart, dateEnd }) => (
                     <li class="py-6 first:pt-0 last:pb-0">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-1">
                             {link ? (
@@ -119,9 +50,9 @@ const formatDate = (date: Date) =>
                         <div class="grid gap-2 grid-col-1 sm:grid-cols-3 text-slate-700 dark:text-slate-300">
                             <div class="flex items-center gap-2">
                                 <CalendarIcon className="w-6" />
-                                {formatDate(from)}
+                                {formatDate(dateStart)}
                                 {" — "}
-                                {formatDate(to)}
+                                {formatDate(dateEnd)}
                             </div>
 
                             <div class="flex items-center gap-2">
