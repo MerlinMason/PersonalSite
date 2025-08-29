@@ -23,7 +23,7 @@ const formatDate = (date: Date) =>
 
 const getTitleForRole = (index: number) => {
     if (index === 0) return "Currently";
-    if (index === 1) return "Recently"; 
+    if (index === 1) return "Recently";
     return null;
 };
 ---
@@ -71,7 +71,7 @@ const getTitleForRole = (index: number) => {
                                     {role.company}
                                 </a>
                                 <Pill>{role.title}</Pill>
-                                <div class="flex items-center gap-2 text-slate-400 dark:text-slate-500 text-sm">
+                                <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm">
                                     <CalendarIcon className="w-4 h-4" />
                                     {formatDate(role.dateStart)} — {formatDate(role.dateEnd)}
                                 </div>
