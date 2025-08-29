@@ -5,7 +5,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://merlinmason.co.uk/",
+    site: "https://merlinmason.co.uk",
     integrations: [
         mdx(), 
         tailwind(), 
