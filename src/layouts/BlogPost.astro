@@ -5,7 +5,6 @@ import Card from "../components/Card.astro";
 import JazzyText from "../components/JazzyText.astro";
 import BlogPostMeta from "../components/BlogPostMeta.astro";
 import type { CollectionEntry } from "astro:content";
-import LikeButton from "../components/LikeButton";
 
 type Props = {
     slug: string;
@@ -50,8 +49,6 @@ const image = `/ogimages/${slug.toLowerCase()}.png`;
             <div class="prose lg:prose-xl prose-slate dark:prose-invert prose-pre:!leading-normal">
                 <slot />
             </div>
-
-            <LikeButton slug={slug} client:visible />
         </Card>
     </article>
 </Page>
