@@ -1,11 +1,8 @@
 import rss from "@astrojs/rss";
-// eslint-disable-next-line import/no-unresolved
 import { getCollection } from "astro:content";
-
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 
-// eslint-disable-next-line import/prefer-default-export
-export async function get() {
+export async function GET() {
     const allBlogPosts = await getCollection("blog", ({ data }) => !data.draft);
     const sortedBlogPosts = allBlogPosts.sort(
         (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
