@@ -9,28 +9,17 @@ const allBlogPosts = await getCollection("blog", ({ data }) => !data.draft);
 const tags = [...new Set(allBlogPosts.map((post) => post.data.tags).flat())];
 const currentPage = Astro.url.pathname;
 
-// Debug logging - remove after fixing
-console.log("Current page:", currentPage);
-console.log("Full URL:", Astro.url.href);
-console.log("Pathname:", Astro.url.pathname);
-
-// Helper function to normalize URLs for comparison
-const normalizeUrl = (url: string) => url.endsWith('/') && url !== '/' ? url.slice(0, -1) : url;
-
 const filters = [
     {
         url: "/blog",
         label: "All",
-        selected: normalizeUrl("/blog") === normalizeUrl(currentPage),
+        selected: "/blog" === currentPage,
     },
-    ...tags.map((tag) => {
-        const tagUrl = `/blog/tag/${slugify(tag)}`;
-        return {
-            url: tagUrl,
-            label: tag,
-            selected: normalizeUrl(tagUrl) === normalizeUrl(currentPage),
-        };
-    }),
+    ...tags.map((tag) => ({
+        url: `/blog/tag/${slugify(tag)}`,
+        label: tag,
+        selected: `/blog/tag/${slugify(tag)}` === currentPage,
+    })),
 ];
 ---
 
