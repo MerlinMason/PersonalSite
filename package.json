@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "license": "MIT",
-  "packageManager": "pnpm@8.7.4",
+  "packageManager": "pnpm@10.15.0",
   "scripts": {
     "dev": "astro check --watch & astro dev",
     "build": "astro build",
