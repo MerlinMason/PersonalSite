@@ -6,6 +6,7 @@ import DualCTA from "../components/DualCTA.astro";
 import JazzyText from "../components/JazzyText.astro";
 import Pill from "../components/Pill.astro";
 import PageLayout from "../layouts/Page.astro";
+import { formatDate } from "../utils/formatDate";
 
 const currentYear = new Date().getFullYear();
 
@@ -14,12 +15,6 @@ const highlightedRoles = jobRolesCollection
     .filter(({ data }) => data.highlighted)
     .map(({ data }) => data)
     .sort((a, b) => b.dateStart.getTime() - a.dateStart.getTime());
-
-const formatDate = (date: Date) =>
-    date.toLocaleDateString("en-GB", {
-        month: "short",
-        year: "numeric",
-    });
 
 const getTitleForRole = (index: number) => {
     if (index === 0) return "Currently";
@@ -71,9 +66,9 @@ const getTitleForRole = (index: number) => {
                                     {role.company}
                                 </a>
                                 <Pill>{role.title}</Pill>
-                                <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm">
+                                <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wide">
                                     <CalendarIcon className="w-4 h-4" />
-                                    {formatDate(role.dateStart)} — {formatDate(role.dateEnd)}
+                                    {formatDate(role.dateStart)} — {formatDate(role.dateEnd, true)}
                                 </div>
                             </h3>
 

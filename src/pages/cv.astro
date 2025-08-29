@@ -10,17 +10,12 @@ import Page from "../layouts/Page.astro";
 import Card from "../components/Card.astro";
 import Pill from "../components/Pill.astro";
 import JazzyText from "../components/JazzyText.astro";
+import { formatDate } from "../utils/formatDate";
 
 const jobRolesCollection = await getCollection("jobRoles");
 const roles = jobRolesCollection
     .map(({ data }) => data)
     .sort((a, b) => b.dateStart.getTime() - a.dateStart.getTime());
-
-const formatDate = (date: Date) =>
-    date.toLocaleDateString("en-GB", {
-        month: "short",
-        year: "numeric",
-    });
 ---
 
 <Page title="CV" description="CV for Merlin Mason">
@@ -56,7 +51,7 @@ const formatDate = (date: Date) =>
                                 <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
                                     <CalendarIcon className="w-4 h-4" />
                                     <span class="text-xs font-medium uppercase tracking-wide">
-                                        {formatDate(dateStart)} — {formatDate(dateEnd)}
+                                        {formatDate(dateStart)} — {formatDate(dateEnd, true)}
                                     </span>
                                 </div>
 
