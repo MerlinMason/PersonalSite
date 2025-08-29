@@ -24,50 +24,63 @@ const formatDate = (date: Date) =>
 ---
 
 <Page title="CV" description="CV for Merlin Mason">
-    <h1 class="font-bold text-hero mb-8">My <JazzyText>curriculum vitae</JazzyText>.</h1>
+    <div class="max-w-4xl mx-auto">
+        <h1 class="font-bold text-hero mb-12 text-center lg:text-left">
+            My <JazzyText>curriculum vitae</JazzyText>.
+        </h1>
 
-    <Card>
-        <ol class="divide-y divide-black/10 dark:divide-white/10">
+        <div class="space-y-4">
             {
                 roles.map(({ title, company, location, contract, link, dateStart, dateEnd }) => (
-                    <li class="py-6 first:pt-0 last:pb-0">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-1">
-                            {link ? (
-                                <a
-                                    href={link}
-                                    class="hover:text-black dark:hover:text-teal-400 flex items-center"
-                                >
-                                    <span class="mr-2">{company}</span>
-                                    <ArrowTopRightOnSquareIcon className="w-4 inline-block" />
-                                </a>
-                            ) : (
-                                <>{company}</>
-                            )}
-                        </h2>
-
-                        <h3 class="mb-6 text-lg font-semibold">{title}</h3>
-
-                        <div class="grid gap-2 grid-col-1 sm:grid-cols-3 text-slate-700 dark:text-slate-300">
-                            <div class="flex items-center gap-2">
-                                <CalendarIcon className="w-6" />
-                                {formatDate(dateStart)}
-                                {" — "}
-                                {formatDate(dateEnd)}
+                    <Card>
+                        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                            <div class="flex-1">
+                                <h2 class="text-xl lg:text-2xl font-bold mb-3 text-slate-900 dark:text-slate-100">
+                                    {link ? (
+                                        <a
+                                            href={link}
+                                            class="hover:text-teal-500 dark:hover:text-teal-400 flex items-center gap-2 transition-colors duration-150"
+                                        >
+                                            <span>{company}</span>
+                                            <ArrowTopRightOnSquareIcon className="w-4 h-4 opacity-60" />
+                                        </a>
+                                    ) : (
+                                        <>{company}</>
+                                    )}
+                                </h2>
+                                <div class="flex items-center gap-2">
+                                    <Pill>{title}</Pill>
+                                </div>
                             </div>
 
-                            <div class="flex items-center gap-2">
-                                <MapPinIcon className="w-6" />
-                                {location}
-                            </div>
+                            <div class="lg:text-right">
+                                <div class="flex flex-wrap lg:flex-col gap-3 lg:gap-2 lg:items-end text-sm">
+                                    <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+                                        <CalendarIcon className="w-4 h-4" />
+                                        <span class="text-xs font-medium uppercase tracking-wide">
+                                            {formatDate(dateStart)} — {formatDate(dateEnd)}
+                                        </span>
+                                    </div>
 
-                            <div class="flex items-center gap-2">
-                                <IdentificationIcon className="w-6" />
-                                <Pill>{contract ? "Contract" : "Perm"}</Pill>
+                                    <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+                                        <MapPinIcon className="w-4 h-4" />
+                                        <span class="text-xs font-medium uppercase tracking-wide">
+                                            {location}
+                                        </span>
+                                    </div>
+
+                                    <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+                                        <IdentificationIcon className="w-4 h-4" />
+                                        <span class="text-xs font-medium uppercase tracking-wide">
+                                            {contract ? "Contract" : "Permanent"}
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </li>
+                    </Card>
                 ))
             }
-        </ol>
-    </Card>
+        </div>
+    </div>
 </Page>

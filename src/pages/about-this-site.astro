@@ -8,8 +8,8 @@ import PageLayout from "../layouts/Page.astro";
 <PageLayout title="About this site" description="How I built merlinmason.co.uk">
     <h1 class="font-bold text-hero mb-8">About this <JazzyText>site</JazzyText>.</h1>
 
-    <Card class="space-y-5">
-        <div class="prose lg:prose-xl prose-slate dark:prose-invert mb-12">
+    <Card>
+        <div class="prose lg:prose-lg prose-slate dark:prose-invert max-w-none mb-12">
             <p>This is my personal website that I've built with help from the following things:</p>
 
             <h3>Astro</h3>
@@ -58,6 +58,8 @@ import PageLayout from "../layouts/Page.astro";
             </p>
         </div>
 
-        <DualCTA primaryHref="/about" primaryText="About Merlin" />
+        <div class="pt-6 border-t border-slate-200/60 dark:border-slate-700/60">
+            <DualCTA primaryHref="/about" primaryText="About Merlin" />
+        </div>
     </Card>
 </PageLayout>

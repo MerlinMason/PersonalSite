@@ -1,29 +1,10 @@
 ---
-type Props = {
-    href?: string;
-    selected?: boolean;
-};
 
-const { href, selected } = Astro.props;
-
-const style = `
-    inline-block 
-    text-sm uppercase font-bold whitespace-nowrap
-    py-px px-3 rounded-full
-    border border-slate-300
-    ${selected ? "text-black dark:text-slate-100" : "text-slate-500 dark:text-slate-300"}
-    ${href ? "hover:text-slate-900/80 dark:hover:text-slate-100" : ""}
-`;
 ---
 
-{
-    href ? (
-        <a href={href} class={style}>
-            <slot />
-        </a>
-    ) : (
-        <span class={style}>
-            <slot />
-        </span>
-    )
-}
+<span
+    class="inline-flex items-center text-xs font-semibold tracking-wide uppercase px-3 py-1.5 rounded-full
+    bg-teal-50/60 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300 border border-teal-200/40 dark:border-teal-700/40"
+>
+    <slot />
+</span>

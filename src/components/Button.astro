@@ -1,19 +1,24 @@
 ---
-const { href } = Astro.props;
+type Props = {
+    href: string;
+    size?: "sm" | "lg";
+    selected?: boolean;
+};
+
+const { href, size = "lg", selected = false } = Astro.props;
 ---
 
 <a
     href={href}
-    class={`
-    overflow-hidden inline-block relative px-8 py-4 rounded-full scale-100
-    transition:all duration-100
-    text-black/70 font-bold text-lg whitespace-nowrap dark:text-slate-100
-    before:transition-transform before:duration-100 before:ease-in-out 
-    before:bg-gradient-to-r before:from-teal-400 before:to-sky-400 before:absolute before:inset-0 before:-z-[1]
-    after:bg-slate-50 after:absolute after:inset-1 after:rounded-full after:-z-[1] after:dark:bg-slate-900
-    hover:after:bg-slate-50/70 dark:hover:after:bg-black/80
-    active:scale-95
-`}
+    class:list={[
+        "inline-flex items-center font-semibold transition-all duration-200 shadow-sm hover:shadow-md",
+        // Base size styling
+        size === "sm" ? "px-2.5 py-1 text-sm rounded-md" : "px-6 py-3 text-lg rounded-lg",
+        // Selected/active state
+        selected 
+            ? "bg-gradient-to-r from-teal-600 to-blue-700 text-white border border-teal-600/50 hover:from-teal-700 hover:to-blue-800" 
+            : "bg-gradient-to-r from-teal-50 to-blue-50 dark:from-teal-900/30 dark:to-blue-900/30 border border-teal-200/50 dark:border-teal-700/50 text-teal-700 dark:text-teal-300 hover:from-teal-100 hover:to-blue-100 dark:hover:from-teal-800/40 dark:hover:to-blue-800/40"
+    ]}
 >
     <slot />
 </a>

@@ -3,7 +3,8 @@ import { getCollection } from "astro:content";
 import { TagIcon } from "@heroicons/react/24/outline/index.js";
 import slugify from "../utils/slugify";
 import Pill from "./Pill.astro";
-import PillList from "./PillList.astro";
+import ButtonContainer from "./ButtonContainer.astro";
+import Button from "./Button.astro";
 
 const allBlogPosts = await getCollection("blog", ({ data }) => !data.draft);
 const tags = [...new Set(allBlogPosts.map((post) => post.data.tags).flat())];
@@ -24,13 +25,13 @@ const filters = [
 
 <menu class="flex items-center gap-3 mb-6">
     <TagIcon className="w-6" />
-    <PillList>
+    <ButtonContainer>
         {
             filters.map(({ url, label, selected }) => (
-                <Pill selected={selected} href={url}>
+                <Button selected={selected} href={url} size="sm">
                     {label}
-                </Pill>
+                </Button>
             ))
         }
-    </PillList>
+    </ButtonContainer>
 </menu>

@@ -1,11 +1,10 @@
 ---
 import { TagIcon, ClockIcon } from "@heroicons/react/24/outline/index.js";
-
 import FormattedDate from "./FormattedDate.astro";
-import PillList from "./PillList.astro";
-import Pill from "./Pill.astro";
+import ButtonContainer from "./ButtonContainer.astro";
 import slugify from "../utils/slugify";
 import type { CollectionEntry } from "astro:content";
+import Button from "./Button.astro";
 
 type Props = Pick<CollectionEntry<"blog">["data"], "timeToReadMins" | "pubDate" | "tags">;
 const { timeToReadMins, pubDate, tags } = Astro.props;
@@ -21,8 +20,14 @@ const { timeToReadMins, pubDate, tags } = Astro.props;
 
     <div class="flex items-center gap-2">
         <TagIcon className="w-6" />
-        <PillList>
-            {tags?.map((tag: string) => <Pill href={`/blog/tag/${slugify(tag)}`}>{tag}</Pill>)}
-        </PillList>
+        <ButtonContainer>
+            {
+                tags?.map((tag: string) => (
+                    <Button size="sm" href={`/blog/tag/${slugify(tag)}`}>
+                        {tag}
+                    </Button>
+                ))
+            }
+        </ButtonContainer>
     </div>
 </div>

@@ -1,13 +1,16 @@
 ---
-export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
+export interface Props {
+    class?: string;
+}
 
-const { class: className } = Astro.props;
+const { class: className, ...props } = Astro.props;
 ---
 
 <div
-    class={`mb-6 sm:p-8 sm:bg-white dark:sm:bg-slate-800 sm:shadow-xl rounded-lg ${
+    class={`bg-white dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200/60 dark:border-slate-700/60 rounded-xl p-6 shadow-md ${
         className ? className : ""
     }`}
+    {...props}
 >
     <slot />
 </div>

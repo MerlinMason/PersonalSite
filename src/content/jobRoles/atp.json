@@ -3,7 +3,7 @@
   "company": "ATP",
   "location": "London, UK",
   "contract": true,
-  "link": "https://atp.io",
+  "link": null,
   "dateStart": "2014-06-01",
   "dateEnd": "2015-07-01"
 }

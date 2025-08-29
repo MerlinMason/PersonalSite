@@ -1,54 +1,90 @@
 ---
+import { CalendarIcon } from "@heroicons/react/24/outline";
 import Card from "../components/Card.astro";
 import DualCTA from "../components/DualCTA.astro";
 import JazzyText from "../components/JazzyText.astro";
+import Pill from "../components/Pill.astro";
 import PageLayout from "../layouts/Page.astro";
 
 const currentYear = new Date().getFullYear();
+
+const highlights = [
+    {
+        title: "Currently",
+        company: "Samaya AI",
+        companyUrl: "https://samaya.ai",
+        role: "Frontend Lead",
+        period: "Aug 2023 — now",
+        description:
+            "Working on next generation knowledge discovery for financial domain experts. As one of the first 10 hires, and the first product focused engineer I'm helping an exceptionally strong AI team (ex. Meta, Google, AWS) on their journey towards product market fit. Working directly with the founders I've helped our journey from $0 to 8-figure revenue and landing our $43M Series A led by NEA.",
+    },
+    {
+        title: "Recently",
+        company: "Mo",
+        companyUrl: "https://mo.work",
+        role: "Co-founder & Engineering Lead",
+        period: "2014 — 2021",
+        description:
+            'I co-founded and led engineering, building a 12 strong engineering team and a product used by 100,000 users from scratch. With a small team we created a product that would often win over industry incumbents (Yammer, Reward Gateway, Perkbox etc) in sales processes. Investor due diligence found our engineering team to be "excellent" and "an enabler for the business".',
+    },
+];
 ---
 
 <PageLayout
     title="About me"
     description="I'm Merlin, a software engineer living & working in London, UK."
 >
-    <h1 class="font-bold text-hero mb-8">All <JazzyText>about</JazzyText> me.</h1>
+    <div class="max-w-4xl mx-auto">
+        <h1 class="font-bold text-hero mb-12 text-center lg:text-left">
+            All <JazzyText>about</JazzyText> me.
+        </h1>
 
-    <Card class="space-y-5">
-        <div class="prose lg:prose-xl prose-slate dark:prose-invert mb-12">
-            <p>
-                Hi, I'm Merlin, a frontend-leaning fullstack product engineer. I have {
-                    currentYear - 2009
-                } years experience, in startups, scale-ups and as an entrepreneur. I've developed a T-shaped
-                skill set with a deep understanding of the frontend stack and a broad understanding of
-                product design and UX, backend engineering, devops and infrastructure, business operations,
-                security and compliance. I'm passionate about building user centric digital products
-                that are delightful to use and deliver measurable business impact.
-            </p>
+        <Card>
+            <div class="prose lg:prose-2xl prose-slate dark:prose-invert mb-10">
+                <p class="font-light">
+                    Hi, I'm Merlin, a frontend-leaning fullstack product engineer. I have {
+                        currentYear - 2009
+                    } years experience, in startups, scale-ups and as an entrepreneur. I've developed
+                    a T-shaped skill set with a deep understanding of the frontend stack and a broad
+                    understanding of product design and UX, backend engineering, devops and infrastructure,
+                    business operations, security and compliance. I'm passionate about building user
+                    centric digital products that are delightful to use and deliver measurable business
+                    impact.
+                </p>
+            </div>
 
-            <p>
-                <strong>Currently</strong> (Aug 2023 — now) I'm a Frontend Lead at <a
-                    href="https://samaya.ai"
-                    target="_blank"
-                    >Samaya AI
-                </a>working on next generation knowledge discovery for financial domain experts. As
-                one of the first 10 hires, and the first product focused engineer I'm helping an
-                exceptionally strong AI team (ex. Meta, Google, AWS) on their journey towards
-                product market fit. Working directly with the founders I’ve helped our journey from
-                $0 to 8-figure revenue and landing our $43M Series A led by NEA.
-            </p>
+            {
+                highlights.map((highlight) => (
+                    <article class="mb-10">
+                        <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+                            {highlight.title}
+                        </h2>
 
-            <p>
-                <strong>Recently</strong> (2014 — 2021), I co-founded and led engineering at <a
-                    href="https://mo.work"
-                    target="_blank">Mo</a
-                >, building a 12 strong engineering team and a product used by 100,000 users from
-                scratch. With a small team we created a product that would often win over industry
-                incumbents (Yammer, Reward Gateway, Perkbox etc) in sales processes. Investor due
-                diligence found our engineering team to be "excellent" and "an enabler for the
-                business".
-            </p>
-        </div>
+                        <h3 class="flex flex-wrap items-center gap-3 text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">
+                            <a
+                                href={highlight.companyUrl}
+                                target="_blank"
+                                class="hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-150"
+                            >
+                                {highlight.company}
+                            </a>
+                            <Pill>{highlight.role}</Pill>
+                            <div class="flex items-center gap-2 text-slate-400 dark:text-slate-500 text-sm">
+                                <CalendarIcon className="w-4 h-4" />
+                                {highlight.period}
+                            </div>
+                        </h3>
 
-        <DualCTA primaryHref="/cv" primaryText="See full CV" />
-    </Card>
+                        <div class="prose lg:prose-lg prose-slate dark:prose-invert max-w-none">
+                            <p>{highlight.description}</p>
+                        </div>
+                    </article>
+                ))
+            }
+
+            <div class="pt-6 border-t border-slate-200/60 dark:border-slate-700/60">
+                <DualCTA primaryHref="/cv" primaryText="See full CV" />
+            </div>
+        </Card>
+    </div>
 </PageLayout>
