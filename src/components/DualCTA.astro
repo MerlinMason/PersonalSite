@@ -4,12 +4,18 @@ import Button from "./Button.astro";
 interface Props {
   primaryHref: string;
   primaryText: string;
+  hasBorderTop?: boolean;
 }
 
-const { primaryHref, primaryText } = Astro.props;
+const { primaryHref, primaryText, hasBorderTop } = Astro.props;
 ---
 
-<div class="flex flex-col sm:flex-row items-center sm:justify-start gap-4">
+<div
+  class:list={[
+    "flex flex-col sm:flex-row items-center sm:justify-start gap-4",
+    hasBorderTop ? "pt-6 border-t border-slate-200/60 dark:border-slate-700/60" : "",
+  ]}
+>
   <Button href={primaryHref}>{primaryText}</Button>
 
   <span class="text-slate-500 dark:text-slate-400">
