@@ -12,79 +12,60 @@ const currentYear = new Date().getFullYear();
 
 const jobRolesCollection = await getCollection("jobRoles");
 const highlightedRoles = jobRolesCollection
-    .filter(({ data }) => data.highlighted)
-    .map(({ data }) => data)
-    .sort((a, b) => b.dateStart.getTime() - a.dateStart.getTime());
-
-const getTitleForRole = (index: number) => {
-    if (index === 0) return "Currently";
-    if (index === 1) return "Recently";
-    return null;
-};
+  .filter(({ data }) => data.highlighted)
+  .map(({ data }) => data)
+  .sort((a, b) => b.dateStart.getTime() - a.dateStart.getTime());
 ---
 
-<PageLayout
-    title="About me"
-    description="I'm Merlin, a software engineer living & working in London, UK."
->
-    <div class="max-w-4xl mx-auto">
-        <h1 class="font-bold text-hero mb-12 text-center lg:text-left">
-            All <JazzyText>about</JazzyText> me.
-        </h1>
+<PageLayout title="About me" description="I'm Merlin, a software engineer living & working in London, UK.">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="font-bold text-hero mb-12 text-center lg:text-left">
+      All <JazzyText>about</JazzyText> me.
+    </h1>
 
-        <Card>
-            <div class="prose lg:prose-2xl prose-slate dark:prose-invert mb-10">
-                <p class="font-light">
-                    Hi, I'm Merlin, a frontend-leaning fullstack product engineer. I have {
-                        currentYear - 2009
-                    } years experience, in startups, scale-ups and as an entrepreneur. I've developed
-                    a T-shaped skill set with a deep understanding of the frontend stack and a broad
-                    understanding of product design and UX, backend engineering, devops and infrastructure,
-                    business operations, security and compliance. I'm passionate about building user
-                    centric digital products that are delightful to use and deliver measurable business
-                    impact.
-                </p>
-            </div>
+    <Card>
+      <div class="prose lg:prose-2xl prose-slate dark:prose-invert mb-10">
+        <p class="font-light">
+          Hi, I'm Merlin, a frontend-leaning fullstack product engineer. I have {currentYear - 2009} years experience, in
+          startups, scale-ups and as an entrepreneur. I've developed a T-shaped skill set with a deep understanding of the
+          frontend stack and a broad understanding of product design and UX, backend engineering, devops and infrastructure,
+          business operations, security and compliance. I'm passionate about building user centric digital products that
+          are delightful to use and deliver measurable business impact.
+        </p>
+      </div>
 
-            {
-                highlightedRoles.map((role, index) => {
-                    const sectionTitle = getTitleForRole(index);
-                    return (
-                        <article class="mb-10">
-                            {sectionTitle && (
-                                <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">
-                                    {sectionTitle}
-                                </h2>
-                            )}
+      <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">Highlights</h2>
 
-                            <h3 class="flex flex-wrap items-center gap-3 text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">
-                                <a
-                                    href={role.link}
-                                    target="_blank"
-                                    class="hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-150"
-                                >
-                                    {role.company}
-                                </a>
-                                <Pill>{role.title}</Pill>
-                                <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wide">
-                                    <CalendarIcon className="w-4 h-4" />
-                                    {formatDate(role.dateStart)} — {formatDate(role.dateEnd, true)}
-                                </div>
-                            </h3>
+      {
+        highlightedRoles.map((role) => (
+          <article class="mb-10">
+            <h3 class="flex flex-wrap items-center gap-3 text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">
+              <a
+                href={role.link}
+                target="_blank"
+                class="hover:text-teal-500 dark:hover:text-teal-400 transition-colors duration-150"
+              >
+                {role.company}
+              </a>
+              <Pill>{role.title}</Pill>
+              <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wide">
+                <CalendarIcon className="w-4 h-4" />
+                {formatDate(role.dateStart)} — {formatDate(role.dateEnd)}
+              </div>
+            </h3>
 
-                            {role.description && (
-                                <div class="prose lg:prose-lg prose-slate dark:prose-invert max-w-none">
-                                    <p>{role.description}</p>
-                                </div>
-                            )}
-                        </article>
-                    );
-                })
-            }
+            {role.description && (
+              <div class="prose lg:prose-lg prose-slate dark:prose-invert max-w-none">
+                <p set:html={role.description} />
+              </div>
+            )}
+          </article>
+        ))
+      }
 
-            <div class="pt-6 border-t border-slate-200/60 dark:border-slate-700/60">
-                <DualCTA primaryHref="/cv" primaryText="See full CV" />
-            </div>
-        </Card>
-    </div>
+      <div class="pt-6 border-t border-slate-200/60 dark:border-slate-700/60">
+        <DualCTA primaryHref="/cv" primaryText="See full CV" />
+      </div>
+    </Card>
+  </div>
 </PageLayout>

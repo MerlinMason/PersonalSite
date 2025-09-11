@@ -4,22 +4,17 @@ import Smile from "../assets/smile.png";
 import Wink from "../assets/wink.png";
 
 export interface Props {
-    className?: string;
+  className?: string;
 }
 const { className = "" } = Astro.props;
 ---
 
 <div class={`inline-block relative group ${className}`}>
-    <Image
-        src={Smile}
-        loading="eager"
-        alt="Memoji of Merlin smiling"
-        class="group-hover:opacity-0"
-    />
-    <Image
-        src={Wink}
-        loading="lazy"
-        alt="Memoji of Merlin winking"
-        class="absolute top-0 left-0 opacity-0 group-hover:opacity-100"
-    />
+  <Image src={Smile} loading="eager" alt="Memoji of Merlin smiling" class="group-hover:opacity-0" />
+  <Image
+    src={Wink}
+    loading="lazy"
+    alt="Memoji of Merlin winking"
+    class="absolute top-0 left-0 opacity-0 group-hover:opacity-100"
+  />
 </div>

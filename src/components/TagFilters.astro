@@ -10,28 +10,28 @@ const tags = [...new Set(allBlogPosts.map((post) => post.data.tags).flat())];
 const currentPage = Astro.url.pathname;
 
 const filters = [
-    {
-        url: "/blog",
-        label: "All",
-        selected: "/blog" === currentPage,
-    },
-    ...tags.map((tag) => ({
-        url: `/blog/tag/${slugify(tag)}`,
-        label: tag,
-        selected: `/blog/tag/${slugify(tag)}` === currentPage,
-    })),
+  {
+    url: "/blog",
+    label: "All",
+    selected: "/blog" === currentPage,
+  },
+  ...tags.map((tag) => ({
+    url: `/blog/tag/${slugify(tag)}`,
+    label: tag,
+    selected: `/blog/tag/${slugify(tag)}` === currentPage,
+  })),
 ];
 ---
 
 <menu class="flex items-center gap-3 mb-6">
-    <TagIcon className="w-6" />
-    <ButtonContainer>
-        {
-            filters.map(({ url, label, selected }) => (
-                <Button selected={selected} href={url} size="sm">
-                    {label}
-                </Button>
-            ))
-        }
-    </ButtonContainer>
+  <TagIcon className="w-6" />
+  <ButtonContainer>
+    {
+      filters.map(({ url, label, selected }) => (
+        <Button selected={selected} href={url} size="sm">
+          {label}
+        </Button>
+      ))
+    }
+  </ButtonContainer>
 </menu>

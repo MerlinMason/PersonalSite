@@ -4,12 +4,12 @@ import BlogPostMeta from "../../components/BlogPostMeta.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-    const allBlogPosts = await getCollection("blog", ({ data }) => !data.draft);
+  const allBlogPosts = await getCollection("blog", ({ data }) => !data.draft);
 
-    return allBlogPosts.map((entry) => ({
-        params: { slug: entry.slug },
-        props: { entry },
-    }));
+  return allBlogPosts.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
@@ -17,18 +17,18 @@ const { heroImage, title, timeToReadMins, pubDate, tags } = Astro.props.entry.da
 ---
 
 <div class="w-[1200px] h-[630px] bg-slate-50 p-12 flex flex-col relative">
-    <div class="grid gap-12 grid-cols-3 flex-grow">
-        <div>
-            <img src={heroImage} alt={title} />
-        </div>
-        <div class="col-span-2">
-            <h1 class="font-bold text-8xl text-slate-800">
-                {title}.
-            </h1>
-        </div>
+  <div class="grid gap-12 grid-cols-3 flex-grow">
+    <div>
+      <img src={heroImage} alt={title} />
     </div>
+    <div class="col-span-2">
+      <h1 class="font-bold text-8xl text-slate-800">
+        {title}.
+      </h1>
+    </div>
+  </div>
 
-    <div class="text-2xl">
-        <BlogPostMeta timeToReadMins={timeToReadMins} pubDate={pubDate} tags={tags} />
-    </div>
+  <div class="text-2xl">
+    <BlogPostMeta timeToReadMins={timeToReadMins} pubDate={pubDate} tags={tags} />
+  </div>
 </div>

@@ -4,38 +4,32 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 type Props = {
-    title: string;
-    description: string;
-    hasHeader?: boolean;
-    hasFooter?: boolean;
-    image?: string;
+  title: string;
+  description: string;
+  hasHeader?: boolean;
+  hasFooter?: boolean;
+  image?: string;
 };
 
-const {
-    title,
-    description,
-    hasHeader = true,
-    hasFooter = true,
-    image = "/ogimages/page.png",
-} = Astro.props;
+const { title, description, hasHeader = true, hasFooter = true, image = "/ogimages/page.png" } = Astro.props;
 ---
 
 <html lang="en-GB">
-    <head>
-        <BaseHead title={title} description={description} image={image} />
-    </head>
+  <head>
+    <BaseHead title={title} description={description} image={image} />
+  </head>
 
-    <body
-        class="bg-slate-50 text-slate-800 overflow-y-scroll dark:bg-slate-900 dark:text-slate-100 transition-colors duration-200"
-    >
-        <div class="px-4 sm:px-6 mx-auto max-w-[920px] min-h-screen flex flex-col">
-            {hasHeader && <Header />}
+  <body
+    class="bg-slate-50 text-slate-800 overflow-y-scroll dark:bg-slate-900 dark:text-slate-100 transition-colors duration-200"
+  >
+    <div class="px-4 sm:px-6 mx-auto max-w-[920px] min-h-screen flex flex-col">
+      {hasHeader && <Header />}
 
-            <main class="flex-grow">
-                <slot />
-            </main>
+      <main class="flex-grow">
+        <slot />
+      </main>
 
-            {hasFooter && <Footer />}
-        </div>
-    </body>
+      {hasFooter && <Footer />}
+    </div>
+  </body>
 </html>

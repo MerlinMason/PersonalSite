@@ -7,50 +7,44 @@ import BlogPostMeta from "./BlogPostMeta.astro";
 import type { CollectionEntry } from "astro:content";
 
 type Props = {
-    posts: CollectionEntry<"blog">[];
-    tagLabel?: string; // human readable
+  posts: CollectionEntry<"blog">[];
+  tagLabel?: string; // human readable
 };
 
 const { posts, tagLabel } = Astro.props;
 ---
 
 <PageLayout
-    title={`Blog${tagLabel ? `: ${tagLabel}` : ""}`}
-    description="Merlin Masons blog about frontend engineering, TypeScript and React"
+  title={`Blog${tagLabel ? `: ${tagLabel}` : ""}`}
+  description="Merlin Masons blog about frontend engineering, TypeScript and React"
 >
-    <h1 class="font-bold text-hero mb-8">
-        My <JazzyText>blog</JazzyText>{tagLabel && <>: {tagLabel}</>}.
-    </h1>
+  <h1 class="font-bold text-hero mb-8">
+    My <JazzyText>blog</JazzyText>{tagLabel && <>: {tagLabel}</>}.
+  </h1>
 
-    <TagFilters />
+  <TagFilters />
 
-    <ul class="space-y-24 w-full block">
-        {
-            posts.map((post) => (
-                <li>
-                    <Card>
-                        <a href={`/blog/${post.slug}`}>
-                            <figure class="bg-slate-100 rounded" transition:name={`blog-hero-${post.slug}`}>
-                                <img
-                                    class="max-w-full h-auto min-h-[400px] mb-6 mx-auto"
-                                    src={post.data.heroImage}
-                                    alt={post.data.title}
-                                />
-                            </figure>
+  <ul class="space-y-24 w-full block">
+    {
+      posts.map((post) => (
+        <li>
+          <Card>
+            <a href={`/blog/${post.slug}`}>
+              <figure class="bg-slate-100 rounded" transition:name={`blog-hero-${post.slug}`}>
+                <img
+                  class="max-w-full h-auto min-h-[400px] mb-6 mx-auto"
+                  src={post.data.heroImage}
+                  alt={post.data.title}
+                />
+              </figure>
 
-                            <h1 class="font-bold text-4xl mb-6 hover:text-slate-700 dark:hover:text-white">
-                                {post.data.title}
-                            </h1>
-                        </a>
+              <h1 class="font-bold text-4xl mb-6 hover:text-slate-700 dark:hover:text-white">{post.data.title}</h1>
+            </a>
 
-                        <BlogPostMeta
-                            timeToReadMins={post.data.timeToReadMins}
-                            tags={post.data.tags}
-                            pubDate={post.data.pubDate}
-                        />
-                    </Card>
-                </li>
-            ))
-        }
-    </ul>
+            <BlogPostMeta timeToReadMins={post.data.timeToReadMins} tags={post.data.tags} pubDate={post.data.pubDate} />
+          </Card>
+        </li>
+      ))
+    }
+  </ul>
 </PageLayout>

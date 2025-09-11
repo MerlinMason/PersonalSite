@@ -11,23 +11,23 @@ const { timeToReadMins, pubDate, tags } = Astro.props;
 ---
 
 <div class="grid gap-2 grid-col-1 sm:grid-cols-3 items-center text-slate-500 dark:text-slate-400">
-    <FormattedDate date={pubDate} />
+  <FormattedDate date={pubDate} />
 
-    <div class="flex items-center gap-2">
-        <ClockIcon className="w-6" />
-        <span>{timeToReadMins} mins read</span>
-    </div>
+  <div class="flex items-center gap-2">
+    <ClockIcon className="w-6" />
+    <span>{timeToReadMins} mins read</span>
+  </div>
 
-    <div class="flex items-center gap-2">
-        <TagIcon className="w-6" />
-        <ButtonContainer>
-            {
-                tags?.map((tag: string) => (
-                    <Button size="sm" href={`/blog/tag/${slugify(tag)}`}>
-                        {tag}
-                    </Button>
-                ))
-            }
-        </ButtonContainer>
-    </div>
+  <div class="flex items-center gap-2">
+    <TagIcon className="w-6" />
+    <ButtonContainer>
+      {
+        tags?.map((tag: string) => (
+          <Button size="sm" href={`/blog/tag/${slugify(tag)}`}>
+            {tag}
+          </Button>
+        ))
+      }
+    </ButtonContainer>
+  </div>
 </div>

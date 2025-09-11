@@ -5,25 +5,22 @@ pubDate: "Oct 5 2022"
 heroImage: "/blog/conditional-types.png"
 timeToReadMins: 4
 tags:
-    - TypeScript
-    - React
+  - TypeScript
+  - React
 ---
 
-When designing reusable components you can often come across use cases where
-certain props are only conditionally required. Let's look at a really simple
-example of this with a button component and how we can handle it at the
+When designing reusable components you can often come across use cases where certain props are only conditionally
+required. Let's look at a really simple example of this with a button component and how we can handle it at the
 TypeScript level.
 
-It's fairly common for designs to have something that looks like a button be
-used for both button behaviours (any operation that updates frontend or backend
-state) and for link behaviours (pure navigation that doesn't update any state).
-For
-[accessibility reasons](https://www.digitala11y.com/links-vs-buttons-a-perennial-problem)
-we should use the correct HTML element. It makes sense that we might want to
-keep everything that looks like a button all within a single component.
+It's fairly common for designs to have something that looks like a button be used for both button behaviours (any
+operation that updates frontend or backend state) and for link behaviours (pure navigation that doesn't update any
+state). For [accessibility reasons](https://www.digitala11y.com/links-vs-buttons-a-perennial-problem) we should use the
+correct HTML element. It makes sense that we might want to keep everything that looks like a button all within a single
+component.
 
-This produces some challenges we need to solve though, we don't want consumers
-of our component (other engineers or even ourselves) to use it incorrectly.
+This produces some challenges we need to solve though, we don't want consumers of our component (other engineers or even
+ourselves) to use it incorrectly.
 
 ## 💩 Handling the conditions at runtime
 
@@ -31,48 +28,43 @@ of our component (other engineers or even ourselves) to use it incorrectly.
 import { type PropsWithChildren } from "react";
 
 type Props = PropsWithChildren<{
-    as: "button" | "a";
-    type?: "button" | "submit";
-    onClick?: () => void;
-    href?: string;
+  as: "button" | "a";
+  type?: "button" | "submit";
+  onClick?: () => void;
+  href?: string;
 }>;
 
 const Button = ({ children, as, type, onClick, href }: Props) => {
-    const styles = "inline-block py-2 px-6 bg-blue-600 text-white rounded";
+  const styles = "inline-block py-2 px-6 bg-blue-600 text-white rounded";
 
-    if (as === "button") {
-        if (onClick === undefined) {
-            throw new Error("You must provide an onClick handler");
-        }
-
-        return (
-            <button
-                className={styles}
-                type={type === "button" ? "button" : "submit"}
-                onClick={onClick}
-            >
-                {children}
-            </button>
-        );
-    }
-
-    if (href === undefined) {
-        throw new Error("You must provide an href");
+  if (as === "button") {
+    if (onClick === undefined) {
+      throw new Error("You must provide an onClick handler");
     }
 
     return (
-        <a className={styles} href={href}>
-            {children}
-        </a>
+      <button className={styles} type={type === "button" ? "button" : "submit"} onClick={onClick}>
+        {children}
+      </button>
     );
+  }
+
+  if (href === undefined) {
+    throw new Error("You must provide an href");
+  }
+
+  return (
+    <a className={styles} href={href}>
+      {children}
+    </a>
+  );
 };
 ```
 
-This approach works, but trying to handle the different combinations of props in
-our runtime code means things get pretty complicated pretty quickly. It can also
-lead to frustrating developer experience, passing an `href` through to a
-`button` would just fail silently here and we have no feedback to what we're
-doing wrong. There must be a better way to do this?
+This approach works, but trying to handle the different combinations of props in our runtime code means things get
+pretty complicated pretty quickly. It can also lead to frustrating developer experience, passing an `href` through to a
+`button` would just fail silently here and we have no feedback to what we're doing wrong. There must be a better way to
+do this?
 
 ## 😻 Handling the conditions at compile time
 
@@ -80,36 +72,32 @@ doing wrong. There must be a better way to do this?
 import { type PropsWithChildren } from "react";
 
 type Props = PropsWithChildren &
-    (
-        | {
-              as: "button";
-              type: "button" | "submit";
-              onClick: () => void;
-          }
-        | {
-              as: "a";
-              href: string;
-          }
-    );
+  (
+    | {
+        as: "button";
+        type: "button" | "submit";
+        onClick: () => void;
+      }
+    | {
+        as: "a";
+        href: string;
+      }
+  );
 
 const Button = ({ children, as: El, ...restProps }: Props) => (
-    <El
-        className="inline-block py-2 px-6 bg-blue-600 text-white rounded"
-        {...restProps}
-    >
-        {children}
-    </El>
+  <El className="inline-block py-2 px-6 bg-blue-600 text-white rounded" {...restProps}>
+    {children}
+  </El>
 );
 ```
 
 We can use a TypeScript pattern called
 [Discriminating Unions](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#discriminating-unions)
-to create types which are conditional based on a field with a literal value (in
-our case `as`). Our type here `Props` creates a union of `children` with either
-`button` and its props or `a` and its props.
+to create types which are conditional based on a field with a literal value (in our case `as`). Our type here `Props`
+creates a union of `children` with either `button` and its props or `a` and its props.
 
-This gives us confidence that consumers of our component will send through a
-correct combination of props, so our runtime code can be hugely simplified.
+This gives us confidence that consumers of our component will send through a correct combination of props, so our
+runtime code can be hugely simplified.
 
 Our code will work as expected for the following use cases.
 
@@ -125,8 +113,8 @@ Our code will work as expected for the following use cases.
 </Button>
 ```
 
-If we try and attempt passing an incorrect combination of props we get errors in
-our IDE explaining what we've done wrong.
+If we try and attempt passing an incorrect combination of props we get errors in our IDE explaining what we've done
+wrong.
 
 ```tsx
 // 🚫 Error as "a" doesn't have onClick
@@ -152,51 +140,45 @@ our IDE explaining what we've done wrong.
 
 ## TypeScript types for all HTML elements
 
-We can also access a full list of available HTML elements using the types
-shipped in `@types/react-dom` via `JSX.IntrinsicElements`.
+We can also access a full list of available HTML elements using the types shipped in `@types/react-dom` via
+`JSX.IntrinsicElements`.
 
 ```ts
 import { type PropsWithChildren } from "react";
 
 type Props = PropsWithChildren<{
-    className?: string;
+  className?: string;
 }> &
-    (
-        | {
-              el?: "label";
-              htmlFor: string;
-          }
-        | {
-              el: keyof Omit<JSX.IntrinsicElements, "label">;
-          }
-    );
+  (
+    | {
+        el?: "label";
+        htmlFor: string;
+      }
+    | {
+        el: keyof Omit<JSX.IntrinsicElements, "label">;
+      }
+  );
 
 const Label = ({ htmlFor, el: El = "label", className, children }: Props) => (
-    <El
-        className={`text-lg font-bold select-none ${className}`}
-        {...(htmlFor ? { htmlFor } : {})} // ensure this attribute is only rendered if it exists
-    >
-        {children}
-    </El>
+  <El
+    className={`text-lg font-bold select-none ${className}`}
+    {...(htmlFor ? { htmlFor } : {})} // ensure this attribute is only rendered if it exists
+  >
+    {children}
+  </El>
 );
 ```
 
-In this example we have a typographic label component that we may want to use
-with form components or elsewhere... be default it renders as a `<label>`
-element and we must provide an `htmlFor` attribute for accessibility reasons.
-However if we choose to render elsewhere, say as a `<legend>` or `<dt>` it is
-unable to accept the `htmlFor` prop. The
-`keyof Omit<JSX.IntrinsicElements, "label">` creates a union of every HTML
-element name, but omitting "label". This ensures that the value passed to `el`
-is actually a valid HTML element name.
+In this example we have a typographic label component that we may want to use with form components or elsewhere... be
+default it renders as a `<label>` element and we must provide an `htmlFor` attribute for accessibility reasons. However
+if we choose to render elsewhere, say as a `<legend>` or `<dt>` it is unable to accept the `htmlFor` prop. The
+`keyof Omit<JSX.IntrinsicElements, "label">` creates a union of every HTML element name, but omitting "label". This
+ensures that the value passed to `el` is actually a valid HTML element name.
 
 ## Summary
 
-Given that you're operating entirely in a type safe environment, I think it's
-good wherever possible to push data validation like this to the TypeScript level
-rather than runtime level. TypeScript a really great tool for this, and if
-you're type checking in CI with `tsc` this will ensure any breaking changes to
-your types are picked up before you deploy. It also means you're runtime code is
-simpler and you ship less JavaScript to the browser. Finally, it's also a far
-more direct and efficient developer experience to get errors in your IDE than in
-the browser.
+Given that you're operating entirely in a type safe environment, I think it's good wherever possible to push data
+validation like this to the TypeScript level rather than runtime level. TypeScript a really great tool for this, and if
+you're type checking in CI with `tsc` this will ensure any breaking changes to your types are picked up before you
+deploy. It also means you're runtime code is simpler and you ship less JavaScript to the browser. Finally, it's also a
+far more direct and efficient developer experience to get errors in your IDE than in the browser.

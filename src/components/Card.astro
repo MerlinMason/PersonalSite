@@ -1,16 +1,16 @@
 ---
 export interface Props {
-    class?: string;
+  class?: string;
 }
 
 const { class: className, ...props } = Astro.props;
 ---
 
 <div
-    class={`bg-white dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 rounded-xl p-4 sm:p-6 shadow-lg shadow-slate-400/10 dark:shadow-none ${
-        className ? className : ""
-    }`}
-    {...props}
+  class={`bg-white dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 rounded-xl p-4 sm:p-6 shadow-lg shadow-slate-400/10 dark:shadow-none ${
+    className ? className : ""
+  }`}
+  {...props}
 >
-    <slot />
+  <slot />
 </div>

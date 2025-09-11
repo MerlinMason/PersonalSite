@@ -7,73 +7,69 @@ import BlogPostMeta from "../components/BlogPostMeta.astro";
 import type { CollectionEntry } from "astro:content";
 
 type Props = {
-    slug: string;
-    content: CollectionEntry<"blog">["data"];
+  slug: string;
+  content: CollectionEntry<"blog">["data"];
 };
 
 const {
-    content: { title, pubDate, heroImage, tags, timeToReadMins, description },
-    slug,
+  content: { title, pubDate, heroImage, tags, timeToReadMins, description },
+  slug,
 } = Astro.props;
 
 const image = `/ogimages/${slug.toLowerCase()}.png`;
 ---
 
 <Page title={title} description={description} image={image}>
-    <article>
-        <h1 class="font-bold text-hero mb-8">My <JazzyText>blog</JazzyText>.</h1>
+  <article>
+    <h1 class="font-bold text-hero mb-8">My <JazzyText>blog</JazzyText>.</h1>
 
-        <a
-            href="/blog"
-            class="inline-flex items-center gap-2 leading-[30px] mb-6 hover:text-black dark:hover:text-white text-xl"
-        >
-            <ArrowLeftIcon className="w-6" />
-            All posts
-        </a>
+    <a
+      href="/blog"
+      class="inline-flex items-center gap-2 leading-[30px] mb-6 hover:text-black dark:hover:text-white text-xl"
+    >
+      <ArrowLeftIcon className="w-6" />
+      All posts
+    </a>
 
-        <Card>
-            <header class="mb-16">
-                <figure class="bg-slate-100 rounded" transition:name={`blog-hero-${slug}`}>
-                    <img
-                        class="max-w-full h-auto min-h-[400px] mb-6 mx-auto"
-                        src={heroImage}
-                        alt={title}
-                    />
-                </figure>
+    <Card>
+      <header class="mb-16">
+        <figure class="bg-slate-100 rounded" transition:name={`blog-hero-${slug}`}>
+          <img class="max-w-full h-auto min-h-[400px] mb-6 mx-auto" src={heroImage} alt={title} />
+        </figure>
 
-                <h1 class="font-bold text-4xl mb-6">{title}</h1>
+        <h1 class="font-bold text-4xl mb-6">{title}</h1>
 
-                <BlogPostMeta timeToReadMins={timeToReadMins} pubDate={pubDate} tags={tags} />
-            </header>
+        <BlogPostMeta timeToReadMins={timeToReadMins} pubDate={pubDate} tags={tags} />
+      </header>
 
-            <div class="prose lg:prose-xl prose-slate dark:prose-invert prose-pre:!leading-normal">
-                <slot />
-            </div>
-        </Card>
-    </article>
+      <div class="prose lg:prose-xl prose-slate dark:prose-invert prose-pre:!leading-normal">
+        <slot />
+      </div>
+    </Card>
+  </article>
 </Page>
 
 <script>
-    // create a simple lightbox for images
-    document.querySelectorAll<HTMLImageElement>(".prose img").forEach((img) => {
-        img.classList.add("cursor-pointer");
-        img.addEventListener("click", () => {
-            const lightbox = document.createElement("div");
-            lightbox.classList.add(
-                "fixed",
-                "z-10",
-                "inset-0",
-                "w-full",
-                "h-full",
-                "bg-black/70",
-                "cursor-pointer",
-                "flex",
-                "items-center",
-                "justify-center"
-            );
-            lightbox.innerHTML = `<img class="max-w-full max-h-full" src="${img.src}" alt="${img.alt}" />`;
-            lightbox.addEventListener("click", () => lightbox.remove());
-            document.body.appendChild(lightbox);
-        });
+  // create a simple lightbox for images
+  document.querySelectorAll<HTMLImageElement>(".prose img").forEach((img) => {
+    img.classList.add("cursor-pointer");
+    img.addEventListener("click", () => {
+      const lightbox = document.createElement("div");
+      lightbox.classList.add(
+        "fixed",
+        "z-10",
+        "inset-0",
+        "w-full",
+        "h-full",
+        "bg-black/70",
+        "cursor-pointer",
+        "flex",
+        "items-center",
+        "justify-center"
+      );
+      lightbox.innerHTML = `<img class="max-w-full max-h-full" src="${img.src}" alt="${img.alt}" />`;
+      lightbox.addEventListener("click", () => lightbox.remove());
+      document.body.appendChild(lightbox);
     });
+  });
 </script>

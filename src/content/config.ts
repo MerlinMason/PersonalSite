@@ -22,7 +22,7 @@ const jobRolesCollection = defineCollection({
         contract: z.boolean(),
         link: z.string().url().nullable(),
         dateStart: z.string().transform((str) => new Date(str)),
-        dateEnd: z.string().transform((str) => str === "current" ? new Date() : new Date(str)),
+        dateEnd: z.union([z.string().transform((str) => new Date(str)), z.null()]),
         highlighted: z.boolean().optional(),
         description: z.string().optional(),
     }),

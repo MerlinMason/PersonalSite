@@ -1,62 +1,51 @@
 ---
 title: "Creating subsets of types with Omit, Pick & Partial"
-description:
-    "Learn how to manage your TypeScript types better with Omit, Pick and
-    Partial"
+description: "Learn how to manage your TypeScript types better with Omit, Pick and Partial"
 pubDate: "Sep 20 2022"
 timeToReadMins: 3
 heroImage: "/blog/pick.png"
 tags:
-    - TypeScript
+  - TypeScript
 ---
 
-In this blog post we're going to look at ways to manage types in a simple todo
-list application with the aim of keeping things readable, maintainable and type
-safe.
+In this blog post we're going to look at ways to manage types in a simple todo list application with the aim of keeping
+things readable, maintainable and type safe.
 
-For any model in my applications, I really like typing out a complete model in
-one place, this allows it to be read and understood at a glance.
+For any model in my applications, I really like typing out a complete model in one place, this allows it to be read and
+understood at a glance.
 
 ```ts
 // Complete model
 type ToDo = {
-    id: string;
-    description: string;
-    tags: string[];
-    created_at: string;
-    status: "todo" | "in_progress" | "done";
+  id: string;
+  description: string;
+  tags: string[];
+  created_at: string;
+  status: "todo" | "in_progress" | "done";
 };
 ```
 
-This does present us with some challenges though, as there's plenty of reasons
-why you might need to access various subsets of this type. For these subsets we
-want inherit from our definition and get some handy warnings if we break
+This does present us with some challenges though, as there's plenty of reasons why you might need to access various
+subsets of this type. For these subsets we want inherit from our definition and get some handy warnings if we break
 anything.
 
-Luckily TypeScript has some built in utilities to help with this, let's look
-through a few different scenarios.
+Luckily TypeScript has some built in utilities to help with this, let's look through a few different scenarios.
 
 ## Picking properties from a type
 
-Ok, so let's say we want to build a component to display the status of a todo.
-Here we can use the `Pick` utility to grab a property from the ToDo type. This
-gives us autocomplete on our `bgColor` ternary and if at some point in the
-future we decided to rename our `done` status to `complete` we'd get a warning
-here.
+Ok, so let's say we want to build a component to display the status of a todo. Here we can use the `Pick` utility to
+grab a property from the ToDo type. This gives us autocomplete on our `bgColor` ternary and if at some point in the
+future we decided to rename our `done` status to `complete` we'd get a warning here.
 
 ```tsx
 type Props = {
-    status: Pick<ToDo, "status">; // Just the status from our Todo type
+  status: Pick<ToDo, "status">; // Just the status from our Todo type
 };
 
 const ToDoStatus = ({ status }: Props): JSX.Element => {
-    const bgColor = status === "done" ? "bg-green-300" : "bg-gray-300";
+  const bgColor = status === "done" ? "bg-green-300" : "bg-gray-300";
 
-    return (
-        <span className={`inline-block p-4 rounded ${bgColor}`}>
-            {status.replace("_", " ")}
-        </span>
-    );
+  return <span className={`inline-block p-4 rounded ${bgColor}`}>{status.replace("_", " ")}</span>;
 };
 ```
 
@@ -68,9 +57,8 @@ type SomeProperties = Pick<ToDo, "status" | "tags">;
 
 ## Omitting properties from a type
 
-Nice, now let's think about validating the data we're sending to our API for
-persistence. When we're creating a todo the backend is going to generate an `id`
-and `created_at` timestamps for us, but we do need to send all other properties.
+Nice, now let's think about validating the data we're sending to our API for persistence. When we're creating a todo the
+backend is going to generate an `id` and `created_at` timestamps for us, but we do need to send all other properties.
 Here we can use the `Omit` utility to remove those but require the rest.
 
 ```ts
@@ -78,27 +66,25 @@ Here we can use the `Omit` utility to remove those but require the rest.
 type NewToDo = Omit<ToDo, "id" | "created_at">;
 
 const body: NewToDo = {
-    description: "Write a post about Pick and Omit",
-    tags: ["blogging"],
-    status: "in_progress",
+  description: "Write a post about Pick and Omit",
+  tags: ["blogging"],
+  status: "in_progress",
 };
 
 await fetch("https://my-api.com/todos", {
-    method: "POST",
-    body,
+  method: "POST",
+  body,
 });
 ```
 
 ## All properties optional except one
 
-This varies depending on API implementations, but often when sending update
-requests to our API we may only want to send the data that has changed rather
-than the full model. Technically this is a `PATCH` request, but sometimes APIs
+This varies depending on API implementations, but often when sending update requests to our API we may only want to send
+the data that has changed rather than the full model. Technically this is a `PATCH` request, but sometimes APIs
 implement `PUT` requests as `PATCH`.
 
-Anyway, here we can combine `Pick` with the `Partial` utility. The `Partial`
-utility restricts us to only including properties of `ToDo`, but makes them all
-optional.
+Anyway, here we can combine `Pick` with the `Partial` utility. The `Partial` utility restricts us to only including
+properties of `ToDo`, but makes them all optional.
 
 The end result of combining these is:
 
@@ -112,15 +98,14 @@ type UpdateTodo = Pick<ToDo, "id"> & Partial<ToDo>;
 
 const id = "example-id";
 const body: UpdateTodo = {
-    id,
-    status: "done", // This could be any other property of ToDo
+  id,
+  status: "done", // This could be any other property of ToDo
 };
 
 await fetch(`https://my-api.com/todos/${id}`, {
-    method: "PATCH",
-    body,
+  method: "PATCH",
+  body,
 });
 ```
 
-Hopefully these utilities can help you improve how you're managing types in your
-applications.
+Hopefully these utilities can help you improve how you're managing types in your applications.

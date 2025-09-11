@@ -7,26 +7,24 @@ import DualCTA from "../components/DualCTA.astro";
 ---
 
 <Page title="" description={SITE_DESCRIPTION} hasHeader={false} hasFooter={false}>
-    <main class="flex flex-col justify-center sm:flex-row items-center min-h-screen">
-        <a href="/about">
-            <Avatar
-                className="w-[200px] sm:w-[225px] md:w-[275px] lg:w-[350px] xl:w-[421px] -mt-20"
-            />
-        </a>
+  <main class="flex flex-col justify-center sm:flex-row items-center min-h-screen">
+    <a href="/about">
+      <Avatar className="w-[200px] sm:w-[225px] md:w-[275px] lg:w-[350px] xl:w-[421px] -mt-20" />
+    </a>
 
-        <div>
-            <h1 class="font-bold text-hero mb-8 text-center sm:text-left">
-                <div class="whitespace-nowrap">
-                    Hi <span class="inline-block hover:animate-wiggle cursor-wave">👋🏻</span> I'm Merlin,
-                </div>
-                <div class="whitespace-nowrap">
-                    a <JazzyText>product engineer</JazzyText>
-                </div>
-                <div class="whitespace-nowrap">living & working</div>
-                <div class="whitespace-nowrap">in London, UK.</div>
-            </h1>
-
-            <DualCTA primaryHref="/about" primaryText="Find out more" />
+    <div>
+      <h1 class="font-bold text-hero mb-8 text-center sm:text-left">
+        <div class="whitespace-nowrap">
+          Hi <span class="inline-block hover:animate-wiggle cursor-wave">👋🏻</span> I'm Merlin,
         </div>
-    </main>
+        <div class="whitespace-nowrap">
+          a <JazzyText>product engineer</JazzyText>
+        </div>
+        <div class="whitespace-nowrap">living & working</div>
+        <div class="whitespace-nowrap">in London, UK.</div>
+      </h1>
+
+      <DualCTA primaryHref="/about" primaryText="Find out more" />
+    </div>
+  </main>
 </Page>

@@ -1,24 +1,24 @@
 ---
 type Props = {
-    href: string;
-    size?: "sm" | "lg";
-    selected?: boolean;
+  href: string;
+  size?: "sm" | "lg";
+  selected?: boolean;
 };
 
 const { href, size = "lg", selected = false } = Astro.props;
 ---
 
 <a
-    href={href}
-    class:list={[
-        "inline-flex items-center font-semibold transition-all duration-200 shadow-sm hover:shadow-md",
-        // Base size styling
-        size === "sm" ? "px-2.5 py-1 text-sm rounded-md" : "px-6 py-3 text-lg rounded-lg",
-        // Selected/active state
-        selected 
-            ? "bg-gradient-to-r from-teal-600 to-blue-700 text-white border border-teal-600/50 hover:from-teal-700 hover:to-blue-800" 
-            : "bg-gradient-to-r from-teal-50 to-blue-50 dark:from-teal-900/30 dark:to-blue-900/30 border border-teal-200/50 dark:border-teal-700/50 text-teal-700 dark:text-teal-300 hover:from-teal-100 hover:to-blue-100 dark:hover:from-teal-800/40 dark:hover:to-blue-800/40"
-    ]}
+  href={href}
+  class:list={[
+    "inline-flex items-center font-semibold transition-all duration-200 shadow-sm hover:shadow-md",
+    // Base size styling
+    size === "sm" ? "px-2.5 py-1 text-sm rounded-md" : "px-6 py-3 text-lg rounded-lg",
+    // Selected/active state
+    selected
+      ? "bg-gradient-to-r from-teal-600 to-blue-700 text-white border border-teal-600/50 hover:from-teal-700 hover:to-blue-800"
+      : "bg-gradient-to-r from-teal-50 to-blue-50 dark:from-teal-900/30 dark:to-blue-900/30 border border-teal-200/50 dark:border-teal-700/50 text-teal-700 dark:text-teal-300 hover:from-teal-100 hover:to-blue-100 dark:hover:from-teal-800/40 dark:hover:to-blue-800/40",
+  ]}
 >
-    <slot />
+  <slot />
 </a>

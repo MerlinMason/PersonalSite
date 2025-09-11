@@ -4,12 +4,12 @@ import { getCollection } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
 
 export async function getStaticPaths() {
-    const allBlogPosts = await getCollection("blog", ({ data }) => !data.draft);
+  const allBlogPosts = await getCollection("blog", ({ data }) => !data.draft);
 
-    return allBlogPosts.map((entry) => ({
-        params: { slug: entry.slug },
-        props: { entry },
-    }));
+  return allBlogPosts.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
@@ -18,5 +18,5 @@ const { Content } = await entry.render();
 ---
 
 <BlogPost slug={entry.slug} content={entry.data}>
-    <Content />
+  <Content />
 </BlogPost>
